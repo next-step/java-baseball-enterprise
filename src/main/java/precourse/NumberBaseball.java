@@ -75,8 +75,8 @@ public class NumberBaseball {
         for (char c : input.toCharArray()) {
             set.add(c);
         }
-        if (input.length() != 3 || set.size() != 3) {
-            System.out.println("잘못된 입력입니다. 서로 다른 세개의 숫자를 입력해주세요.");
+        if (input.length() != 3 || input.contains("0") || set.size() != 3) {
+            System.out.println("잘못된 입력입니다. 1에서 9까지의 서로 다른 세개의 숫자를 입력해주세요.");
             return false;
         }
         return true;
@@ -89,5 +89,24 @@ public class NumberBaseball {
             return true;
         }
         return false;
+    }
+
+    public void newGame() {
+        this.setTarget();
+        boolean isOver = false;
+        while (!isOver) {
+            String input = this.input();
+            isOver = this.examine(input);
+        }
+    }
+
+    public static void main(String[] args) {
+        NumberBaseball nb = new NumberBaseball();
+        boolean doing = true;
+        while (doing) {
+            nb.newGame();
+            doing = nb.continueGame();
+        }
+        System.out.println("게임을 종료합니다.");
     }
 }
