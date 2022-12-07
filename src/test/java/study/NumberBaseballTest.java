@@ -24,14 +24,25 @@ public class NumberBaseballTest {
     void random_number_test() {
         NumberBaseball nb = new NumberBaseball();
 
-        for (int i = 0; i < TEST_NUM; i++) {
+        for (int i = 0; i < TEST_NUM; i++) { // 난수를 TEST_NUM 회 발생시켜 테스트한다
             nb.set_random_number(NUM_LENGTH);
-            String random = nb.get_random_number();
+            String random = nb.get_computer_number();
             int random_ = Integer.parseInt(random);
 
             //System.out.println(random_);
             assert(check_valid(random));
             assertThat(random_).isGreaterThan(110).isLessThan(1000);
         }
+    }
+
+    @Test
+    void compare_count_test() {
+        NumberBaseball nb = new NumberBaseball();
+        int[] count;
+        int[] expected = {2, 1};
+
+        nb.set_computer_number("135");
+        count = nb.compare_count("335");
+        assertThat(count).isEqualTo(expected);
     }
 }
