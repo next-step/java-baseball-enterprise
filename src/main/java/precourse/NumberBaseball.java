@@ -1,6 +1,8 @@
 package precourse;
 
 import java.util.Random;
+import java.util.HashSet;
+import java.util.Scanner;
 
 public class NumberBaseball {
     private String target;
@@ -55,5 +57,28 @@ public class NumberBaseball {
             return;
         }
         System.out.println(String.format("strike %d, ball %d", result[0], result[1]));
+    }
+
+    public String input() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("입력해주세요 : ");
+        String s = scanner.next();
+        while (!this.checkInput(s)) {
+            System.out.print("입력해주세요 : ");
+            s = scanner.next();
+        }
+        return s;
+    }
+
+    public boolean checkInput(String input) {
+        HashSet<Character> set = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            set.add(c);
+        }
+        if (input.length() != 3 || set.size() != 3) {
+            System.out.println("잘못된 입력입니다. 서로 다른 세개의 숫자를 입력해주세요.");
+            return false;
+        }
+        return true;
     }
 }
