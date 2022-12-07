@@ -81,4 +81,13 @@ public class NumberBaseball {
         }
         return true;
     }
+
+    public boolean continueGame() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("게임을 계속 진행하시려면 1, 종료하시려면 0을 입력해주세요 : ");
+        if (scanner.nextInt() == 1) {
+            return true;
+        }
+        return false;
+    }
 }
