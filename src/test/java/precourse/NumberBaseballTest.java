@@ -1,6 +1,9 @@
 package precourse;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,5 +34,12 @@ class NumberBaseballTest {
         assertThat(nb.examine("111")).isFalse();
         assertThat(nb.examine("012")).isFalse();
         assertThat(nb.examine("999")).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:true", "456:true", "012:false", "111:false", "1234:false", "1123:false", "12:false", "9:false", "434312:false"}, delimiter = ':')
+    void checkInput(String input, boolean result) {
+        NumberBaseball nb = new NumberBaseball();
+        assertThat(nb.checkInput(input)).isEqualTo(result);
     }
 }
