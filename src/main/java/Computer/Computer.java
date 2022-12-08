@@ -44,4 +44,26 @@ public class Computer {
 
         return ret;
     }
+
+    /**
+     * Return Array with [ball, strike]
+     * */
+    public int[] getResult(List<Integer> numbers){
+        int[] result = new int[]{0,0};
+
+        for(int i=0; i<3; i++){
+            result[0] += used[numbers.get(i)-1] ? 1 : 0;
+            result[1] += numbers.get(i).equals(targetNumbers.get(i)) ? 1 : 0;
+        }
+        result[0] -= result[1];
+
+        return result;
+    }
+
+    /**
+     * Return targetNumbers
+     * */
+    public List<Integer> getTargetNumbers(){
+        return targetNumbers;
+    }
 }

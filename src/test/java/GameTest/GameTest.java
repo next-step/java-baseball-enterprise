@@ -6,7 +6,7 @@ import Game.Game;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-public class GmaeTest {
+public class GameTest {
     @Test
     void checkValidityTest(){
         Game game = new Game();

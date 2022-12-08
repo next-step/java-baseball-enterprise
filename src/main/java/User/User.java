@@ -1,6 +1,7 @@
 package User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,12 +10,20 @@ public class User {
     /**
      * Sets User numbers
      * */
-    public void setNumbers(){
+    public void setNumbers(int number){
+        fillNumber(number);
+    }
+    /**
+     * Get input number from user
+     * @Return int user made
+     * */
+    public int getInput(){
         System.out.print("숫자를 입력하세요: ");
         Scanner scanner = new Scanner(System.in);
 
         int number = scanner.nextInt();
-        fillNumber(number);
+
+        return number;
     }
     private void fillNumber(int number){
         numbers.clear();
@@ -26,6 +35,7 @@ public class User {
         while(numbers.size()<3){
             numbers.add(0);
         }
+        Collections.reverse(numbers);
     }
     /**
      * Returns user Numbers

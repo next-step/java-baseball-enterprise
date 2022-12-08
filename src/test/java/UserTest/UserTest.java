@@ -11,8 +11,7 @@ public class UserTest {
     void setNumbersTest() {
         User user = new User();
 
-        System.setIn(new ByteArrayInputStream("312".getBytes()));
-        user.setNumbers();
+        user.setNumbers(312);
 
         assertThat(user.getNumbers().size()).isEqualTo(3);
     }
