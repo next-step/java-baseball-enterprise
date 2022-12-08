@@ -24,4 +24,28 @@ public class Computer {
             numbers[i] = getUniqueNumber();
         }
     }
+
+    public int isStrike(int number, int idx) {
+        return numbers[idx]==number ? 1 : 0;
+    }
+
+    public int isBall(int number, int idx) {
+        if (numbers[(idx+1)%3]==number) {
+            return 1;
+        }
+        if (numbers[(idx+2)%3]==number) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int[] calculate(int[] inputs) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i<inputs.length; i++) {
+            strike = strike + isStrike(inputs[i], i);
+            ball = ball + isBall(inputs[i], i);
+        }
+        return new int[] {strike, ball};
+    }
 }
