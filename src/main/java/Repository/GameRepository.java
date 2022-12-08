@@ -51,6 +51,10 @@ public class GameRepository {
         return numbers;
     }
 
+    public String getUserNumber(){
+        return this.userNumber;
+    }
+
     public void setUserNumber(String userNumber) {
         this.userNumber = userNumber;
     }

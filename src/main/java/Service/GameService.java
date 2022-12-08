@@ -11,15 +11,18 @@ import static util.Message.USER_INPUT;
 public class GameService {
 
     public GameRepository gameRepository;
+    public ErrorService errorService;
 
     public GameService() {
         this.gameRepository = new GameRepository();
+        this.errorService = new ErrorService(this.gameRepository); // DI
     }
 
     public void playGame(){
         printStartGameMessage();    // 게임 시작 메시지 출력
         printInputMessage();        // 입력 메시지 출력
         getInputNumbers();          // 유저 입력
+        checkUserInputNumbers();    // 유저 입력 검증
     }
 
     public void printStartGameMessage(){
@@ -40,5 +43,8 @@ public class GameService {
         gameRepository.setUserNumber(userNumbers); // 데이터는 Repository 단에서 관리해야 한다.
     }
 
+    public boolean checkUserInputNumbers(){
+        return errorService.checkUserInputNumber();
+    }
 }
 
