@@ -18,7 +18,7 @@ public class GameService {
         System.out.println(START_GAME.getMessage());
     }
 
-    public ArrayList getNumbers(){
+    public ArrayList<Integer> getNumbers(){
         return gameRepository.getNumbers();
     }
 }
