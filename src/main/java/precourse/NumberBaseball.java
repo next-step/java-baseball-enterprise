@@ -22,6 +22,7 @@ public class NumberBaseball {
     public String getTarget() {
         return this.target;
     }
+
     public void setTarget() {
         this.target = this.makeRandomThreeNumber();
     }
@@ -73,14 +74,14 @@ public class NumberBaseball {
             return;
         }
         if (result[BALL] == 0) {
-            System.out.println(String.format("%d 스트라이크", result[STRIKE]));
+            System.out.printf("%d 스트라이크%n", result[STRIKE]);
             return;
         }
         if (result[STRIKE] == 0) {
-            System.out.println(String.format("%d 볼", result[BALL]));
+            System.out.printf("%d 볼%n", result[BALL]);
             return;
         }
-        System.out.println(String.format("%d 스트라이크 %d 볼", result[STRIKE], result[BALL]));
+        System.out.printf("%d 스트라이크 %d 볼%n", result[STRIKE], result[BALL]);
     }
 
     public String input() {
