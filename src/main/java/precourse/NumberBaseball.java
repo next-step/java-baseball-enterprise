@@ -52,11 +52,19 @@ public class NumberBaseball {
     }
 
     public void printResult(int[] result) {
-        if (result[0] == 3) {
-            System.out.println("정답입니다!");
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
             return;
         }
-        System.out.println(String.format("strike %d, ball %d", result[0], result[1]));
+        if (result[1] == 0) {
+            System.out.println(String.format("%d 스트라이크", result[0]));
+            return;
+        }
+        if (result[0] == 0) {
+            System.out.println(String.format("%d 볼", result[1]));
+            return;
+        }
+        System.out.println(String.format("%d 스트라이크 %d 볼", result[0], result[1]));
     }
 
     public String input() {
@@ -84,11 +92,9 @@ public class NumberBaseball {
 
     public boolean continueGame() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if (scanner.nextInt() == 1) {
-            return true;
-        }
-        return false;
+        return scanner.nextInt() == 1;
     }
 
     public void newGame() {
