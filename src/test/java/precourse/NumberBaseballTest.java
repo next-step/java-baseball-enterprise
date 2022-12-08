@@ -18,11 +18,11 @@ class NumberBaseballTest {
         nb.setTarget();
         assertThat(nb.getTarget().length()).isEqualTo(3);
         assertThat(!nb.getTarget().contains("0")).isTrue();
-        HashSet<Character> set = new HashSet<>();
+        HashSet<Character> repeatCheck = new HashSet<>();
         for (char ch : nb.getTarget().toCharArray()) {
-            set.add(ch);
+            repeatCheck.add(ch);
         }
-        assertThat(set).hasSize(3);
+        assertThat(repeatCheck).hasSize(3);
     }
 
     @Test

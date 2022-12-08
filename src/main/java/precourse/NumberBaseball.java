@@ -97,11 +97,11 @@ public class NumberBaseball {
     }
 
     public boolean checkInput(String input) {
-        HashSet<Character> set = new HashSet<>();
+        HashSet<Character> repeatCheck = new HashSet<>();
         for (char c : input.toCharArray()) {
-            set.add(c);
+            repeatCheck.add(c);
         }
-        return !(input.length() != TARGET_LENGTH || input.contains(ZERO) || set.size() != TARGET_LENGTH);
+        return !(input.length() != TARGET_LENGTH || input.contains(ZERO) || repeatCheck.size() != TARGET_LENGTH);
     }
 
     public boolean restartGame() {
