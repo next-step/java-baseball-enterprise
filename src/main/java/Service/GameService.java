@@ -2,6 +2,8 @@ package Service;
 
 import Repository.GameRepository;
 
+import java.util.ArrayList;
+
 import static util.Message.START_GAME;
 
 public class GameService {
@@ -14,6 +16,10 @@ public class GameService {
 
     public void printStartGameMessage(){
         System.out.println(START_GAME.getMessage());
+    }
+
+    public ArrayList getNumbers(){
+        return gameRepository.getNumbers();
     }
 }
 
