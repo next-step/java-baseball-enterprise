@@ -1,7 +1,11 @@
 package Computer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Computer {
-    private int[] targetNumbers = new int[]{-1,-1,-1};
+    private List<Integer> targetNumbers= new ArrayList<Integer>();
     private final int[] nums = new int[]{1,2,3,4,5,6,7,8,9};
     private boolean[] used = new boolean[]{false, false, false, false, false, false, false, false, false};
 
@@ -10,13 +14,12 @@ public class Computer {
      * @return count of used numbers
      * */
     public int setNumber(){
-        for(int i=0; i<9; i++)
-            used[i]=false;
+        Arrays.fill(used, false);
 
         int n=0;
-
+        targetNumbers.clear();
         while(n<3) {
-          targetNumbers[n] = getUnusedNumber();
+          targetNumbers.add(getUnusedNumber());
           n++;
         }
 
