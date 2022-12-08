@@ -4,7 +4,6 @@ import User.User;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class UserTest {
