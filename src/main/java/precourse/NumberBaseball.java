@@ -11,15 +11,19 @@ public class NumberBaseball {
         return this.target;
     }
     public void setTarget() {
-        String tmp = "";
+        this.target = this.makeRandomThreeNumber();
+    }
+
+    public String makeRandomThreeNumber() {
+        String number = "";
         Random rand = new Random();
         rand.setSeed(System.currentTimeMillis());
-        while (tmp.length() < 3) {
+        while (number.length() < 3) {
             int numInt = rand.nextInt(9);
             String numStr = Integer.toString(numInt);
-            tmp += this.checkValidNumber(numStr, tmp);
+            number += this.checkValidNumber(numStr, number);
         }
-        this.target = tmp;
+        return number;
     }
 
     public String checkValidNumber(String num, String tmp) {
