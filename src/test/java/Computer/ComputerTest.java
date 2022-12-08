@@ -23,7 +23,7 @@ public class ComputerTest {
         User user=new User();
         user.setNumbers(321);
 
-        int[] result = computer.getResult(user.getNumbers());
+        int[] result = computer.getBallStrike(user.getNumbers());
 
         assertThat(result[0]).isEqualTo(getBall(computer.getTargetNumbers(),user.getNumbers()));
         assertThat(result[1]).isEqualTo(getStrike(computer.getTargetNumbers(),user.getNumbers()));

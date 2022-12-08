@@ -55,7 +55,7 @@ public class Game {
         while(!end){
             init();
 
-            end = getGameResult(computer.getResult(user.getNumbers()));
+            end = getGameResult(computer.getBallStrike(user.getNumbers()));
         }
     }
     private boolean getGameResult(int[] result){

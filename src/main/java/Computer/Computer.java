@@ -48,7 +48,7 @@ public class Computer {
     /**
      * Return Array with [ball, strike]
      * */
-    public int[] getResult(List<Integer> numbers){
+    public int[] getBallStrike(List<Integer> numbers){
         int[] result = new int[]{0,0};
 
         for(int i=0; i<3; i++){
