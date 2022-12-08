@@ -6,6 +6,7 @@ import java.util.Random;
 public class GameRepository {
     public ArrayList<Integer> numbers; // 3자리 랜덤 수를 담은 배열
     public Random random;
+    public String userNumber;
     public boolean check[];
 
     public GameRepository() {
@@ -48,5 +49,9 @@ public class GameRepository {
 
     public ArrayList getNumbers(){
         return numbers;
+    }
+
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
     }
 }

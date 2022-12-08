@@ -10,11 +10,8 @@ public class GameController {
         this.gameService = new GameService();
     }
 
-    /**
-     * 1) 게임 시작 문구 출력
-     */
     public void startGame(){
-        gameService.printStartGameMessage();
+        gameService.playGame();
     }
 
 
