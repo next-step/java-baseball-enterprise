@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.dto.StrikeBallCount;
+import baseball.dto.StrikeBallCountDto;
 
 import java.util.List;
 
 public class StrikeBallCounter {
-    public static StrikeBallCount countStrikeAndBall(List<Integer> computerNum, List<Integer> playerNum) {
+    public static StrikeBallCountDto countStrikeAndBall(List<Integer> computerNum, List<Integer> playerNum) {
         int strikeCnt = 0;
         int ballCnt = 0;
 
@@ -14,7 +14,7 @@ public class StrikeBallCounter {
             ballCnt += countBall(computerNum, playerNum, idx);
         }
 
-        return new StrikeBallCount(strikeCnt, ballCnt);
+        return new StrikeBallCountDto(strikeCnt, ballCnt);
     }
 
     private static int countStrike(List<Integer> computerNum, List<Integer> playerNum, int idx) {

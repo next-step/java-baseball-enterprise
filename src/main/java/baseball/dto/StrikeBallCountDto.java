@@ -1,10 +1,10 @@
 package baseball.dto;
 
-public class StrikeBallCount {
+public class StrikeBallCountDto {
     private int strikeCnt;
     private int ballCnt;
 
-    public StrikeBallCount(int strikeCnt, int ballCnt) {
+    public StrikeBallCountDto(int strikeCnt, int ballCnt) {
         this.strikeCnt = strikeCnt;
         this.ballCnt = ballCnt;
     }
@@ -19,7 +19,7 @@ public class StrikeBallCount {
 
     @Override
     public String toString() {
-        return "StrikeBallCount{" +
+        return "StrikeBallCountDto{" +
                 "strikeCnt=" + strikeCnt +
                 ", ballCnt=" + ballCnt +
                 '}';

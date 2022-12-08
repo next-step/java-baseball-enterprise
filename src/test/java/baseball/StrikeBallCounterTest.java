@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.dto.StrikeBallCount;
+import baseball.dto.StrikeBallCountDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -21,26 +21,26 @@ class StrikeBallCounterTest {
         List<Integer> playerNum4 = Arrays.asList(5, 1, 3); //3 ball
 
         //when
-        StrikeBallCount strikeBallCount1 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum1);
-        StrikeBallCount strikeBallCount2 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum2);
-        StrikeBallCount strikeBallCount3 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum3);
-        StrikeBallCount strikeBallCount4 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum4);
+        StrikeBallCountDto strikeBallCountDto1 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum1);
+        StrikeBallCountDto strikeBallCountDto2 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum2);
+        StrikeBallCountDto strikeBallCountDto3 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum3);
+        StrikeBallCountDto strikeBallCountDto4 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum4);
 
         //then
-        System.out.println(strikeBallCount1);
-        assertThat(strikeBallCount1.getStrikeCnt()).isEqualTo(1);
-        assertThat(strikeBallCount1.getBallCnt()).isEqualTo(1);
+        System.out.println(strikeBallCountDto1);
+        assertThat(strikeBallCountDto1.getStrikeCnt()).isEqualTo(1);
+        assertThat(strikeBallCountDto1.getBallCnt()).isEqualTo(1);
 
-        System.out.println(strikeBallCount2);
-        assertThat(strikeBallCount2.getStrikeCnt()).isEqualTo(3);
-        assertThat(strikeBallCount2.getBallCnt()).isZero();
+        System.out.println(strikeBallCountDto2);
+        assertThat(strikeBallCountDto2.getStrikeCnt()).isEqualTo(3);
+        assertThat(strikeBallCountDto2.getBallCnt()).isZero();
 
-        System.out.println(strikeBallCount3);
-        assertThat(strikeBallCount3.getStrikeCnt()).isZero();
-        assertThat(strikeBallCount3.getBallCnt()).isZero();
+        System.out.println(strikeBallCountDto3);
+        assertThat(strikeBallCountDto3.getStrikeCnt()).isZero();
+        assertThat(strikeBallCountDto3.getBallCnt()).isZero();
 
-        System.out.println(strikeBallCount4);
-        assertThat(strikeBallCount4.getStrikeCnt()).isZero();
-        assertThat(strikeBallCount4.getBallCnt()).isEqualTo(3);
+        System.out.println(strikeBallCountDto4);
+        assertThat(strikeBallCountDto4.getStrikeCnt()).isZero();
+        assertThat(strikeBallCountDto4.getBallCnt()).isEqualTo(3);
     }
 }
