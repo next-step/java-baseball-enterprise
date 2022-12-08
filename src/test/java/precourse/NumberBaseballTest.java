@@ -32,8 +32,6 @@ class NumberBaseballTest {
 
         assertThat(nb.examine(nb.getTarget())).isTrue();
         assertThat(nb.examine("111")).isFalse();
-        assertThat(nb.examine("012")).isFalse();
-        assertThat(nb.examine("999")).isFalse();
     }
 
     @ParameterizedTest
