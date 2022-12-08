@@ -5,3 +5,10 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 기능 구현
+
+- [ ] 컴퓨터의 숫자 생성
+- [ ] 사용자의 숫자 입력
+- [ ] 사용자 숫자 검증
+- [ ] 게임
