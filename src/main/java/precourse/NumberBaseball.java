@@ -61,10 +61,10 @@ public class NumberBaseball {
 
     public String input() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String s = scanner.next();
         while (!this.checkInput(s)) {
-            System.out.print("입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             s = scanner.next();
         }
         return s;
