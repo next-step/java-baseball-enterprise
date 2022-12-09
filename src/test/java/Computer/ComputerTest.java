@@ -20,7 +20,7 @@ public class ComputerTest {
         computer.setNumber();
 
         User user=new User();
-        user.setNumbers(321);
+        user.setNumbers("321");
 
         int[] result = computer.getBallStrike(user.getNumbers());
 
