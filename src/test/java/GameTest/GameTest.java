@@ -14,29 +14,29 @@ public class GameTest {
         List<Integer> numbers= new ArrayList<Integer>();
         assertThat(game.checkValidity(numbers)).isEqualTo(false);
 
-        addValidNumbers(numbers);
+        setValidNumbers(numbers);
         assertThat(game.checkValidity(numbers)).isEqualTo(true);
 
-        addDuplicateNumbers(numbers);
+        setDuplicateNumbers(numbers);
         assertThat(game.checkValidity(numbers)).isEqualTo(false);
 
-        addNumbersWithZero(numbers);
+        setNumbersWithZero(numbers);
         assertThat(game.checkValidity(numbers)).isEqualTo(false);
     }
 
-    void addValidNumbers(List<Integer> numbers){
+    void setValidNumbers(List<Integer> numbers){
         numbers.clear();
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
     }
-    void addDuplicateNumbers(List<Integer> numbers){
+    void setDuplicateNumbers(List<Integer> numbers){
         numbers.clear();
         numbers.add(1);
         numbers.add(1);
         numbers.add(2);
     }
-    void addNumbersWithZero(List<Integer> numbers){
+    void setNumbersWithZero(List<Integer> numbers){
         numbers.clear();
         numbers.add(0);
         numbers.add(1);

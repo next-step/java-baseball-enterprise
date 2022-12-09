@@ -2,29 +2,27 @@ package Game;
 
 import Computer.Computer;
 import User.User;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    Computer computer = new Computer();
-    User user = new User();
+    private Computer computer = new Computer();
+    private User user = new User();
     /**
      * Checks available Numbers
      * */
     public boolean checkValidity(List<Integer> numbers){
-        if(numbers.size() != 3) return false;
-
         boolean[] used=new boolean[10];
         Arrays.fill(used, false);
 
-        boolean ret=true;
+        boolean ret = numbers.size()==3;
         for(Integer i : numbers){
             ret = ret & !(i.equals(0) | used[i]);
             used[i]=true;
         }
 
+        if(!ret) System.out.println("0을 포함하지 않고, 중복되지 않는 숫자로 입력하세요");
         return ret;
     }
     /**
@@ -41,13 +39,6 @@ public class Game {
             keepPlaying = scanner.nextInt()==1 ? true : false;
         }
     }
-
-    private void init(){
-        user.getNumbers().clear();
-        while(!checkValidity(user.getNumbers())){
-            user.setNumbers(user.getInput());
-        }
-    }
     private void play(){
         boolean end = false;
 
@@ -57,6 +48,11 @@ public class Game {
 
             end = getGameResult(computer.getBallStrike(user.getNumbers()));
         }
+    }
+    private void init(){
+        do{
+            user.setNumbers(user.getInput());
+        } while(!checkValidity(user.getNumbers()));
     }
     private boolean getGameResult(int[] result){
         if(result[0]==0 && result[1]==0){

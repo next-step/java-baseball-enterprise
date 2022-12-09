@@ -3,8 +3,6 @@ package UserTest;
 import User.User;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 public class UserTest {
     @Test
