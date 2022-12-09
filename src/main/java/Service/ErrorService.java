@@ -2,6 +2,8 @@ package Service;
 
 import Repository.GameRepository;
 
+import static util.Message.*;
+
 public class ErrorService {
 
     public GameRepository gameRepository;
@@ -11,14 +13,17 @@ public class ErrorService {
     }
 
     public boolean checkUserInputNumber(){
-        // 3개의 Error 검증 로직에서 하나라도 false라면 false 반환
+        // 3개의 Error 검증 로직에서 하나라도 false 라면 false 반환
         boolean check = (inputErrorNotEqualSize() && inputErrorNotInArrange()) && inputErrorDuplicateNumber();
         return check;
     }
 
     public boolean inputErrorNotEqualSize(){ // 사용자 입력이 3자리수가 아닌지 확인한다.
         String userNumber = gameRepository.getUserNumber();
-        if(userNumber.length() != 3) return false;
+        if(userNumber.length() != 3) {
+            System.out.println(ERROR_INPUT_SIZE.getMessage());
+            return false;
+        }
         return true;
     }
 
@@ -32,15 +37,26 @@ public class ErrorService {
         for(int i=0; i<3; i++){
             checkArrange = checkArrange && isInArrange(userNumber.charAt(i));
         }
-        if(!checkArrange) return false;
+        if(!checkArrange) {
+            System.out.println(ERROR_INPUT_ARRANGE.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkDuplicate(String userNumber){
+        if(userNumber.charAt(0) == userNumber.charAt(1)) return false;
+        if(userNumber.charAt(0) == userNumber.charAt(2)) return false;
+        if(userNumber.charAt(1) == userNumber.charAt(2)) return false;
         return true;
     }
 
     public boolean inputErrorDuplicateNumber(){ // 사용자 입력에 중복된 숫자가 있는지 확인한다.
         String userNumber = gameRepository.getUserNumber();
-        if(userNumber.charAt(0) == userNumber.charAt(1)) return false;
-        if(userNumber.charAt(0) == userNumber.charAt(2)) return false;
-        if(userNumber.charAt(1) == userNumber.charAt(2)) return false;
+        if(!checkDuplicate(userNumber)) {
+            System.out.println(ERROR_INPUT_DUPLICATE.getMessage());
+            return false;
+        }
         return true;
     }
 }
