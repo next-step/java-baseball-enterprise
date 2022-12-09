@@ -1,12 +1,12 @@
 package Service;
 
 import Repository.GameRepository;
+import util.Message;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static util.Message.START_GAME;
-import static util.Message.USER_INPUT;
+import static util.Message.*;
 
 public class GameService {
 
@@ -19,10 +19,15 @@ public class GameService {
     }
 
     public void playGame(){
-        printStartGameMessage();    // 게임 시작 메시지 출력
-        printInputMessage();        // 입력 메시지 출력
-        getInputNumbers();          // 유저 입력
-        checkUserInputNumbers();    // 유저 입력 검증
+        boolean endFlag = false;
+        while(!endFlag) {
+            printStartGameMessage();                    // 게임 시작 메시지 출력
+            printInputMessage();                        // 입력 메시지 출력
+            getInputNumbers();                          // 유저 입력
+            checkUserInputNumbers();                    // 유저 입력 검증
+            boolean correctFlag = compareWithAnswer();  // 유저 입력 결과 출력
+            endFlag = endAndRestartGame(correctFlag);
+        }
     }
 
     public void printStartGameMessage(){
@@ -84,12 +89,33 @@ public class GameService {
         return Integer.toString(ret);
     }
 
-    public void compareWithAnswer(){
+    public boolean compareWithAnswer(){
         ArrayList<Integer> numbersArr = gameRepository.getNumbers();
         String numbers = changeArrayToString(numbersArr);
         String userNumber = gameRepository.getUserNumber();
 
-        boolean endFlag = compareLogic(numbers, userNumber);
+        return compareLogic(numbers, userNumber);
+    }
+
+    public boolean inputRestartCount(){ // 게임을 재시작 할지 말지 입력받기
+        Scanner input = new Scanner(System.in);
+        String restartCount = input.nextLine(); // String 으로 받아야 한다. 유저가 어떠한 입력을 줄 지 모르기 때문이다.
+
+        if(restartCount.equals("2")){ // 게임 종료
+            System.out.println(END_GAME.getMessage());
+            return true;
+        }
+
+        return false; // 게임 다시 시작
+    }
+
+    public boolean endAndRestartGame(boolean correctFlag){
+        if(!correctFlag) return false;
+        // 게임을 다시 할지 끝낼지 선택하기
+        System.out.println(CORRECT_ANSWER.getMessage());
+        System.out.println(RESTART_GAME.getMessage());
+
+        return inputRestartCount();
     }
 }
 
