@@ -22,7 +22,7 @@ public class Game {
             used[i]=true;
         }
 
-        if(!ret) System.out.println("3자리 이내의 0을 포함하지 않고, 중복되지 않는 숫자들로 입력하세요");
+        if(!ret) System.out.println("3자리의 0을 포함하지 않고, 중복되지 않는 숫자들로 입력하세요");
         return ret;
     }
     /**
