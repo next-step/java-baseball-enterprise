@@ -20,8 +20,8 @@ public class GameService {
 
     public void playGame(){
         boolean endFlag = false;
+        printStartGameMessage();                        // 게임 시작 메시지 출력
         while(!endFlag) {
-            printStartGameMessage();                    // 게임 시작 메시지 출력
             printInputMessage();                        // 입력 메시지 출력
             getInputNumbers();                          // 유저 입력
             checkUserInputNumbers();                    // 유저 입력 검증
@@ -61,9 +61,11 @@ public class GameService {
     }
 
     public boolean printResult(int strike, int ball, int nothing){
-        if(ball > 0) System.out.println(ball + "볼 ");
-        if(strike > 0) System.out.println(strike + "스트라이크");
-        if(nothing == 3) System.out.println("낫싱");
+        if(ball > 0) System.out.print(ball + "볼 ");
+        if(strike > 0) System.out.print(strike + "스트라이크");
+        if(nothing == 3) System.out.print("낫싱");
+
+        System.out.println();
 
         return strike == 3 ? true : false; // 게임이 끝났으면 true, 아니면 false
     }
