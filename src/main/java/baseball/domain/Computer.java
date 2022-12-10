@@ -19,6 +19,10 @@ public class Computer {
         return new Computer(generateRandomUniqueNumbers(MIN_NUMBER, MAX_NUMBER, NUMBERS_SIZE));
     }
 
+    public static Computer of(List<Integer> numbers) {
+        return new Computer(numbers);
+    }
+
     static List<Integer> generateRandomUniqueNumbers(int startInclude, int endInclude, int size) {
         checkValidRange(startInclude, endInclude);
         checkValidSize(startInclude, endInclude, size);

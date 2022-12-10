@@ -1,10 +1,13 @@
 package baseball;
 
+import baseball.domain.Computer;
 import baseball.domain.Player;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
@@ -14,9 +17,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static baseball.GameService.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class GameServiceTest {
 
@@ -49,7 +55,7 @@ class GameServiceTest {
         // given
         GameService gameService = new GameService();
         setUpSystemInput(input);
-        gameService.scanner = new Scanner(System.in);
+        GameService.scanner = new Scanner(System.in);
         // when
         Player result = gameService.inputPlayer();
         // then
@@ -64,11 +70,56 @@ class GameServiceTest {
         // given
         GameService gameService = new GameService();
         setUpSystemInput("123");
-        gameService.scanner = new Scanner(System.in);
+        GameService.scanner = new Scanner(System.in);
         // when
         gameService.inputPlayer();
         // then
         assertThat(output.toString()).isEqualTo("숫자를 입력해주세요 : ");
+    }
+
+    @Test
+    void playWithContinue() {
+        // given
+        Computer testComputer = Computer.of(List.of(1, 2, 3));
+        GameService gameService = new GameService();
+        setUpSystemInput("124\n567\n123");
+        GameService.scanner = new Scanner(System.in);
+        // when
+        gameService.play(testComputer);
+        // then
+        assertThat(output.toString()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void wantRetry_systemIn_success(String playerInput, boolean expected) {
+        setUpSystemInput(playerInput);
+        GameService.scanner = new Scanner(System.in);
+        assertThat(GameService.wantRetry()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> wantRetry_systemIn_success() {
+        return Stream.of(
+                arguments("1", true),
+                arguments("2", false)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "3", "Yes", "N", "Y", "MINION"})
+    void wantRetry_systemIn_throwException(String playerInput) {
+        setUpSystemInput(playerInput);
+        GameService.scanner = new Scanner(System.in);
+        assertThatThrownBy(GameService::wantRetry)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void wantRetry_systemOut() {
+        setUpSystemInput("1");
+        GameService.scanner = new Scanner(System.in);
+        GameService.wantRetry();
+        assertThat(output.toString()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private void setUpSystemInput(String input) {
