@@ -9,10 +9,10 @@ import static baseball.GameService.*;
 
 public class Computer {
 
-    List<Integer> numbers;
+    private final List<Integer> numbers;
 
     private Computer(List<Integer> numbers) {
-        this.numbers = numbers;
+        this.numbers = List.copyOf(numbers);
     }
 
     public static Computer newInstance() {

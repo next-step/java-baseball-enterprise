@@ -13,7 +13,7 @@ public class Player {
         checkValidSize(numbers);
         checkDuplicate(numbers);
         checkValidRange(numbers);
-        this.numbers = numbers;
+        this.numbers = List.copyOf(numbers);
     }
 
     static void checkValidSize(List<Integer> numbers) {
