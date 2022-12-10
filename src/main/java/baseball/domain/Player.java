@@ -40,15 +40,14 @@ public class Player {
     }
 
     private static boolean isOutOfRange(List<Integer> numbers) {
+        boolean isOutOfRange = false;
         for (Integer number : numbers) {
-            if (isOutOfRange(number)) {
-                return true;
-            }
+            isOutOfRange |= isOutOfRangeEach(number);
         }
-        return false;
+        return isOutOfRange;
     }
 
-    private static boolean isOutOfRange(int number) {
+    private static boolean isOutOfRangeEach(int number) {
         return MIN_NUMBER > number || number > MAX_NUMBER;
     }
 

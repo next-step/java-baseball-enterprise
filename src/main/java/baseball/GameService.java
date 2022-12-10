@@ -52,10 +52,12 @@ public class GameService {
         }
 
         static void validate(int playerInput) {
+            boolean isValid = false;
             for (GameEndStatus value : values()) {
-                if (value.command == playerInput) {
-                    return;
-                }
+                isValid |= (value.command == playerInput);
+            }
+            if (isValid) {
+                return;
             }
             throw new IllegalArgumentException("1 혹은 2를 입력하셔야 합니다. 입력한 숫자: " + playerInput);
         }
