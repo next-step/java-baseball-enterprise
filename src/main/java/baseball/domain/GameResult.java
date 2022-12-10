@@ -55,13 +55,21 @@ public class GameResult {
             System.out.println("낫싱");
             return;
         }
+        strikePrint();
+        ballPrint();
+        System.out.println();
+    }
+
+    private void strikePrint() {
         if (strike != 0) {
             System.out.print(strike + "스트라이크 ");
         }
+    }
+
+    private void ballPrint() {
         if (ball != 0) {
             System.out.print(ball + "볼 ");
         }
-        System.out.println();
     }
 
     public boolean isGameContinue(int endOfStrikeCount) {
