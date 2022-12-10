@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.GameResult;
 import baseball.domain.Player;
 import baseball.util.StringListIntegerConvertor;
 
@@ -17,7 +18,12 @@ public class GameService {
 
     public void play() {
         computer = Computer.newInstance();
-        player = inputPlayer();
+        GameResult result;
+        do {
+            player = inputPlayer();
+            result = GameResult.getResult(player.getNumbers(), computer.getNumbers());
+            result.print();
+        } while (result.isGameContinue(NUMBERS_SIZE));
     }
 
     Player inputPlayer() {

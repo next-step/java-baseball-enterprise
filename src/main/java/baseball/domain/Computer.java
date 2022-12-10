@@ -40,4 +40,8 @@ public class Computer {
             throw new IllegalArgumentException("범위보다 구하려는 size가 더 큽니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
+    }
 }
