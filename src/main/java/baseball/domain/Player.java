@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import static baseball.GameService.*;
 
@@ -28,15 +29,23 @@ public class Player {
     }
 
     private static long getDistinctSize(List<Integer> numbers) {
-        return numbers.stream()
-                .distinct()
-                .count();
+        return Set.copyOf(numbers)
+                .size();
     }
 
     static void checkValidRange(List<Integer> numbers) {
-        if (numbers.stream().anyMatch(Player::isOutOfRange)) {
+        if (isOutOfRange(numbers)) {
             throw new IllegalArgumentException("잘못된 숫자 범위입니다.");
         }
+    }
+
+    private static boolean isOutOfRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (isOutOfRange(number)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean isOutOfRange(int number) {
