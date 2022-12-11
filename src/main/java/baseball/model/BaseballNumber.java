@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballNumber {
+
     private final int firstDigit;
     private final int secondDigit;
     private final int thirdDigit;

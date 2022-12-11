@@ -3,6 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class StrikeBallResult {
+
     private final int strike;
     private final int ball;
 
@@ -23,6 +24,10 @@ public class StrikeBallResult {
             ball += strikeBallResult.ball;
         }
         return new StrikeBallResult(strike, ball);
+    }
+
+    public boolean isThreeStrike() {
+        return strike == 3;
     }
 
     public int getStrike() {

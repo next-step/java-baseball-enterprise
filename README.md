@@ -19,10 +19,10 @@
 
 - **Model**
   - Game
-    - [ ] 게임에서 사용할 컴퓨터의 랜덤 번호 생성
-    - [ ] Controller로 부터 전달받은 Raw Integer를 BaseballNumber로 변환
-    - [ ] 게임 진행 여부를 저장하는 Boolean 있을 것
-      - [ ] 재시작이 가능해야 함
+    - [x] 게임에서 사용할 컴퓨터의 랜덤 번호 생성
+    - [x] Controller로 부터 전달받은 Raw Integer를 BaseballNumber로 변환
+    - [x] 게임 진행 여부를 저장하는 Boolean 있을 것
+      - [x] 재시작이 가능해야 함
   - BaseballNumber
     - [x] 서로 다른 번호가 각 자릿수에 할당될 것
     - [x] 예외 처리 - single digit, 중복 방지
