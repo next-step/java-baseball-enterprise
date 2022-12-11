@@ -3,6 +3,7 @@ package baseball.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class BaseballNumberTest {
@@ -30,5 +31,27 @@ class BaseballNumberTest {
 
         assertThat(strikeBallResult3.getStrike()).isEqualTo(0);
         assertThat(strikeBallResult3.getBall()).isEqualTo(2);
+    }
+
+    @DisplayName("BaseballNumber 생성시, 0~9 사이 digit 3개로만 생성가능하다.")
+    @Test
+    void digitValidation() {
+        // when & then
+        assertThatThrownBy(() -> new BaseballNumber(1, 2, 10))
+            .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new BaseballNumber(1, 2, -10))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("Baseball Number에 중복이 있으면 안된다.")
+    @Test
+    void duplicateValidation() {
+        // when & then
+        assertThatThrownBy(() -> new BaseballNumber(1, 2, 2))
+            .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new BaseballNumber(9, 2, 9))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
