@@ -17,4 +17,16 @@ public class GameResponse {
     public static GameResponse of(StrikeBallResult strikeBallResult, boolean isPlaying) {
         return new GameResponse(strikeBallResult.getStrike(), strikeBallResult.getBall(), isPlaying);
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
 }

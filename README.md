@@ -14,8 +14,8 @@
 
 ## 구현할 기능 목록
 - **Controller**
-  - [ ] View로 부터 Raw Integer를 넘겨받아 Model에게 전달
-  - [ ] Model로 부터 CompareResult를 넘겨받아 이를 Dto로 변환해 View에 전달
+  - [x] View로 부터 Raw Integer를 넘겨받아 Model에게 전달
+  - [x] Model로 부터 CompareResult를 넘겨받아 이를 Dto로 변환해 View에 전달
 
 - **Model**
   - Game
@@ -33,10 +33,10 @@
     - [x] 스트라이크와 볼이 총 몇개가 나왔는지를 담을 것
 
 - **View**
-  - [ ] 숫자를 입력받아 Controller에게 전달
-    - [ ] 세자리 숫자로 치환 안되면 모두 예외처리할 것 
-  - [ ] 결과 값을 Controller로 부터 넘겨받아 출력
-  - [ ] 3 스트라이크라면 재시작 옵션 View 출력
+  - [x] 숫자를 입력받아 Controller에게 전달
+    - [x] 세자리 숫자로 치환 안되면 모두 예외처리할 것
+  - [x] 결과 값을 Controller로 부터 넘겨받아 출력
+  - [x] 3 스트라이크라면 재시작 옵션 View 출력
 
 ## 실행 예시
 ```

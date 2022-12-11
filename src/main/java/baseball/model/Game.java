@@ -43,4 +43,8 @@ public class Game {
         targetBaseballNumber = RandomBaseballNumberGenerator.create();
         isPlaying = true;
     }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
 }

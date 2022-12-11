@@ -8,12 +8,16 @@ public class GameController {
 
     private final Game game;
 
-    public GameController() {
-        this.game = new Game();
+    public GameController(Game game) {
+        this.game = game;
     }
 
     public GameResponse compareBaseballNumberRequest(BaseballNumberRequest baseballNumberRequest) {
         return game.compare(baseballNumberRequest);
+    }
+
+    public boolean isGamePlaying() {
+        return game.isPlaying();
     }
 
     public void restartGame() {
