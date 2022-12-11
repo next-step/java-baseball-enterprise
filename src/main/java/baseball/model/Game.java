@@ -2,6 +2,9 @@ package baseball.model;
 
 import baseball.controller.request.BaseballNumberRequest;
 import baseball.controller.response.GameResponse;
+import baseball.model.domain.BaseballNumber;
+import baseball.model.domain.RandomBaseballNumberGenerator;
+import baseball.model.domain.StrikeBallResult;
 
 public class Game {
 

@@ -1,5 +1,7 @@
-package baseball.model;
+package baseball.model.domain;
 
+import baseball.model.domain.BaseballNumber;
+import baseball.model.domain.StrikeBallResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

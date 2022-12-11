@@ -1,6 +1,6 @@
 package baseball.controller.response;
 
-import baseball.model.StrikeBallResult;
+import baseball.model.domain.StrikeBallResult;
 
 public class GameResponse {
 

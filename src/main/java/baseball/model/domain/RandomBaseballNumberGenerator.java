@@ -1,4 +1,6 @@
-package baseball.model;
+package baseball.model.domain;
+
+import baseball.model.domain.BaseballNumber;
 
 import java.util.ArrayList;
 import java.util.Collections;
