@@ -24,10 +24,11 @@
     - [ ] 게임 진행 여부를 저장하는 Boolean 있을 것
       - [ ] 재시작이 가능해야 함
   - BaseballNumber
-    - [ ] 랜덤하게 번호를 생성할 수 있을 것
     - [x] 서로 다른 번호가 각 자릿수에 할당될 것
     - [x] 예외 처리 - single digit, 중복 방지
     - [x] 사용자가 입력한 번호를 해당 랜덤 번호와 비교할 수 있는 기능
+  - RandomBaseballNumberGenerator 
+    - [x] 랜덤하게 번호를 생성할 수 있을 것
   - StrikeBallResult
     - [x] 스트라이크와 볼이 총 몇개가 나왔는지를 담을 것
 
