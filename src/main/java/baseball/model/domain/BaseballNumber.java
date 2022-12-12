@@ -37,7 +37,8 @@ public class BaseballNumber {
         StrikeBallResult firstDigitStrikeBallResult = calculateFirstDigit(input);
         StrikeBallResult secondDigitStrikeBallResult = calculateSecondDigit(input);
         StrikeBallResult thirdDigitStrikeBallResult = calculateThirdDigit(input);
-        List<StrikeBallResult> strikeBallResults = List.of(firstDigitStrikeBallResult, secondDigitStrikeBallResult, thirdDigitStrikeBallResult);
+        List<StrikeBallResult> strikeBallResults = List.of(firstDigitStrikeBallResult,
+                secondDigitStrikeBallResult, thirdDigitStrikeBallResult);
         return StrikeBallResult.addAll(strikeBallResults);
     }
 

@@ -4,7 +4,7 @@ public class RestartRequest {
 
     private final boolean restart;
 
-    private RestartRequest(boolean restart) {
+    public RestartRequest(boolean restart) {
         this.restart = restart;
     }
 
