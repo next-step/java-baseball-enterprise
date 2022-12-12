@@ -12,8 +12,8 @@ public class Game {
     private BaseballNumber targetBaseballNumber;
     private boolean isPlaying;
 
-    public Game() {
-        targetBaseballNumber = RandomBaseballNumberGenerator.create();
+    public Game(BaseballNumber baseballNumber) {
+        targetBaseballNumber = baseballNumber;
         isPlaying = true;
     }
 
