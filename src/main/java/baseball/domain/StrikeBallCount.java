@@ -7,26 +7,28 @@ public class StrikeBallCount {
     private int ballCount;
     private final int length;
 
-    public StrikeBallCount(){
+    public StrikeBallCount() {
         length = Constant.LENGTH.getValue();
     }
 
-    public void resetCounts(){
+    public void resetCounts() {
         strikeCount = 0;
         ballCount = 0;
     }
-    public void addStrikeCount(){
+
+    public void addStrikeCount() {
         strikeCount++;
     }
-    public void addBallCount(){
+
+    public void addBallCount() {
         ballCount++;
     }
 
-    public int getStrikeCount(){
+    public int getStrikeCount() {
         return strikeCount;
     }
 
-    public int getBallCount(){
+    public int getBallCount() {
         return ballCount;
     }
 

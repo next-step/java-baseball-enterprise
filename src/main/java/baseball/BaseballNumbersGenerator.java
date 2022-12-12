@@ -9,14 +9,16 @@ public class BaseballNumbersGenerator {
     Random random;
     private final int MIN = Constant.MIN_RANGE.getValue();
     private final int MAX = Constant.MAX_RANGE.getValue();
-    public BaseballNumbersGenerator(){
+
+    public BaseballNumbersGenerator() {
         random = new Random();
     }
+
     public BaseballNumbers generate() {
         BaseballNumbers baseballNumbers = new BaseballNumbers();
         boolean isFull = false;
-        while(!isFull) {
-            int nextNumber = MIN + random.nextInt(MAX-MIN);
+        while (!isFull) {
+            int nextNumber = MIN + random.nextInt(MAX - MIN);
             isFull = baseballNumbers.add(nextNumber);
         }
         return baseballNumbers;

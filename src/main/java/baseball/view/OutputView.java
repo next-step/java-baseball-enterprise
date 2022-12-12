@@ -12,14 +12,15 @@ public class OutputView {
         sb = new StringBuilder();
         addString(strikeBallCount.getStrikeCount(), STRIKE_KOR);
         addString(strikeBallCount.getBallCount(), BALL_KOR);
-        if (sb.length() == 0){
+        if (sb.length() == 0) {
             sb.append(NOTHING_KOR);
         }
-        System.out.println(sb.toString().trim());
+        System.out.println(sb.toString()
+                .trim());
     }
 
-    public void addString(int num, String kor_string){
-        if (num > 0){
+    public void addString(int num, String kor_string) {
+        if (num > 0) {
             sb.append(num);
             sb.append(kor_string);
         }
