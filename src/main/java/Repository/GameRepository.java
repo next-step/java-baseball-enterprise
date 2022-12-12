@@ -13,9 +13,8 @@ public class GameRepository {
         this.numbers = new ArrayList<>();
         this.random = new Random();
         this.check = new boolean[10];
-        initCheckArr(); // check 배열 false로 초기화
         random.setSeed(System.currentTimeMillis()); // seed 설정
-        makeRandomNumberArray(); // Repository Instance 생성 시 Random Number 만들어서 배열에 저장해놓기
+        // makeRandomNumberArray(); // Repository Instance 생성 시 Random Number 만들어서 배열에 저장해놓기
     }
 
     public void initCheckArr(){
@@ -41,6 +40,9 @@ public class GameRepository {
     }
 
     public void makeRandomNumberArray(){
+        initCheckArr(); // check 배열 false로 초기화
+        numbers.clear(); // 비워주기
+
         // 3자리 Random Number를 만들어야한다.
         for(int i=0; i<3; i++){
             i += makeRandomNumberCheckDuplicate(); // 만약 중복으로 숫자가 계산되었다면, 반복문을 다시 실행한다.

@@ -20,6 +20,8 @@ public class GameService {
     public void playGame(){
         boolean endFlag = false;
         printStartGameMessage();                        // 게임 시작 메시지 출력
+        gameRepository.makeRandomNumberArray();         // 맞춰야 할 랜덤 넘버 생성
+
         while(!endFlag) {
             getInputNumbers();                          // 유저 입력
             boolean correctFlag = compareWithAnswer();  // 유저 입력 결과 출력
@@ -104,8 +106,11 @@ public class GameService {
     }
 
     public boolean isRestart(String restartCount){
-        if(restartCount.equals("1")) return false;  // 게임 다시 시작
-        System.out.println(END_GAME.getMessage());  // 게임 종료
+        if(restartCount.equals("1")) {
+            gameRepository.makeRandomNumberArray();     // 맞춰야 할 랜덤 넘버 생성
+            return false;                               // 게임 다시 시작
+        }
+        System.out.println(END_GAME.getMessage());      // 게임 종료
         return true;
     }
     public boolean inputRestartCount(){ // 게임을 재시작 할지 말지 입력받기
