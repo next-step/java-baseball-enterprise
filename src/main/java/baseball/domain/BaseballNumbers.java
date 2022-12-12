@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
     private final int length = Constant.LENGTH.getValue();
 
     public BaseballNumbers(){
-        List<Integer> numbers = new ArrayList<>();
+        numbers = new ArrayList<>();
     }
 
     public boolean contains(int number){
@@ -28,6 +28,9 @@ public class BaseballNumbers {
         return numbers.size() == length;
     }
 
+    public int getNumberAt(int index){
+        return numbers.get(index);
+    }
     public int getIndex(int number){
         return numbers.indexOf(number);
     }
