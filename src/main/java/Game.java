@@ -11,9 +11,9 @@ public class Game {
             throw new Exception("String include character that is not digit.");
         }
         return new int[] {
-                Character.getNumericValue(input.charAt(0)),
-                Character.getNumericValue(input.charAt(1)),
-                Character.getNumericValue(input.charAt(2))
+            Character.getNumericValue(input.charAt(0)),
+            Character.getNumericValue(input.charAt(1)),
+            Character.getNumericValue(input.charAt(2))
         };
     }
 
