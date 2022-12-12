@@ -1,11 +1,11 @@
 package baseball.domain;
 
 public class BaseballGame {
-    private final Judge judge;
+    private final Referee referee;
     public BaseballGame(BaseballNumbers baseballNumbers) {
-        judge = new Judge(baseballNumbers);
+        referee = new Referee(baseballNumbers);
     }
     public StrikeBallCount getResult(BaseballNumbers userNumbers) {
-        return judge.judge(userNumbers);
+        return referee.judge(userNumbers);
     }
 }
