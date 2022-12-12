@@ -18,4 +18,10 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);
     }
+
+    @Test
+    @DisplayName("Test set size")
+    void setSize() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
 }
