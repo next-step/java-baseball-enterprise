@@ -13,6 +13,13 @@ public class BaseballNumbers {
         numbers = new ArrayList<>();
     }
 
+    public BaseballNumbers(String[] input){
+        this();
+        for (String num : input){
+            this.add(Integer.parseInt(num));
+        }
+    }
+
     public boolean contains(int number){
         return numbers.contains(number);
     }
