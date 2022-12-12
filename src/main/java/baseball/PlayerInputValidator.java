@@ -8,7 +8,7 @@ import java.util.Set;
 public class PlayerInputValidator {
 
     public boolean validateBaseballNumber(String playerInput) {
-        if (!canParseToInteger(playerInput)) {
+        if (playerInput == null || !canParseToInteger(playerInput)) {
             return false;
         }
         int playerNum = Integer.parseInt(playerInput);
