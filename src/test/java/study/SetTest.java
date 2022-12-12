@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Set;
@@ -11,6 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class SetTest {
     private Set<Integer> numbers;
+    private final String TRUE_STRING = "true";
 
     @BeforeEach
     void setUp() {
@@ -32,5 +34,13 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void contains(int number) {
         assertThat(numbers.contains(number)).isTrue();
+    }
+
+    @ParameterizedTest
+    @DisplayName("Check values of set")
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containsProperValues(String numberString, String expectedString) {
+        boolean expected = expectedString.equals(TRUE_STRING);
+        assertThat(numbers.contains(Integer.parseInt(numberString))).isEqualTo(expected);
     }
 }
