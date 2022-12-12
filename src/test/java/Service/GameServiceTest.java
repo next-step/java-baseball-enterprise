@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,5 +41,29 @@ class GameServiceTest {
         boolean errorFlag = gameService.checkUserInputNumbers();
 
         assertThat(errorFlag).isFalse();
+    }
+
+    @Test
+    @DisplayName("사용자 입력과 정답이 제대로 비교되는가?")
+    void compareTest(){
+        ArrayList<Integer> cmp = new ArrayList<>();
+        cmp.add(1); cmp.add(2); cmp.add(3);
+        gameService.gameRepository.numbers = cmp;           // 기준 값 설정 (123)
+
+        gameService.gameRepository.setUserNumber("123");    // 테스트 원하는 값으로 설정하기
+
+        boolean result = gameService.compareWithAnswer();
+
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("재시작 카운트가 제대로 작동하는가?")
+    void restartTest(){
+        putStringToInputStream("2"); // 1 -> 게임 재시작, 2 -> 게임 종료
+
+        boolean result = gameService.endAndRestartGame(true);
+
+        assertThat(result).isTrue(); // 게임 종료 = true
     }
 }

@@ -86,7 +86,7 @@ public class GameService {
     public String changeArrayToString(ArrayList<Integer> arr){
         int ret = 0;
         for(int i : arr) {
-            ret += (ret * 10) + i;
+            ret = (ret * 10) + i;
         }
         return Integer.toString(ret);
     }
