@@ -99,16 +99,23 @@ public class GameService {
         return compareLogic(numbers, userNumber);
     }
 
+    public boolean isRestart(String restartCount){
+        if(restartCount.equals("1")) return false;  // 게임 다시 시작
+        System.out.println(END_GAME.getMessage());  // 게임 종료
+        return true;
+    }
     public boolean inputRestartCount(){ // 게임을 재시작 할지 말지 입력받기
         Scanner input = new Scanner(System.in);
-        String restartCount = input.nextLine(); // String 으로 받아야 한다. 유저가 어떠한 입력을 줄 지 모르기 때문이다.
 
-        if(restartCount.equals("2")){ // 게임 종료
-            System.out.println(END_GAME.getMessage());
-            return true;
+        boolean reInputFlag = false;
+        String restartCount = "";
+
+        while(!reInputFlag){
+            restartCount = input.nextLine(); // String 으로 받아야 한다. 유저가 어떠한 입력을 줄 지 모르기 때문이다.
+            reInputFlag = errorService.checkRestartCount(restartCount);
         }
 
-        return false; // 게임 다시 시작
+        return isRestart(restartCount);
     }
 
     public boolean endAndRestartGame(boolean correctFlag){

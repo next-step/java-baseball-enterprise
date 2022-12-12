@@ -59,4 +59,10 @@ public class ErrorService {
         }
         return true;
     }
+
+    public boolean checkRestartCount(String restartCount){ // 재시작 카운트에 대한 예외 처리
+        if(restartCount.equals("1") || restartCount.equals("2")) return true;
+        System.out.println(ERROR_INPUT_RESTART.getMessage());
+        return false;
+    }
 }

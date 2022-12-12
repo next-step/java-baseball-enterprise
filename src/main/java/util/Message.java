@@ -9,7 +9,8 @@ public enum Message {
 
     ERROR_INPUT_SIZE("입력받은 숫자가 세자리가 아닙니다."),
     ERROR_INPUT_ARRANGE("입력받은 숫자들 중 1 ~ 9가 아닌 수가 존재합니다."),
-    ERROR_INPUT_DUPLICATE("입력받은 숫자 중 중복되는 수가 있습니다.");
+    ERROR_INPUT_DUPLICATE("입력받은 숫자 중 중복되는 수가 있습니다."),
+    ERROR_INPUT_RESTART("재시작 카운트는 1 또는 2로 입력해야합니다.");
 
     private final String message;
 
