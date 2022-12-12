@@ -41,4 +41,8 @@ public class PlayerInputNumberValidator {
         return digits;
     }
 
+    private boolean hasUniqueDigit(List<Integer> digits) {
+        Set<Integer> uniqueDigits = new HashSet<>(digits);
+        return digits.size() == uniqueDigits.size();
+    }
 }
