@@ -28,4 +28,20 @@ public class StringTest {
         String parenthesisRemoved = source.substring(1, source.length()-1);
         assertThat(parenthesisRemoved).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("Test charAt")
+    void charAt() {
+        String source = "abc";
+        assertThat(source.charAt(1)).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("Test charAt exception")
+    void charAtException() {
+        String source = "abc";
+        assertThatIndexOutOfBoundsException().isThrownBy(() -> {
+            source.charAt(5);
+        }).withFailMessage("Index \\d+");
+    }
 }
