@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.controller.GameController;
 import baseball.controller.request.BaseballNumberRequest;
+import baseball.controller.request.RestartRequest;
 import baseball.controller.response.GameResponse;
 
 import java.util.Scanner;
@@ -28,7 +29,12 @@ public class GameView {
     private BaseballNumberRequest getPlayerBaseballInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = scanner.nextLine();
-        return new BaseballNumberRequest(userInput);
+        try {
+            return new BaseballNumberRequest(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getPlayerBaseballInput();
+        }
     }
 
     private void printGameResult(GameResponse gameResponse) {
@@ -55,11 +61,19 @@ public class GameView {
         if (gameResponse.isPlaying()) {
             return;
         }
+        askToRestart(gameResponse);
+    }
+
+    private void askToRestart(GameResponse gameResponse) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int userGameRestartOption = Integer.valueOf(scanner.nextLine());
-        if (userGameRestartOption == 1) {
-            gameController.restartGame();
+        String userInput = scanner.nextLine();
+        try {
+            RestartRequest restartRequest = RestartRequest.of(userInput);
+            gameController.restartGame(restartRequest);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            checkGameEnd(gameResponse);
         }
     }
 }

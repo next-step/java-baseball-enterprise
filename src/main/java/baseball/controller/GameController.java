@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.controller.request.BaseballNumberRequest;
+import baseball.controller.request.RestartRequest;
 import baseball.controller.response.GameResponse;
 import baseball.model.Game;
 
@@ -20,7 +21,7 @@ public class GameController {
         return game.isPlaying();
     }
 
-    public void restartGame() {
-        game.restart();
+    public void restartGame(RestartRequest restartRequest) {
+        game.restart(restartRequest);
     }
 }
