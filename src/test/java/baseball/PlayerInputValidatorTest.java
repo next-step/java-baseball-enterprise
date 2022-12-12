@@ -77,4 +77,34 @@ class PlayerInputValidatorTest {
         assertThat(validator.validateBaseballNumber(str4)).isFalse();
         assertThat(validator.validateBaseballNumber(str5)).isFalse();
     }
+
+    @Test
+    void validate_재시작입력_검증실패() {
+        PlayerInputValidator validator = new PlayerInputValidator();
+
+        String str1 = "3";
+        String str2 = "1 2";
+        String str3 = "2 1";
+        String str4 = "1  ";
+        String str5 = "  1";
+        String str6 = "  1  ";
+
+        assertThat(validator.validateRestartInput(str1)).isFalse();
+        assertThat(validator.validateRestartInput(str2)).isFalse();
+        assertThat(validator.validateRestartInput(str3)).isFalse();
+        assertThat(validator.validateRestartInput(str4)).isFalse();
+        assertThat(validator.validateRestartInput(str5)).isFalse();
+        assertThat(validator.validateRestartInput(str6)).isFalse();
+    }
+
+    @Test
+    void validate_재시작입력_검증성공() {
+        PlayerInputValidator validator = new PlayerInputValidator();
+
+        String str1 = "1";
+        String str2 = "2";
+
+        assertThat(validator.validateRestartInput(str1)).isTrue();
+        assertThat(validator.validateRestartInput(str2)).isTrue();
+    }
 }
