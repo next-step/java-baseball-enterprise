@@ -14,7 +14,7 @@ public class BaseballNumbersGenerator {
     }
     public BaseballNumbers generate() {
         BaseballNumbers baseballNumbers = new BaseballNumbers();
-        Boolean isFull = false;
+        boolean isFull = false;
         while(!isFull) {
             int nextNumber = MIN + random.nextInt(MAX-MIN);
             isFull = baseballNumbers.add(nextNumber);
