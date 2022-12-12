@@ -22,4 +22,8 @@ public class PlayerInputNumberValidator {
         }
         return true;
     }
+
+    private boolean is3DigitPositiveNumber(int num) {
+        return num >= 100 && num <= 999;
+    }
 }
