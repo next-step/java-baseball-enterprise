@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PlayerInputNumberValidator {
+public class PlayerInputValidator {
 
-    public boolean validate(String playerInput) {
+    public boolean validateBaseballNumber(String playerInput) {
         if (!canParseToInteger(playerInput)) {
             return false;
         }
