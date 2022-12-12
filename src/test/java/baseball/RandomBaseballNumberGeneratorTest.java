@@ -12,7 +12,8 @@ class RandomBaseballNumberGeneratorTest {
 
     @Test
     void generateRandomBaseballNumberTest() {
-        List<Integer> randomBaseballNumber = RandomBaseballNumberGenerator.generateRandomBaseballNumber();
+        RandomBaseballNumberGenerator randomBaseballNumberGenerator = new RandomBaseballNumberGenerator();
+        List<Integer> randomBaseballNumber = randomBaseballNumberGenerator.generateRandomBaseballNumber();
 
         System.out.println(randomBaseballNumber);
         assertThat(randomBaseballNumber).hasSize(3);
