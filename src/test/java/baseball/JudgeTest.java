@@ -19,7 +19,14 @@ public class JudgeTest {
     @DisplayName("1스트라이크로 판결한다.")
     @ParameterizedTest
     @CsvSource({"123, 145", "123, 425", "123, 453"})
-    void judgeStrike(String rightNumbers, String inputNumbers) {
-        assertThat(judge(rightNumbers, inputNumbers)).isEqualTo(Judgement.STRIKE);
+    void judgeOneStrike(String rightNumbers, String inputNumbers) {
+        assertThat(judge(rightNumbers, inputNumbers)).isEqualTo(Judgement.ONE_STRIKE);
+    }
+
+    @DisplayName("2스트라이크로 판결한다.")
+    @ParameterizedTest
+    @CsvSource({"123, 124", "456, 156", "789, 759"})
+    void judgeTwoStrike(String rightNumbers, String inputNumbers) {
+        assertThat(judge(rightNumbers, inputNumbers)).isEqualTo(Judgement.TWO_STRIKE);
     }
 }
