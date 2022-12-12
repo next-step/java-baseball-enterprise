@@ -23,10 +23,16 @@ public class Game {
         }
     }
 
+    public void repeatUntilExit(UI ui, Computer computer) throws IOException {
+        do {
+            play(ui, computer);
+        } while (!ui.exit().equals("2"));
+    }
+
     public static void main(String[] args) throws IOException {
         Computer computer = new Computer();
-        UI ui = new UI();
+        UI ui =  new UI();
         Game game = new Game();
-        game.play(ui, computer);
+        game.repeatUntilExit(ui, computer);
     }
 }
