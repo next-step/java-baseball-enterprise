@@ -19,6 +19,14 @@ public class PlayerInputValidator {
         return !digits.contains(0) && hasUniqueDigit(digits);
     }
 
+    public boolean validateRestartInput(String playerInput) {
+        if (!canParseToInteger(playerInput)) {
+            return false;
+        }
+        int restartInput = Integer.parseInt(playerInput);
+        return restartInput == 1 || restartInput == 2;
+    }
+
     private boolean canParseToInteger(String str) {
         try {
             Integer.parseInt(str);
