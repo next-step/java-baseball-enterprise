@@ -1,6 +1,8 @@
 package study;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -23,5 +25,12 @@ public class SetTest {
     @DisplayName("Test set size")
     void setSize() {
         assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Check values of set")
+    @ValueSource(ints = {1, 2, 3})
+    void contains(int number) {
+        assertThat(numbers.contains(number)).isTrue();
     }
 }
