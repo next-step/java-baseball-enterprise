@@ -13,6 +13,7 @@ class StrikeBallCounterTest {
     @Test
     void countStrikeAndBall() {
         //given
+        StrikeBallCounter strikeBallCounter = new StrikeBallCounter();
         List<Integer> computerNum = Arrays.asList(1, 3, 5);
 
         List<Integer> playerNum1 = Arrays.asList(1, 2, 3); //1 strike 1 ball
@@ -21,10 +22,10 @@ class StrikeBallCounterTest {
         List<Integer> playerNum4 = Arrays.asList(5, 1, 3); //3 ball
 
         //when
-        StrikeBallCountDto strikeBallCountDto1 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum1);
-        StrikeBallCountDto strikeBallCountDto2 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum2);
-        StrikeBallCountDto strikeBallCountDto3 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum3);
-        StrikeBallCountDto strikeBallCountDto4 = StrikeBallCounter.countStrikeAndBall(computerNum, playerNum4);
+        StrikeBallCountDto strikeBallCountDto1 = strikeBallCounter.countStrikeAndBall(computerNum, playerNum1);
+        StrikeBallCountDto strikeBallCountDto2 = strikeBallCounter.countStrikeAndBall(computerNum, playerNum2);
+        StrikeBallCountDto strikeBallCountDto3 = strikeBallCounter.countStrikeAndBall(computerNum, playerNum3);
+        StrikeBallCountDto strikeBallCountDto4 = strikeBallCounter.countStrikeAndBall(computerNum, playerNum4);
 
         //then
         System.out.println(strikeBallCountDto1);
