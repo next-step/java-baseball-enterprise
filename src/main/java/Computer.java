@@ -3,6 +3,12 @@ import java.util.Random;
 public class Computer {
     private int[] numbers = {-1,-1,-1};
 
+    public Computer() {}
+
+    public Computer(int[] givenNumbers) {
+        numbers = givenNumbers;
+    }
+
     public boolean contains(int newNumber) {
         boolean flag = false;
         for (int number : numbers) {
