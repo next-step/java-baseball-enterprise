@@ -29,4 +29,11 @@ public class JudgeTest {
     void judgeTwoStrike(String rightNumbers, String inputNumbers) {
         assertThat(judge(rightNumbers, inputNumbers)).isEqualTo(Judgement.TWO_STRIKE);
     }
+
+    @DisplayName("1볼을 판결한다.")
+    @ParameterizedTest
+    @CsvSource({"123, 415", "123, 451", "123, 245", "123, 452", "123, 345", "123, 435"})
+    void judgeOneBall(String rightNumbers, String inputNumbers) {
+        assertThat(judge(rightNumbers, inputNumbers)).isEqualTo(Judgement.ONE_BALL);
+    }
 }

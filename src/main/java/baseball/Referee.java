@@ -8,6 +8,17 @@ public class Referee {
         } else if(strikeCount(rightNumbers, inputNumbers) == 2) {
             return Judgement.TWO_STRIKE;
         }
+
+        for (int rightNumberIndex = 0; rightNumberIndex < rightNumbers.length(); rightNumberIndex++) {
+            for (int inputNumberIndex = 0; inputNumberIndex < inputNumbers.length(); inputNumberIndex++) {
+                if (rightNumberIndex == inputNumberIndex) continue;
+
+                if (inputNumbers.charAt(inputNumberIndex) == rightNumbers.charAt(rightNumberIndex)) {
+                    return Judgement.ONE_BALL;
+                }
+            }
+        }
+
         return Judgement.FOUR_BALL;
     }
 
