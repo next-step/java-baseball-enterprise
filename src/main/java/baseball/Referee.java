@@ -5,18 +5,7 @@ public class Referee {
     public static Judgement judge(String rightNumbers, String inputNumbers) {
         int strikeCount = judgeStrikeCount(rightNumbers, inputNumbers);
         int ballCount = judgeBallCount(rightNumbers, inputNumbers);
-        return judgeByStrikeAndBallCount(strikeCount, ballCount);
-    }
-
-    private static Judgement judgeByStrikeAndBallCount(int strikeCount, int ballCount) {
-        if (strikeCount == 1) {
-            return Judgement.ONE_STRIKE;
-        } else if(strikeCount == 2) {
-            return Judgement.TWO_STRIKE;
-        } else if (ballCount == 1) {
-            return Judgement.ONE_BALL;
-        }
-        return Judgement.FOUR_BALL;
+        return new Judgement(strikeCount, ballCount);
     }
 
     private static int judgeStrikeCount(String rightNumbers, String inputNumbers) {
