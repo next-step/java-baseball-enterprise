@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PlayerInputNumberValidator {
@@ -26,4 +28,17 @@ public class PlayerInputNumberValidator {
     private boolean is3DigitPositiveNumber(int num) {
         return num >= 100 && num <= 999;
     }
+
+    private List<Integer> extractDigits(int num) {
+        List<Integer> digits = new ArrayList<>();
+        if (num == 0) {
+            digits.add(0);
+        }
+        while (num != 0) {
+            digits.add(num % 10);
+            num /= 10;
+        }
+        return digits;
+    }
+
 }
