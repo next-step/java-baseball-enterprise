@@ -1,7 +1,6 @@
 package Service;
 
 import Repository.GameRepository;
-import util.Message;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,9 +21,7 @@ public class GameService {
         boolean endFlag = false;
         printStartGameMessage();                        // 게임 시작 메시지 출력
         while(!endFlag) {
-            printInputMessage();                        // 입력 메시지 출력
             getInputNumbers();                          // 유저 입력
-            checkUserInputNumbers();                    // 유저 입력 검증
             boolean correctFlag = compareWithAnswer();  // 유저 입력 결과 출력
             endFlag = endAndRestartGame(correctFlag);
         }
@@ -44,8 +41,15 @@ public class GameService {
 
     public void getInputNumbers(){
         Scanner input = new Scanner(System.in);
-        String userNumbers = input.nextLine();
-        gameRepository.setUserNumber(userNumbers); // 데이터는 Repository 단에서 관리해야 한다.
+        String userNumbers = "";
+        boolean reInput = false;
+
+        while(!reInput){
+            printInputMessage();                        // 입력 메시지 출력
+            userNumbers = input.nextLine();
+            gameRepository.setUserNumber(userNumbers); // 데이터는 Repository 단에서 관리해야 한다.
+            reInput = checkUserInputNumbers();
+        }
     }
 
     public boolean checkUserInputNumbers(){
