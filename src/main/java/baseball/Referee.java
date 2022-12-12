@@ -3,43 +3,63 @@ package baseball;
 public class Referee {
 
     public static Judgement judge(String rightNumbers, String inputNumbers) {
-        if (strikeCount(rightNumbers, inputNumbers) == 1) {
+        int strikeCount = judgeStrikeCount(rightNumbers, inputNumbers);
+        int ballCount = judgeBallCount(rightNumbers, inputNumbers);
+        return judgeByStrikeAndBallCount(strikeCount, ballCount);
+    }
+
+    private static Judgement judgeByStrikeAndBallCount(int strikeCount, int ballCount) {
+        if (strikeCount == 1) {
             return Judgement.ONE_STRIKE;
-        } else if(strikeCount(rightNumbers, inputNumbers) == 2) {
+        } else if(strikeCount == 2) {
             return Judgement.TWO_STRIKE;
+        } else if (ballCount == 1) {
+            return Judgement.ONE_BALL;
         }
-
-        for (int rightNumberIndex = 0; rightNumberIndex < rightNumbers.length(); rightNumberIndex++) {
-            for (int inputNumberIndex = 0; inputNumberIndex < inputNumbers.length(); inputNumberIndex++) {
-                if (rightNumberIndex == inputNumberIndex) continue;
-
-                if (inputNumbers.charAt(inputNumberIndex) == rightNumbers.charAt(rightNumberIndex)) {
-                    return Judgement.ONE_BALL;
-                }
-            }
-        }
-
         return Judgement.FOUR_BALL;
     }
 
-    private static int strikeCount(String rightNumbers, String inputNumbers) {
+    private static int judgeStrikeCount(String rightNumbers, String inputNumbers) {
         int strikeCount = 0;
         for (int index = 0; index < inputNumbers.length(); index++) {
             char rightNumber = rightNumbers.charAt(index);
             char inputNumber = inputNumbers.charAt(index);
-            strikeCount += strikeCountAccumulation(rightNumber, inputNumber);
+            strikeCount += countAccumulation(rightNumber, inputNumber);
         }
         return strikeCount;
     }
 
-    private static int strikeCountAccumulation(char rightNumber, char inputNumber) {
-        if (isStrike(inputNumber, rightNumber)) {
-            return 1;
-        }
-        return 0;
+    private static int countAccumulation(char rightNumber, char inputNumber) {
+        return inputNumber == rightNumber ? 1 : 0;
     }
 
-    private static boolean isStrike(char rightNumber, char inputNumber) {
-        return rightNumber == inputNumber;
+    private static int judgeBallCount(String rightNumbers, String inputNumbers) {
+        int ballCount = 0;
+        for (int rightNumberIndex = 0; rightNumberIndex < rightNumbers.length(); rightNumberIndex++) {
+            ballCount += eachRightNumberBallCountAccumulation(rightNumbers, inputNumbers, rightNumberIndex);
+        }
+        return ballCount;
+    }
+
+    private static int eachRightNumberBallCountAccumulation(
+            String rightNumbers, String inputNumbers, int rightNumberIndex
+    ) {
+        int ballCount = 0;
+        for (int inputNumberIndex = 0; inputNumberIndex < inputNumbers.length(); inputNumberIndex++) {
+            ballCount += ballCountAccumulation(rightNumbers, inputNumbers, rightNumberIndex, inputNumberIndex);
+        }
+        return ballCount;
+    }
+
+    private static int ballCountAccumulation(
+            String rightNumbers, String inputNumbers, int rightNumberIndex, int inputNumberIndex
+    ) {
+        int ballCount = 0;
+        if (rightNumberIndex != inputNumberIndex) {
+            char rightNumber = rightNumbers.charAt(rightNumberIndex);
+            char inputNumber = inputNumbers.charAt(inputNumberIndex);
+            ballCount += countAccumulation(rightNumber, inputNumber);
+        }
+        return ballCount;
     }
 }
