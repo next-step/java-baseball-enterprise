@@ -12,13 +12,16 @@ public class PlayerInputNumberValidator {
             return false;
         }
         int playerNum = Integer.parseInt(playerInput);
-        //TODO: 다른 검증 알고리즘 추가
-        return true;
+        if (!is3DigitPositiveNumber(playerNum)) {
+            return false;
+        }
+        List<Integer> digits = extractDigits(playerNum);
+        return !digits.contains(0) && hasUniqueDigit(digits);
     }
 
     private boolean canParseToInteger(String str) {
         try {
-            Integer.parseInt(playerInput);
+            Integer.parseInt(str);
         } catch (NumberFormatException numberFormatException) {
             return false;
         }
