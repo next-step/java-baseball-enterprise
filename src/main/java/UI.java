@@ -26,4 +26,14 @@ public class UI {
         }
         System.out.println();
     }
+
+    public String exit() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String input = "";
+        while (!(input.trim().equals("1") || input.trim().equals("2"))) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = bufferedReader.readLine();
+        }
+        return input.trim();
+    }
 }
