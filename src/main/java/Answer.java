@@ -13,6 +13,14 @@ public class Answer {
     }
 
     /*
+     * 정답 숫자 조합을 재설정함. 게임 재시작시 사용.
+     */
+    public void resetAnswer() {
+        answerList.clear();
+        setAnswer();
+    }
+
+    /*
      * 3개의 중복되지 않는 숫자를 답으로 선택하여 answer 리스트에 추가.
      */
     public void setAnswer() {
