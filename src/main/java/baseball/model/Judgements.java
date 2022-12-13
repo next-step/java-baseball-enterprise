@@ -1,6 +1,5 @@
-package baseball;
+package baseball.model;
 
-import java.io.PrintStream;
 import java.util.Objects;
 
 public class Judgements {

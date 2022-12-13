@@ -1,6 +1,6 @@
 package assertions;
 
-import baseball.Judgements;
+import baseball.model.Judgements;
 import org.assertj.core.api.AbstractAssert;
 
 public class JudgementsAssert extends AbstractAssert<JudgementsAssert, Judgements> {

@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.view.View;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,7 +54,8 @@ class BaseBallGameTest {
     void baseBallGameScenario() {
         SpyOutputStream spyOutputStream = new SpyOutputStream();
         StubInputStream inputStream = new StubInputStream("678", "123", "352", "345", "1", "345", "2");
-        BaseBallGame game = new BaseBallGame(new PrintStream(spyOutputStream), inputStream, "345");
+        final PrintStream printStream = new PrintStream(spyOutputStream);
+        BaseBallGame game = new BaseBallGame(new View(printStream, inputStream), "345");
 
         game.run();
 

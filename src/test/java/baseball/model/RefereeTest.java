@@ -1,7 +1,10 @@
-package baseball;
+package baseball.model;
 
 import static assertions.JudgementsAssert.assertThat;
 
+import baseball.model.Judgements;
+import baseball.model.Numbers;
+import baseball.model.Referee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
