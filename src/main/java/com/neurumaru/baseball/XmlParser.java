@@ -10,6 +10,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class XmlParser {
     public static Document getDocument(String filename) throws IOException {
@@ -28,5 +30,15 @@ public class XmlParser {
             throw new IOException();
         }
         return nodeList.item(0);
+    }
+
+    public static Map<String, String> transToHashMap(Node node) {
+        NodeList nodeList = node.getChildNodes();
+        Map<String, String> map = new HashMap<>();
+        for(int i = 0; i < nodeList.getLength(); i++) {
+            Node childNode = nodeList.item(i);
+            map.put(childNode.getNodeName(), childNode.getTextContent());
+        }
+        return map;
     }
 }
