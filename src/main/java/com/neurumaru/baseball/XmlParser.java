@@ -41,4 +41,10 @@ public class XmlParser {
         }
         return map;
     }
+
+    public static Map<String, String> getHashMap(String filename, String tag) throws IOException {
+        Document document = getDocument(filename);
+        Node node = moveToTag(document, tag);
+        return transToHashMap(node);
+    }
 }
