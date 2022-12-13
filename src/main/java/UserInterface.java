@@ -21,4 +21,15 @@ public class UserInterface {
         }
         return userInput;
     }
+
+    private String getStrikeBallString(int strikes, int balls) {
+        StringBuilder result = new StringBuilder();
+        if (strikes > 0) {
+            result.append(strikes).append(' ').append("스트라이크").append(' ');
+        }
+        if (balls > 0) {
+            result.append(balls).append(' ').append("볼");
+        }
+        return result.toString();
+    }
 }
