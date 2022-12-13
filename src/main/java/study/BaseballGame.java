@@ -20,6 +20,7 @@ public class BaseballGame {
         for (int i =0; i<DIGITS; i++) {
             numbers += generateNumber(hashSet);
         }
+
         return numbers;
     }
 
@@ -34,12 +35,13 @@ public class BaseballGame {
         return Integer.toString(randomNum);
     }
 
-    public void getUserInput() {
+    public String getUserInput() {
         System.out.println("숫자를 입력해주세요: ");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
-        boolean result = validateUserInput(userInput);
+        validateUserInput(userInput);
         scanner.close();
+        return userInput;
     }
 
     private boolean validateUserInput(String userInput) {
@@ -79,5 +81,48 @@ public class BaseballGame {
         if (c >= '1' && c <= '9')
             return 1;
         return 0;
+    }
+
+
+    public GameResultSet proceedRound() {
+        String userInput = getUserInput();
+        Set<Character> hashSet = new HashSet<Character>();
+        GameResultSet resultSet = new GameResultSet();
+        for (int i = 0; i < answer.length(); i++) {
+            hashSet.add(answer.charAt(i));
+        }
+        for (int i = 0; i < userInput.length(); i++) {
+            judgeNumber(userInput.charAt(i), answer.charAt(i), hashSet, resultSet);
+        }
+        printScore(resultSet);
+        return resultSet;
+    }
+
+    private void judgeNumber(char ui, char aw, Set<Character> hashSet, GameResultSet resultSet) {
+        if (ui == aw) {
+            resultSet.strike += 1;
+        }
+        else if (hashSet.contains(ui)) {
+            resultSet.ball += 1;
+        }
+    }
+
+    private void printScore(GameResultSet resultSet) {
+        if (resultSet.strike == 0 && resultSet.ball == 0) {
+            System.out.println("낫싱");
+        }
+        else if (resultSet.strike == 0) {
+            System.out.println(resultSet.ball + "볼");
+        }
+        else if (resultSet.ball == 0) {
+            System.out.println(resultSet.strike + "스트라이크");
+        }
+        else if (resultSet.strike != 0 && resultSet.ball != 0) {
+            System.out.println(resultSet.strike + "스트라이크 " + resultSet.ball + "볼");
+        }
+    }
+
+    private boolean isCorrectAnswer(GameResultSet resultSet) {
+        return resultSet.strike == DIGITS && resultSet.ball == 0;
     }
 }

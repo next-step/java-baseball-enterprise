@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
@@ -16,6 +18,7 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class BaseballGameTest {
     private final String answer;
@@ -120,5 +123,136 @@ public class BaseballGameTest {
         Assertions.assertThatNoException().isThrownBy(() -> {
             bg.getUserInput();
         });
+    }
+
+
+    void setAnswer(String s) throws NoSuchFieldException, IllegalAccessException {
+        Field answerField = bg.getClass().getDeclaredField("answer");
+        answerField.setAccessible(true);
+        answerField.set(bg, s);
+    }
+    @ParameterizedTest
+    @DisplayName("input 판정: 3strike")
+    @MethodSource("provideStringsFor3Strike")
+    void resultSetTest(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(3, 0));
+    }
+
+    private static Stream<Arguments> provideStringsFor3Strike() {
+        return Stream.of(
+                Arguments.of("123", "123"),
+                Arguments.of("475", "475"),
+                Arguments.of("432", "432"),
+                Arguments.of("215", "215")
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("input 판정: 2strike")
+    @MethodSource("provideStringsFor2Strike")
+    void resultSetTest2(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(2, 0));
+    }
+
+    private static Stream<Arguments> provideStringsFor2Strike() {
+        return Stream.of(
+                Arguments.of("123", "124"),
+                Arguments.of("475", "375"),
+                Arguments.of("432", "482"),
+                Arguments.of("215", "216")
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("input 판정: 1strike 2Ball")
+    @MethodSource("provideStringsFor1Strike2Ball")
+    void resultSetTest3(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(1, 2));
+    }
+
+    private static Stream<Arguments> provideStringsFor1Strike2Ball() {
+        return Stream.of(
+                Arguments.of("123", "132"),
+                Arguments.of("475", "745"),
+                Arguments.of("432", "234"),
+                Arguments.of("215", "512")
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("input 판정: 3Ball")
+    @MethodSource("provideStringsFor3Ball")
+    void resultSetTest4(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(0, 3));
+    }
+
+    private static Stream<Arguments> provideStringsFor3Ball() {
+        return Stream.of(
+                Arguments.of("123", "312"),
+                Arguments.of("475", "754"),
+                Arguments.of("432", "324"),
+                Arguments.of("215", "521")
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("input 판정: 1Ball")
+    @MethodSource("provideStringsFor1Ball")
+    void resultSetTest5(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(0, 1));
+    }
+
+    private static Stream<Arguments> provideStringsFor1Ball() {
+        return Stream.of(
+                Arguments.of("123", "451"),
+                Arguments.of("475", "723"),
+                Arguments.of("432", "526"),
+                Arguments.of("215", "539")
+        );
+    }
+    @ParameterizedTest
+    @DisplayName("input 판정: Nothing")
+    @MethodSource("provideStringsForNothing")
+    void resultSetTest6(String aw, String tg) throws NoSuchFieldException, IllegalAccessException {
+        setAnswer(aw);
+        InputStream in;
+        in = new ByteArrayInputStream(tg.getBytes());
+        System.setIn(in);
+        GameResultSet rs = bg.proceedRound();
+        Assertions.assertThat(rs).isEqualTo(new GameResultSet(0, 0));
+    }
+
+    private static Stream<Arguments> provideStringsForNothing() {
+        return Stream.of(
+                Arguments.of("123", "456"),
+                Arguments.of("475", "362"),
+                Arguments.of("432", "569"),
+                Arguments.of("215", "698")
+        );
     }
 }
