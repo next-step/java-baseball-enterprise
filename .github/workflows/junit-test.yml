@@ -1,0 +1,39 @@
+name: JUnit Test
+
+on:
+#  push:
+#    branches:
+#      - "main"
+#      - "release"
+#      - "develop"
+#      - "feature/*"
+  pull_request:
+    branches:
+      - "main"
+      - "release"
+      - "develop"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Test with Gradle
+      run: ./gradlew --info test
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: "test-results/junit/**/*.xml"
+        nunit_files: "test-results/nunit/**/*.xml"
+        xunit_files: "test-results/xunit/**/*.xml"
+        trx_files: "test-results/**/*.trx"
