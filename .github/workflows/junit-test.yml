@@ -1,12 +1,12 @@
 name: JUnit Test
 
 on:
-  push:
-    branches:
-      - "main"
-      - "release"
-      - "develop"
-      - "feature/*"
+#  push:
+#    branches:
+#      - "main"
+#      - "release"
+#      - "develop"
+#      - "feature/*"
   pull_request:
     branches:
       - "main"
