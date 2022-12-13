@@ -59,4 +59,54 @@ public class RefereeTest {
 
         assertThat(actual).isEqualTo(new Judgements(0, 1));
     }
+
+    @DisplayName("2볼로 판결한다.")
+    @ParameterizedTest
+    @CsvSource({"123, 215", "123, 251"})
+    void judgeTwoBall(String rightNumbersText, String inputNumbersText) {
+        Numbers rightNumbers = new Numbers(rightNumbersText);
+        Numbers inputNumbers = new Numbers(inputNumbersText);
+        Referee referee = new Referee(rightNumbers);
+
+        Judgements actual = referee.judge(inputNumbers);
+
+        assertThat(actual).isEqualTo(new Judgements(0, 2));
+    }
+
+    @DisplayName("3볼로 판결한다.")
+    @Test
+    void judgeThreeBall() {
+        Numbers rightNumbers = new Numbers("123");
+        Numbers inputNumbers = new Numbers("312");
+        Referee referee = new Referee(rightNumbers);
+
+        Judgements actual = referee.judge(inputNumbers);
+
+        assertThat(actual).isEqualTo(new Judgements(0, 3));
+    }
+
+    @DisplayName("1스트라이크 2볼로 판결한다.")
+    @ParameterizedTest
+    @CsvSource({"123, 132", "456, 654", "789, 879"})
+    void judgeTwoBallAndOneStrike(String rightNumbersText, String inputNumbersText) {
+        Numbers rightNumbers = new Numbers(rightNumbersText);
+        Numbers inputNumbers = new Numbers(inputNumbersText);
+        Referee referee = new Referee(rightNumbers);
+
+        Judgements actual = referee.judge(inputNumbers);
+
+        assertThat(actual).isEqualTo(new Judgements(1, 2));
+    }
+
+    @DisplayName("3스트라이크로 판결한다.")
+    @Test
+    void judgeThreeStrike() {
+        Numbers rightNumbers = new Numbers("123");
+        Numbers inputNumbers = new Numbers("123");
+        Referee referee = new Referee(rightNumbers);
+
+        Judgements actual = referee.judge(inputNumbers);
+
+        assertThat(actual).isEqualTo(new Judgements(3, 0));
+    }
 }
