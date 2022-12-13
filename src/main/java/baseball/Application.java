@@ -1,11 +1,15 @@
 package baseball;
 
+import baseball.model.Numbers;
+import baseball.model.NumbersGenerator;
 import baseball.view.View;
 
 public class Application {
 
     public static void main(String[] args) {
-        BaseBallGame game = new BaseBallGame(new View(System.out, System.in), "123");
+        View view = new View(System.out, System.in);
+        NumbersGenerator numbersGenerator = () -> Numbers.from("123");
+        BaseBallGame game = new BaseBallGame(view, numbersGenerator);
         game.run();
     }
 }

@@ -23,19 +23,14 @@ public class View {
         return Numbers.from(inputNumbersText);
     }
 
+    public Command inputCommand() {
+        printStream.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int command = scanner.nextInt();
+        return Command.valueOf(command);
+    }
+
     public void printJudgements(Judgements judgements) {
         String text = converter.convert(judgements);
         printStream.println(text);
-    }
-
-    public Command inputCommand() {
-        printStream.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String command = scanner.next();
-
-        if (command.equals("1")) {
-            return Command.NEW_GAME;
-        }
-
-        return Command.SHUTDOWN;
     }
 }

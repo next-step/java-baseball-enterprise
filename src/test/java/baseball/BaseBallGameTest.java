@@ -2,6 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.Numbers;
+import baseball.model.NumbersGenerator;
 import baseball.view.View;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -50,12 +52,29 @@ class BaseBallGameTest {
         }
     }
 
+    static class StubNumbersGenerator implements NumbersGenerator {
+
+        private final String[] numbers;
+        private int index;
+
+        public StubNumbersGenerator(String... numbers) {
+            this.numbers = numbers;
+            this.index = 0;
+        }
+
+        @Override
+        public Numbers generate() {
+            return Numbers.from(numbers[index++]);
+        }
+    }
+
     @Test
     void baseBallGameScenario() {
         SpyOutputStream spyOutputStream = new SpyOutputStream();
-        StubInputStream inputStream = new StubInputStream("678", "123", "352", "345", "1", "345", "2");
-        final PrintStream printStream = new PrintStream(spyOutputStream);
-        BaseBallGame game = new BaseBallGame(new View(printStream, inputStream), "345");
+        StubInputStream inputStream = new StubInputStream("678", "123", "352", "345", "1", "123", "2");
+        View view = new View(new PrintStream(spyOutputStream), inputStream);
+        NumbersGenerator numbersGenerator = new StubNumbersGenerator("345", "123");
+        BaseBallGame game = new BaseBallGame(view, numbersGenerator);
 
         game.run();
 

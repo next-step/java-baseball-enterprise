@@ -12,6 +12,10 @@ public class Judgements {
         this.ball = ball;
     }
 
+    public static Judgements nothing() {
+        return new Judgements(0, 0);
+    }
+
     public boolean isThreeStrike() {
         return strike == 3 && ball == 0;
     }
