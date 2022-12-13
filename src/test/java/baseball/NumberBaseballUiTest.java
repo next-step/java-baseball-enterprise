@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.dto.StrikeBallCountDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -85,6 +86,34 @@ class NumberBaseballUiTest {
         System.setOut(new PrintStream(out));
 
         assertThat(numberBaseballUi.readGameRestartInput()).isEqualTo(1);
+        assertThat(out.toString()).hasToString(expectedOutput);
+    }
+
+    @Test
+    void printStrikeBallCount() {
+        NumberBaseballUi numberBaseballUi = new NumberBaseballUi(new PlayerInputValidator());
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        String expectedOutput = "낫싱\n" +
+                "1 스트라이크 \n" +
+                "2 볼\n" +
+                "1 스트라이크 1 볼\n" +
+                "3 스트라이크 \n";
+
+        StrikeBallCountDto strikeBallCountDto1 = new StrikeBallCountDto(0, 0);
+        StrikeBallCountDto strikeBallCountDto2 = new StrikeBallCountDto(1, 0);
+        StrikeBallCountDto strikeBallCountDto3 = new StrikeBallCountDto(0, 2);
+        StrikeBallCountDto strikeBallCountDto4 = new StrikeBallCountDto(1, 1);
+        StrikeBallCountDto strikeBallCountDto5 = new StrikeBallCountDto(3, 0);
+
+        numberBaseballUi.printStrikeBallCount(strikeBallCountDto1);
+        numberBaseballUi.printStrikeBallCount(strikeBallCountDto2);
+        numberBaseballUi.printStrikeBallCount(strikeBallCountDto3);
+        numberBaseballUi.printStrikeBallCount(strikeBallCountDto4);
+        numberBaseballUi.printStrikeBallCount(strikeBallCountDto5);
+
         assertThat(out.toString()).hasToString(expectedOutput);
     }
 }
