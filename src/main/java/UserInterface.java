@@ -6,7 +6,7 @@ public class UserInterface {
         return sc.nextLine();
     }
 
-    private boolean isValidInput(String userInput) {
+    private boolean isValidNumberInput(String userInput) {
         String REGEX = "\\d{3}";
         return userInput.matches(REGEX);
     }
@@ -15,7 +15,7 @@ public class UserInterface {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = parseUserInput();
 
-        if (!isValidInput(userInput)) {
+        if (!isValidNumberInput(userInput)) {
             System.out.println("세 자리의 숫자만 입력해주세요.");
             return getUserInput();
         }
