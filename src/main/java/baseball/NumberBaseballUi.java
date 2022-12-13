@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.dto.StrikeBallCountDto;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +33,33 @@ public class NumberBaseballUi {
         while ((playerInput = readGameRestartInputString()) == null) {}
         reader.close();
         return Integer.parseInt(playerInput);
+    }
+
+    public void printStrikeBallCount(StrikeBallCountDto strikeBallCountDto) {
+        if (strikeBallCountDto.getStrikeCnt() == 0 && strikeBallCountDto.getBallCnt() == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        printStrikeCount(strikeBallCountDto.getStrikeCnt());
+        if (strikeBallCountDto.getBallCnt() == 0) {
+            System.out.println();
+            return;
+        }
+        printBallCount(strikeBallCountDto.getBallCnt());
+    }
+
+    private void printStrikeCount(int strikeCnt) {
+        if (strikeCnt == 0) {
+            return;
+        }
+        System.out.print(strikeCnt + " 스트라이크 ");
+    }
+
+    private void printBallCount(int ballCnt) {
+        if (ballCnt == 0) {
+            return;
+        }
+        System.out.println(ballCnt + " 볼");
     }
 
     private String readPlayerBaseballNumberString() throws IOException {
