@@ -1,54 +1,44 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Numbers {
 
-    private final String value;
+    private final List<Number> value;
 
-    public Numbers(String value) {
-        this.value = value;
-    }
+    public Numbers(String numbers) {
+        value = new ArrayList<>();
 
-    public int judgeStrikeCount(Numbers numbers) {
-        int strikeCount = 0;
-        for (int index = 0; index < numbers.value.length(); index++) {
-            char rightNumber = value.charAt(index);
-            char inputNumber = numbers.value.charAt(index);
-            strikeCount += countAccumulation(rightNumber, inputNumber);
+        for (int i = 0; i < numbers.length(); i++) {
+            value.add(new Number(numbers.charAt(i), i));
         }
-        return strikeCount;
     }
 
-    private static int countAccumulation(char rightNumber, char inputNumber) {
-        return inputNumber == rightNumber ? 1 : 0;
+    public Judgements judge(Numbers otherNumbers) {
+        int strikeCount = aggregateJudgement(otherNumbers, Judgement.STRIKE);
+        int ballCount = aggregateJudgement(otherNumbers, Judgement.BALL);
+        return new Judgements(strikeCount, ballCount);
     }
 
-    public int judgeBallCount(Numbers numbers) {
-        int ballCount = 0;
-        for (int rightNumberIndex = 0; rightNumberIndex < value.length(); rightNumberIndex++) {
-            ballCount += eachRightNumberBallCountAccumulation(value, numbers.value, rightNumberIndex);
+    private int aggregateJudgement(Numbers otherNumbers, Judgement expected) {
+        int count = 0;
+        for (Number thisNumber : value) {
+            count += aggregatedJudgementByThisNumber(thisNumber, otherNumbers, expected);
         }
-        return ballCount;
+        return count;
     }
 
-    private static int eachRightNumberBallCountAccumulation(
-            String rightNumbers, String inputNumbers, int rightNumberIndex
-    ) {
-        int ballCount = 0;
-        for (int inputNumberIndex = 0; inputNumberIndex < inputNumbers.length(); inputNumberIndex++) {
-            ballCount += ballCountAccumulation(rightNumbers, inputNumbers, rightNumberIndex, inputNumberIndex);
+    private int aggregatedJudgementByThisNumber(Number thisNumber, Numbers otherNumbers, Judgement expected) {
+        int count = 0;
+        for (Number otherNumber : otherNumbers.value) {
+            Judgement actual = thisNumber.judge(otherNumber);
+            count += accumulationByJudgement(actual, expected);
         }
-        return ballCount;
+        return count;
     }
 
-    private static int ballCountAccumulation(
-            String rightNumbers, String inputNumbers, int rightNumberIndex, int inputNumberIndex
-    ) {
-        int ballCount = 0;
-        if (rightNumberIndex != inputNumberIndex) {
-            char rightNumber = rightNumbers.charAt(rightNumberIndex);
-            char inputNumber = inputNumbers.charAt(inputNumberIndex);
-            ballCount += countAccumulation(rightNumber, inputNumber);
-        }
-        return ballCount;
+    private int accumulationByJudgement(Judgement actual, Judgement expected) {
+        return actual == expected  ? 1 : 0;
     }
 }
