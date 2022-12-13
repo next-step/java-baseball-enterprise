@@ -1,5 +1,6 @@
 package baseball;
 
+import java.io.PrintStream;
 import java.util.Objects;
 
 public class Judgements {
@@ -10,6 +11,14 @@ public class Judgements {
     public Judgements(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
+    }
+
+    public boolean isThreeStrike() {
+        return strike == 3 && ball == 0;
+    }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
     }
 
     public int getStrike() {

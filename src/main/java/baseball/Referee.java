@@ -32,6 +32,6 @@ public class Referee {
     }
 
     private int accumulationByJudgement(Judgement actual, Judgement expected) {
-        return actual == expected  ? 1 : 0;
+        return actual == expected ? 1 : 0;
     }
 }
