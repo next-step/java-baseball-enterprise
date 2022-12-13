@@ -1,9 +1,10 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class Numbers {
+public class Numbers implements Iterable<Number> {
 
     private final List<Number> value;
 
@@ -15,30 +16,8 @@ class Numbers {
         }
     }
 
-    public Judgements judge(Numbers otherNumbers) {
-        int strikeCount = aggregateJudgement(otherNumbers, Judgement.STRIKE);
-        int ballCount = aggregateJudgement(otherNumbers, Judgement.BALL);
-        return new Judgements(strikeCount, ballCount);
-    }
-
-    private int aggregateJudgement(Numbers otherNumbers, Judgement expected) {
-        int count = 0;
-        for (Number thisNumber : value) {
-            count += aggregatedJudgementByThisNumber(thisNumber, otherNumbers, expected);
-        }
-        return count;
-    }
-
-    private int aggregatedJudgementByThisNumber(Number thisNumber, Numbers otherNumbers, Judgement expected) {
-        int count = 0;
-        for (Number otherNumber : otherNumbers.value) {
-            Judgement actual = thisNumber.judge(otherNumber);
-            count += accumulationByJudgement(actual, expected);
-        }
-        return count;
-    }
-
-    private int accumulationByJudgement(Judgement actual, Judgement expected) {
-        return actual == expected  ? 1 : 0;
+    @Override
+    public Iterator<Number> iterator() {
+        return value.iterator();
     }
 }

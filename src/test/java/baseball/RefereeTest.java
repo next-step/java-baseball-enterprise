@@ -7,15 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class NumbersTest {
+public class RefereeTest {
 
-    @DisplayName("낫싱로 판결한다.")
+    @DisplayName("낫싱으로 판결한다.")
     @Test
     void judgeNothing() {
         Numbers rightNumbers = new Numbers("123");
         Numbers inputNumbers = new Numbers("456");
+        Referee referee = new Referee(rightNumbers);
 
-        Judgements actual = rightNumbers.judge(inputNumbers);
+        Judgements actual = referee.judge(inputNumbers);
 
         assertThat(actual).isEqualTo(new Judgements(0, 0));
     }
@@ -26,8 +27,9 @@ public class NumbersTest {
     void judgeOneStrike(String rightNumbersText, String inputNumbersText) {
         Numbers rightNumbers = new Numbers(rightNumbersText);
         Numbers inputNumbers = new Numbers(inputNumbersText);
+        Referee referee = new Referee(rightNumbers);
 
-        Judgements actual = rightNumbers.judge(inputNumbers);
+        Judgements actual = referee.judge(inputNumbers);
 
         assertThat(actual).isEqualTo(new Judgements(1, 0));
     }
@@ -38,20 +40,22 @@ public class NumbersTest {
     void judgeTwoStrike(String rightNumbersText, String inputNumbersText) {
         Numbers rightNumbers = new Numbers(rightNumbersText);
         Numbers inputNumbers = new Numbers(inputNumbersText);
+        Referee referee = new Referee(rightNumbers);
 
-        Judgements actual = rightNumbers.judge(inputNumbers);
+        Judgements actual = referee.judge(inputNumbers);
 
         assertThat(actual).isEqualTo(new Judgements(2, 0));
     }
 
-    @DisplayName("1볼을 판결한다.")
+    @DisplayName("1볼로 판결한다.")
     @ParameterizedTest
     @CsvSource({"123, 415", "123, 451", "123, 245", "123, 452", "123, 345", "123, 435"})
     void judgeOneBall(String rightNumbersText, String inputNumbersText) {
         Numbers rightNumbers = new Numbers(rightNumbersText);
         Numbers inputNumbers = new Numbers(inputNumbersText);
+        Referee referee = new Referee(rightNumbers);
 
-        Judgements actual = rightNumbers.judge(inputNumbers);
+        Judgements actual = referee.judge(inputNumbers);
 
         assertThat(actual).isEqualTo(new Judgements(0, 1));
     }
