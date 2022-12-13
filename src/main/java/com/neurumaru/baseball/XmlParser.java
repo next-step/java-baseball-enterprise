@@ -1,6 +1,8 @@
 package com.neurumaru.baseball;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,5 +20,13 @@ public class XmlParser {
         } catch (ParserConfigurationException | SAXException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Node moveToTag(Document document, String tag) throws IOException {
+        NodeList nodeList = document.getElementsByTagName(tag);
+        if (nodeList.getLength() == 0) {
+            throw new IOException();
+        }
+        return nodeList.item(0);
     }
 }
