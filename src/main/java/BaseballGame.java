@@ -17,5 +17,15 @@ public class BaseballGame {
             judgeUserInput();
             return;
         }
+        end();
+    }
+
+    private void end() {
+        userInterface.printGameFinished();
+        if (userInterface.isRestartGame()) {
+            start();
+            return;
+        }
+        userInterface.printExit();
     }
 }

@@ -40,4 +40,32 @@ public class UserInterface {
         }
         System.out.println(getStrikeBallString(judgementResult.strikes, judgementResult.balls));
     }
+
+    public void printGameFinished() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private boolean isValidRestartInput(String userInput) {
+        if (userInput.length() != 1) {
+            return false;
+        }
+        if (userInput.charAt(0) != '1' && userInput.charAt(0) != '2') {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isRestartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = parseUserInput();
+        if (!isValidRestartInput(userInput)) {
+            System.out.println("1 또는 2만 입력해주세요.");
+            return isRestartGame();
+        }
+        return userInput.charAt(0) == '1';
+    }
+
+    public void printExit() {
+        System.out.println("게임을 종료합니다.");
+    }
 }
