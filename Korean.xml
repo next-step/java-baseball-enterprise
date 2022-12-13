@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LanguageData>
+    <Baseball.RequestInputNumber>숫자를 입력해주세요 : </Baseball.RequestInputNumber>
+    <Baseball.Strike>{0} 스트라이크 </Baseball.Strike>
+    <Baseball.Ball>{0}볼 </Baseball.Ball>
+    <Baseball.Nothing>낫싱</Baseball.Nothing>
+    <Baseball.GameTermination>{0}개의 숫자를 모두 맞히셨습니다! 게임 종료</Baseball.GameTermination>
+    <Baseball.Restart>게임을 새로 시작하려면 {0}, 종료하려면 {1}를 입력하세요</Baseball.Restart>
+</LanguageData>
