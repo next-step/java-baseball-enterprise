@@ -1,11 +1,8 @@
 package study;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.error.ShouldBeFalse;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,10 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -255,4 +250,10 @@ public class BaseballGameTest {
                 Arguments.of("215", "698")
         );
     }
+
+//    @Test
+//    @DisplayName("게임 전체 테스트")
+//    void testGame() {
+//        bg.play();
+//    }
 }

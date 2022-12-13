@@ -7,8 +7,13 @@ import java.util.Set;
 
 public class BaseballGame {
 
-    private final String answer;
+    private String answer;
     private final int DIGITS;
+
+    public static void main(String[] args) {
+        BaseballGame bg = new BaseballGame();
+        bg.play();
+    }
 
     public BaseballGame() {
         DIGITS = 3;
@@ -35,12 +40,39 @@ public class BaseballGame {
         return Integer.toString(randomNum);
     }
 
+    public void play() {
+        boolean flag = true;
+        while(flag) {
+            flag = playGame();
+            answer = generateAnswer();
+        }
+    }
+
+    private boolean playGame() {
+        GameResultSet resultSet = new GameResultSet();
+        while(!(resultSet.strike == DIGITS && resultSet.ball == 0)) {
+            resultSet = proceedRound();
+        }
+        boolean flag = continueGame();
+        return flag;
+    }
+
+    private boolean continueGame() {
+        System.out.println("게임을 계속 계속하시겠습니까? (y / n)");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+        if( input.equals("y") || input.equals("Y")) {
+            return true;
+        }
+        return false;
+    }
+
+
     public String getUserInput() {
-        System.out.println("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요: ");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         validateUserInput(userInput);
-        scanner.close();
         return userInput;
     }
 
@@ -85,16 +117,21 @@ public class BaseballGame {
 
 
     public GameResultSet proceedRound() {
-        String userInput = getUserInput();
         Set<Character> hashSet = new HashSet<Character>();
         GameResultSet resultSet = new GameResultSet();
-        for (int i = 0; i < answer.length(); i++) {
-            hashSet.add(answer.charAt(i));
+        try{
+            String userInput = getUserInput();
+            for (int i = 0; i < answer.length(); i++) {
+                hashSet.add(answer.charAt(i));
+            }
+            for (int i = 0; i < userInput.length(); i++) {
+                judgeNumber(userInput.charAt(i), answer.charAt(i), hashSet, resultSet);
+            }
+            printScore(resultSet);
+
+        }catch(IllegalArgumentException e) {
+            System.out.println(e);
         }
-        for (int i = 0; i < userInput.length(); i++) {
-            judgeNumber(userInput.charAt(i), answer.charAt(i), hashSet, resultSet);
-        }
-        printScore(resultSet);
         return resultSet;
     }
 
