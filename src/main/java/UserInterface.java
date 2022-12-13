@@ -32,4 +32,12 @@ public class UserInterface {
         }
         return result.toString();
     }
+
+    public void printResult(JudgementResult judgementResult) {
+        if (judgementResult.strikes == 0 && judgementResult.balls == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.println(getStrikeBallString(judgementResult.strikes, judgementResult.balls));
+    }
 }
