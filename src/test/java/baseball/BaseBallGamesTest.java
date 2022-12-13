@@ -10,7 +10,7 @@ import baseball.view.View;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
-class BaseBallGameTest {
+class BaseBallGamesTest {
 
     @Test
     void baseBallGameScenario() {
@@ -18,9 +18,9 @@ class BaseBallGameTest {
         StubInputStream inputStream = new StubInputStream("678", "123", "352", "345", "1", "123", "2");
         View view = new View(new PrintStream(spyOutputStream), inputStream);
         NumbersGenerator numbersGenerator = new StubNumbersGenerator("345", "123");
-        BaseBallGame game = new BaseBallGame(view, numbersGenerator);
+        BaseBallGames game = new BaseBallGames(view, numbersGenerator);
 
-        game.run();
+        game.playGames();
 
         assertThat(spyOutputStream.getPrintedTexts())
                 .containsExactly(

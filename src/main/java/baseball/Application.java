@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         View view = new View(System.out, System.in);
         NumbersGenerator numbersGenerator = new RandomNumbersGenerator();
-        BaseBallGame game = new BaseBallGame(view, numbersGenerator);
-        game.run();
+        BaseBallGames game = new BaseBallGames(view, numbersGenerator);
+        game.playGames();
     }
 }

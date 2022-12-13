@@ -7,17 +7,17 @@ import baseball.model.Referee;
 import baseball.view.Command;
 import baseball.view.View;
 
-public class BaseBallGame {
+public class BaseBallGames {
 
     private final View view;
     private final NumbersGenerator numbersGenerator;
 
-    public BaseBallGame(View view, NumbersGenerator numbersGenerator) {
+    public BaseBallGames(View view, NumbersGenerator numbersGenerator) {
         this.view = view;
         this.numbersGenerator = numbersGenerator;
     }
 
-    public void run() {
+    public void playGames() {
         Command command = Command.NEW_GAME;
 
         while(command.isNewGame()) {
