@@ -20,7 +20,7 @@ public class BaseBallGames {
     public void playGames() {
         Command command = Command.NEW_GAME;
 
-        while(command.isNewGame()) {
+        while (command.isNewGame()) {
             playGame();
             command = view.inputCommand();
         }

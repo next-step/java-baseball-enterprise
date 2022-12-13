@@ -2,7 +2,6 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.model.Numbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ class NumbersTest {
     @Test
     void shouldContainsOnlyNumber() {
         assertThatThrownBy(() -> Numbers.from("a23"))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("3자리 숫자만 생성 가능하다.")
