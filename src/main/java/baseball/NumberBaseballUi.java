@@ -25,6 +25,14 @@ public class NumberBaseballUi {
         return extractDigitsInOrder(playerBaseballNumber);
     }
 
+    public int readGameRestartInput() throws IOException{
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        String playerInput = null;
+        while ((playerInput = readGameRestartInputString()) == null) {}
+        reader.close();
+        return Integer.parseInt(playerInput);
+    }
+
     private String readPlayerBaseballNumberString() throws IOException {
         System.out.print("숫자를 입력해주세요: ");
         String playerInputString = reader.readLine();
@@ -37,6 +45,20 @@ public class NumberBaseballUi {
         }
         return playerInputString;
     }
+
+    private String readGameRestartInputString() throws IOException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerInputString = reader.readLine();
+        if (playerInputString != null) {
+            playerInputString = playerInputString.trim();
+        }
+        if (!validator.validateRestartInput(playerInputString)) {
+            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            return null;
+        }
+        return playerInputString;
+    }
+
     private List<Integer> extractDigitsInOrder(int playerBaseballNumber) {
         List<Integer> digits = new ArrayList<>();
         while (playerBaseballNumber != 0) {
