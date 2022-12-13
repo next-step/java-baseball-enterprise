@@ -6,7 +6,16 @@ public class BaseballGame {
 
     public void start() {
         answerNumbers = numberGenerator.generate();
+        judgeUserInput();
+    }
+
+    private void judgeUserInput() {
         String userInput = userInterface.getUserInput();
         JudgementResult judgementResult = judgement.judge(answerNumbers, userInput);
+        userInterface.printResult(judgementResult);
+        if (judgementResult.strikes < 3) {
+            judgeUserInput();
+            return;
+        }
     }
 }
