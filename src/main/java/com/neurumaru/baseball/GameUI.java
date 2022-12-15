@@ -31,4 +31,9 @@ public class GameUI {
         }
         return string;
     }
+
+    public String getMappedString(String tag, Map<String, String> map) {
+        String base = getString(tag);
+        return mapString(base, map);
+    }
 }
