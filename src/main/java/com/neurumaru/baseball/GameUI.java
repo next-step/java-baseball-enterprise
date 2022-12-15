@@ -15,4 +15,8 @@ public class GameUI {
         this.outputStream = outputStream;
         this.stringMap = stringMap;
     }
+
+    public String getString(String tag) {
+        return stringMap.get(tag);
+    }
 }
