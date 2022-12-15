@@ -1,11 +1,17 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class UI {
+    private BufferedReader bufferedReader;
+
+    public UI() {
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    }
 
     public String input() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
         while (input.trim().length()!=3) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -28,12 +34,19 @@ public class UI {
     }
 
     public String exit() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
-        while (!(input.trim().equals("1") || input.trim().equals("2"))) {
+        while (!Arrays.asList(new String[] {"1", "2"}).contains(input)) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = bufferedReader.readLine();
         }
         return input.trim();
+    }
+
+    public void close() {
+        try {
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

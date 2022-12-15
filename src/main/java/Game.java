@@ -36,15 +36,16 @@ public class Game {
         } while (!ui.exit().equals("2"));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Computer computer = new Computer();
         UI ui =  new UI();
         Game game = new Game();
-
         try {
             game.repeatUntilExit(ui, computer);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            ui.close();
         }
     }
 }
