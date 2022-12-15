@@ -24,6 +24,12 @@ public class NumberBaseballUi {
         }
     }
 
+    public void close() throws IOException {
+        if (reader != null) {
+            reader.close();
+        }
+    }
+
     public List<Integer> readPlayerBaseballNumber() throws IOException {
         reader = new BufferedReader(new InputStreamReader(System.in));
         String playerInput = null;
