@@ -48,12 +48,13 @@ public class NumberBaseballUi {
         printBallCount(strikeBallCountDto.getBallCnt());
     }
 
-    public void printSuccessMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
     private void printStrikeCount(int strikeCnt) {
         if (strikeCnt == 0) {
+            return;
+        }
+        if (strikeCnt == 3) {
+            System.out.println("3 스트라이크");
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
         System.out.print(strikeCnt + " 스트라이크 ");
