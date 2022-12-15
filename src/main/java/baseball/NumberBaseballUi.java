@@ -18,6 +18,12 @@ public class NumberBaseballUi {
         this.validator = validator;
     }
 
+    public void init() {
+        if (reader == null) {
+            reader = new BufferedReader(new InputStreamReader(System.in));
+        }
+    }
+
     public List<Integer> readPlayerBaseballNumber() throws IOException {
         reader = new BufferedReader(new InputStreamReader(System.in));
         String playerInput = null;
