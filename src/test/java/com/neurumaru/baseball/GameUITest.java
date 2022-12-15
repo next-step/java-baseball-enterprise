@@ -26,4 +26,15 @@ public class GameUITest {
         assertThat(gameUI.mapString("{0} + {0} = 20", map)).isEqualTo("10 + 10 = 20");
         assertThat(gameUI.mapString("5 + 5 = {1}", map)).isEqualTo("5 + 5 = {1}");
     }
+
+    @Test
+    void getMappedStringTest() {
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("Test.TestTag", "{0} * {0} = {1}");
+        Map<String, String> map = new HashMap<>();
+        map.put("{0}", "10");
+        map.put("{1}", "100");
+        GameUI gameUI = new GameUI(System.in, System.out, stringMap);
+        assertThat(gameUI.getMappedString("Test.TestTag", map)).isEqualTo("10 * 10 = 100");
+    }
 }
