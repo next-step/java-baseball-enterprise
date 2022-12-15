@@ -16,6 +16,7 @@ public class NumberBaseballUi {
 
     public NumberBaseballUi(PlayerInputValidator validator) {
         this.validator = validator;
+        init();
     }
 
     public void init() {
@@ -31,19 +32,15 @@ public class NumberBaseballUi {
     }
 
     public List<Integer> readPlayerBaseballNumber() throws IOException {
-        reader = new BufferedReader(new InputStreamReader(System.in));
         String playerInput = null;
         while ((playerInput = readPlayerBaseballNumberString()) == null) {}
-        reader.close();
         int playerBaseballNumber = Integer.parseInt(playerInput);
         return extractDigitsInOrder(playerBaseballNumber);
     }
 
     public int readGameRestartInput() throws IOException{
-        reader = new BufferedReader(new InputStreamReader(System.in));
         String playerInput = null;
         while ((playerInput = readGameRestartInputString()) == null) {}
-        reader.close();
         return Integer.parseInt(playerInput);
     }
 
