@@ -1,7 +1,23 @@
 # 숫자 야구 게임
-## 진행 방법
-* 숫자 야구 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 과제를 제출한다.
 
-## 과제 제출 과정
-* [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+## 기능 목록
+* Application
+* Game
+    * start
+        * 게임 시작.
+    * count
+        * 생성된 난수와 입력값 비교.
+        * countStrikeBall
+            * 각 숫자별 스트라이크, 볼 판별.
+* Computer
+    * makeNumber
+        * 중복된 숫자가 없는 세자리수 생성.
+* Human
+    * input
+        * 플레이어가 입력한 값, 포지션 저장.
+* Common
+    * 공통적으로 쓰이는 함수 모음
+    * validation
+        * 생성된 난수, 플레이어 입력값 검증.
+    * setPositionNumber
+        * 생성된 난수, 플레이어 입력값 map 저장.
