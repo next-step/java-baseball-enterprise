@@ -1,4 +1,9 @@
 package generator;
 
-public interface ThreeNumberGenetrator {
+import java.util.List;
+
+public interface ThreeNumberGenerator {
+
+    public List<Integer> generate();
+
 }
