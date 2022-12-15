@@ -111,5 +111,4 @@ public class NumberBaseballUi {
         Collections.reverse(digits);
         return digits;
     }
-
 }
