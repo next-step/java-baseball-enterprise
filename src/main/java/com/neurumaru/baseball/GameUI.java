@@ -24,4 +24,11 @@ public class GameUI {
     public String getString(String tag) {
         return stringMap.get(tag);
     }
+
+    public String mapString(String string, Map<String, String> map) {
+        for (String key : map.keySet()) {
+            string = string.replace(key, map.get(key));
+        }
+        return string;
+    }
 }
