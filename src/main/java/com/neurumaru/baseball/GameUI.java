@@ -46,4 +46,8 @@ public class GameUI {
         String string = getMappedString(tag, map);
         printStream.println(string);
     }
+
+    public int input() {
+        return scanner.nextInt();
+    }
 }
