@@ -20,7 +20,7 @@ public class PlayerInputValidator {
     }
 
     public boolean validateRestartInput(String playerInput) {
-        if (!canParseToInteger(playerInput)) {
+        if (playerInput == null || !canParseToInteger(playerInput)) {
             return false;
         }
         int restartInput = Integer.parseInt(playerInput);
