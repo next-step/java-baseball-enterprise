@@ -14,5 +14,6 @@ public class GameUITest {
         stringMap.put("Test.TestTag", "Test String");
         GameUI gameUI = new GameUI(System.in, System.out, stringMap);
         assertThat(gameUI.getString("Test.TestTag")).isEqualTo("Test String");
+        assertThat(gameUI.getString("Test.NoExist")).isEqualTo(null);
     }
 }
