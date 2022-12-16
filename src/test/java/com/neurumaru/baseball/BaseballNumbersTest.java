@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseballNumbersTest {
     @Test
-    void BaseBallNumbersTest() {
+    void BaseballNumbersConstructorTest() {
         BaseballNumbers baseballNumbers = new BaseballNumbers(3);
         List<Integer> numbers = baseballNumbers.getNumbers();
         for (Integer number : numbers) {
