@@ -10,6 +10,7 @@ public class Util {
      * 유저로부터 값을 입력 받고 각 자릿수 숫자들로 구성된 map을 반환
      */
     public static HashMap<Integer, Integer> getNumberInput() {
+        map.clear();
         System.out.print("숫자를 입력해주세요: ");
         String userInputStr = sc.nextLine().trim();
 
