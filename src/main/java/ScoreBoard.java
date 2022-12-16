@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class ScoreBoard {
-    private HashMap<ScoreType, Integer> scoreMap;
+    private final HashMap<ScoreType, Integer> scoreMap;
     private Answer answer;
     private HashMap<Integer, Integer> input; // 전역 변수 선언보다 좋은 방법이 있는지 고민해보자.
     
@@ -31,18 +31,32 @@ public class ScoreBoard {
      */
     public void reset() {
         answer.resetAnswer();
-        clear();
+        clearCount();
     }
 
     /*
      * 유저 입력값에 대해 채점 진행
      */
     public void checkScore(HashMap<Integer, Integer> userInput) {
+        clearCount();
         input = userInput;
         for (Integer i : userInput.keySet()) {
             checkNumber(i);
         }
-        printScore();
+    }
+
+    /*
+     * 채점 결과 터미널에 출력
+     */
+    public void printScore() {
+        String scoreStr = "";
+        if (getStrikeCnt() != 0) {
+            scoreStr += getStrikeCnt() + " 스트라이크 ";
+        }
+        if (getBallCnt() != 0) {
+            scoreStr += getBallCnt() + " 볼 ";
+        }
+        System.out.println(scoreStr);
     }
 
     /*
@@ -68,20 +82,6 @@ public class ScoreBoard {
     }
 
     /*
-     * 채점 결과 터미널에 출력
-     */
-    private void printScore() {
-        String scoreStr = "";
-        if (getStrikeCnt() != 0) {
-            scoreStr += getStrikeCnt() + " 스트라이크 ";
-        }
-        if (getBallCnt() != 0) {
-            scoreStr += getBallCnt() + " 볼 ";
-        }
-        System.out.println(scoreStr);
-    }
-
-    /*
      * scoreMap에 score count(Strike, Ball, Nothing)를 기록함
      */
     private void addScore(ScoreType type) {
@@ -91,7 +91,7 @@ public class ScoreBoard {
     /*
      * scoreMap 카운트를 초기화함. 유저의 다음 입력값을 새로 받기 위함임.
      */
-    public void clear() {
+    public void clearCount() {
         scoreMap.put(ScoreType.S, 0);
         scoreMap.put(ScoreType.B, 0);
         scoreMap.put(ScoreType.N, 0);

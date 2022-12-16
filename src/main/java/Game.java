@@ -27,10 +27,11 @@ public class Game {
      * 게임 시작
      */
     public void play() {
+        System.out.println(scoreBoard.getAnswer());
         while (scoreBoard.getStrikeCnt() != 3) {
-            scoreBoard.clear(); // 최초 실행시엔 의미 없음. 더 좋은 방법이 있는지 고민 필요.
             userInput = Util.getNumberInput();
             scoreBoard.checkScore(userInput);
+            scoreBoard.printScore();
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         askRestart();
