@@ -11,6 +11,8 @@
         * 생성된 난수와 입력값 비교.
         * countStrikeBall
             * 각 숫자별 스트라이크, 볼 판별.
+    * replay
+        * 게임 재시작.
 * Computer
     * makeNumber
         * 중복된 숫자가 없는 세자리수 생성.
