@@ -1,15 +1,21 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Computer {
-    private int[] numbers = {-1,-1,-1};
+    private static final int NUMBER_NOT_SELECTED = -1;
+    private static final int NUMBER_BOUND = 9;
+    private static final int NUMBER_COUNT = 3;
+    private int[] numbers = new int[NUMBER_COUNT];
 
-    public Computer() {}
+    public Computer() {
+        Arrays.fill(numbers, NUMBER_NOT_SELECTED);
+    }
 
     public Computer(int[] givenNumbers) {
         numbers = givenNumbers;
     }
 
-    public boolean contains(int newNumber) {
+    public boolean containsNumber(int newNumber) {
         boolean flag = false;
         for (int number : numbers) {
             flag = (number == newNumber) || flag;
@@ -18,15 +24,15 @@ public class Computer {
     }
 
     public int getUniqueNumber() {
-        int number = new Random().nextInt(9)+1;
-        while (contains(number)) {
-            number = new Random().nextInt(9)+1;
+        int number = new Random().nextInt(NUMBER_BOUND)+1;
+        while (containsNumber(number)) {
+            number = new Random().nextInt(NUMBER_BOUND)+1;
         }
         return number;
     }
 
     public void selectNumbers() {
-        for (int i = 0; i<3; i++) {
+        for (int i = 0; i<numbers.length; i++) {
             numbers[i] = getUniqueNumber();
         }
     }
