@@ -42,4 +42,12 @@ public class BaseballNumbers {
     public int getIndex(int number) {
         return numbers.indexOf(number);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof BaseballNumbers){
+            return numbers.equals(((BaseballNumbers) obj).numbers);
+        }
+        return false;
+    }
 }
