@@ -2,11 +2,10 @@ import java.util.HashMap;
 
 public class ScoreBoard {
     private Answer answer;
-    private HashMap<Integer, Integer> input; // 전역 변수 선언보다 좋은 방법이 있는지 고민해보자.
     private int strike = 0;
     private int ball = 0;
     private int nothing = 0;
-    
+
     public ScoreBoard() {
         this.answer = new Answer();
     }
@@ -40,9 +39,8 @@ public class ScoreBoard {
      */
     public void checkScore(HashMap<Integer, Integer> userInput) {
         clearCount();
-        input = userInput;
         for (Integer i : userInput.keySet()) {
-            checkNumber(i);
+            checkNumber(i, userInput.get(i));
         }
     }
 
@@ -67,9 +65,9 @@ public class ScoreBoard {
     /*
      * 하나의 숫자에 대해 채점
      */
-    private void checkNumber(int num) {
+    private void checkNumber(int num, int idx) {
         if (answer.contains(num)) {
-            checkStrikeOrBall(num);
+            checkStrikeOrBall(num, idx);
             return;
         }
         nothing++;
@@ -78,8 +76,8 @@ public class ScoreBoard {
     /*
      * 정답에 포함된 숫자에 대해 스트라이크인지 볼인지 확인 후 결과 기록
      */
-    private void checkStrikeOrBall(int num) {
-        if (answer.getIndex(num) == input.get(num)) {
+    private void checkStrikeOrBall(int num, int idx) {
+        if (answer.getIndex(num) == idx) {
             strike++;
             return;
         }
