@@ -1,3 +1,5 @@
+package baseball;
+
 public interface Baseball {
 	public void init();
 	public void start();

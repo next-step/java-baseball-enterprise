@@ -1,6 +1,7 @@
+package baseball;
+
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class BaseballImpl implements Baseball{
 
@@ -25,7 +26,9 @@ public class BaseballImpl implements Baseball{
 
 	@Override
 	public int[] generateNumber() {
-		return null;
+		int[] tmp = {1,2,3,4,5,6,7,8,9};
+		Collections.shuffle(Arrays.asList(tmp));
+		return Arrays.copyOfRange(tmp, 0, 3);
 	}
 
 	@Override
