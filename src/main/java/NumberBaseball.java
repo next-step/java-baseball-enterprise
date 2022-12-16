@@ -46,6 +46,24 @@ public class NumberBaseball {
             random_numbers_count[random_numbers[i]] = true;
         }
     }
+
+    public void count_strike_or_ball(int idx) {
+        if(random_numbers[idx] == input_numbers[idx]){
+            ++strike;
+            return;
+        }
+        if(random_numbers_count[input_numbers[idx]]){
+            ++ball;
+        }
+    }
+
+    public void get_game_result() {
+        strike = 0;
+        ball = 0;
+        for(int i = 0; i < NUMBER_COUNT; ++i) {
+            count_strike_or_ball(i);
+        }
+    }
     public boolean do_game() {
         initialize_parameter();
         generate_random_numbers();
