@@ -1,14 +1,12 @@
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Baseball {
 
     private static Set<Integer> numbers = new LinkedHashSet<>();
+    private static Set<Integer> numbers2 = new LinkedHashSet<>();
     public static void main(String[] args) {
         create3Number();
-
+        insert3Number();
     }
 
     /* 게임을 시작하면 1에서 9까지 서로 다른 임의의 수 3개가 생성된다. */
@@ -18,6 +16,17 @@ public class Baseball {
 
         while (numbers.size() < 3) {
             numbers.add(random.nextInt(10));
+        }
+    }
+
+    public static void insert3Number() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
+        String number = sc.nextLine();
+
+        for (int i = 0; i < number.length(); i++)
+        {
+            numbers2.add(number.charAt(i) - '0');
         }
     }
 }

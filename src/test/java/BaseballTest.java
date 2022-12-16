@@ -1,10 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaseballTest {
 
     private Set<Integer> numbers = new LinkedHashSet<>();
+    private Set<Integer> numbers2 = new LinkedHashSet<>();
 
     @Test
     @DisplayName("게임을 시작하면 1에서 9까지 서로 다른 임의의 수 3개가 생성된다.")
@@ -27,8 +28,16 @@ class BaseballTest {
     }
 
     @Test
-    @DisplayName("사용자에게 3개의 숫자를 입력 받고 입력한 숫자와 임의의 숫자를 비교하여 결과를 출력한다.")
+    @DisplayName("사용자에게 3개의 숫자를 입력 받는다.")
     void insert3Number() {
+        Scanner sc = TestUtil.getScanner("123");
+        String number = sc.nextLine();
 
+        for (int i = 0; i < number.length(); i++)
+        {
+            numbers2.add(number.charAt(i) - '0');
+        }
+
+        assertThat(numbers2.size()).isEqualTo(3);
     }
 }
