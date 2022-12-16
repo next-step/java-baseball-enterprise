@@ -18,7 +18,7 @@ public class InputViewImpl implements InputView {
 
     public InputViewImpl() {
         this.scanner = new Scanner(System.in);
-        this.pattern = Pattern.compile("^[0-9]*$");
+        this.pattern = Pattern.compile("^[1-9]*$");
         this.exceptionHandler = new ExceptionHandlerNoAction();
     }
 
@@ -31,8 +31,36 @@ public class InputViewImpl implements InputView {
         return parsingLine(line);
     }
 
+    @Override
+    public Integer readOneNumber() {
+        String line;
+        do {
+            line = scanner.nextLine();
+        } while (validateOneNumber(line));
+        return Integer.parseInt(line);
+    }
+
+    private boolean validateOneNumber(String line) {
+        if (!checkLength(line, 1)) {
+            return false;
+        }
+        if (!isNumber(line))
+            return false;
+        if (!validateOptionBound(line))
+            return false;
+        return true;
+    }
+
+    private boolean validateOptionBound(String line) {
+        boolean valid = line.charAt(0) - '0' < 3 && line.charAt(0) - '0' > 0;
+        if(valid)
+            return true;
+        exceptionHandler.handleException(new IllegalArgumentException(INPUT_ONE_NUMBER_BOUND_EXCEPTION));
+        return false;
+    }
+
     private boolean validateThreeNumbers(String line) {
-        if (!lengthIsThree(line)) {
+        if (!checkLength(line, 3)) {
             return false;
         }
         if (!isNumber(line))
@@ -40,8 +68,8 @@ public class InputViewImpl implements InputView {
         return !isDuplicate(line);
     }
 
-    private boolean lengthIsThree(String line) {
-        if (line.length() != 3) {
+    private boolean checkLength(String line, Integer sz) {
+        if (line.length() != sz) {
             exceptionHandler.handleException(new IllegalArgumentException(INPUT_THREE_NUMBER_LENGTH_EXCEPTION));
             return false;
         }
