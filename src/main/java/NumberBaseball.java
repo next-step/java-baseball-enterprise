@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Arrays;
 
 public class NumberBaseball {
@@ -28,6 +29,15 @@ public class NumberBaseball {
         Collections.shuffle(numberList);
         for(int i = 0; i < NUMBER_COUNT; ++i){
             random_numbers[i] = numberList.get(i);
+        }
+    }
+
+    public void get_input_numbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        for(int i = 0; i < NUMBER_COUNT; ++i){
+            input_numbers[i] = input.charAt(i) - '0';
         }
     }
 
