@@ -15,11 +15,12 @@ public class Baseball {
         Random random = new Random();
 
         while (numbers.size() < 3) {
-            numbers.add(random.nextInt(10));
+            numbers.add(random.nextInt(9) + 1);
         }
     }
 
     public static void insert3Number() {
+        numbers2.clear();
         Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         String number = sc.nextLine();
