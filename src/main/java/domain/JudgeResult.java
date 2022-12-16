@@ -18,8 +18,32 @@ public class JudgeResult {
         return ballNum;
     }
 
-    public void change(int strikesNum, int ballNum){
+    public void change(int strikesNum, int ballNum) {
         this.ballNum = ballNum;
         this.strikesNum = strikesNum;
+    }
+
+
+    public String toString() {
+        if (ballNum == 0 && strikesNum == 0)
+            return "낫싱";
+        if (strikesNum != 0 && ballNum != 0) {
+            return strikeToString() + " " + ballToString();
+        }
+        return strikeToString() + ballToString();
+    }
+
+    private String strikeToString() {
+        if (strikesNum == 0) {
+            return "";
+        }
+        return strikesNum + " 스트라이크";
+    }
+
+    private String ballToString() {
+        if (ballNum == 0) {
+            return "";
+        }
+        return ballNum + " 볼";
     }
 }
