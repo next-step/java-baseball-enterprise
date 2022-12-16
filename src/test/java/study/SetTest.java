@@ -24,7 +24,7 @@ public class SetTest {
 
     @Test
     @DisplayName("Set 크기")
-    void set_size() {
+    void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
     @ParameterizedTest

@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerTest {
     @Test
-    void contains() {
+    void containsNumber() {
         int[] numbers = {4,5,2};
         Computer computer = new Computer(numbers);
 
         for (int number : numbers) {
-            assertThat(computer.contains(number)).isTrue();
+            assertThat(computer.containsNumber(number)).isTrue();
         }
     }
 
@@ -31,7 +31,7 @@ class ComputerTest {
         computer.selectNumbers();
         int count = 0;
         for (int i = 0; i<10; i++) {
-            count = computer.contains(i) ? count+1 : count;
+            count = computer.containsNumber(i) ? count+1 : count;
         }
         assertThat(count).isEqualTo(3);
     }
