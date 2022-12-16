@@ -23,9 +23,9 @@ class BaseballTest {
         numbers.add(3);
 
         numbers2 = new LinkedHashSet<>();
-        numbers2.add(1);
-        numbers2.add(2);
         numbers2.add(3);
+        numbers2.add(2);
+        numbers2.add(1);
     }
 
     @Test
@@ -57,8 +57,9 @@ class BaseballTest {
     }
 
     @Test
-    void checkResult() {
-        numbers.forEach(number -> {
-        });
+    @DisplayName("입력한 숫자와 임의의 숫자를 비교한다.")
+    void getResult() {
+        String result = Result.getResult(numbers, numbers2);
+        assertThat(result).isEqualTo("1스트라이크 2볼");
     }
 }

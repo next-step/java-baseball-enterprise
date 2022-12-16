@@ -5,8 +5,15 @@ public class Baseball {
     private static Set<Integer> numbers = new LinkedHashSet<>();
     private static Set<Integer> numbers2 = new LinkedHashSet<>();
     public static void main(String[] args) {
+        String result = "";
+
         create3Number();
-        insert3Number();
+
+        while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
+            insert3Number();
+            result = Result.getResult(numbers, numbers2);
+            System.out.println(result);
+        }
     }
 
     /* 게임을 시작하면 1에서 9까지 서로 다른 임의의 수 3개가 생성된다. */
