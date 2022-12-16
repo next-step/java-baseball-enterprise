@@ -35,4 +35,13 @@ public class StrikeBallCount {
     public boolean getIsComplete() {
         return strikeCount == length;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof StrikeBallCount){
+            StrikeBallCount strikeBallCount = (StrikeBallCount) obj;
+            return strikeCount == strikeBallCount.getStrikeCount() && ballCount == strikeBallCount.getBallCount();
+        }
+        return false;
+    }
 }
