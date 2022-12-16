@@ -1,4 +1,7 @@
+import java.util.Collections;
+import java.util.List;
 import java.util.Arrays;
+
 public class NumberBaseball {
     final int NUMBER_COUNT = 3;
     final int MAX_NUM = 9;
@@ -16,6 +19,16 @@ public class NumberBaseball {
         Arrays.fill(input_numbers, 0);
         strike = 0;
         ball = 0;
+    }
+
+    public void generate_random_numbers() {
+        Integer[] numbers = new Integer[MAX_NUM + 1];
+        Arrays.setAll(numbers, i -> i + 1);
+        List<Integer> numberList = Arrays.asList(numbers);
+        Collections.shuffle(numberList);
+        for(int i = 0; i < NUMBER_COUNT; ++i){
+            random_numbers[i] = numberList.get(i);
+        }
     }
     public boolean do_game() {
         initialize_parameter();
