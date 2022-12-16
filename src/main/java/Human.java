@@ -10,14 +10,12 @@ public class Human {
     public HashMap<Character, Integer> input() throws IOException {
         System.out.print("숫자를  입력해주세요 : ");
         String input = br.readLine();
-        HashMap<Character, Integer> human = new HashMap<>();
         if(!Common.validation(input)) {
             System.out.println("입력이 올바르지 않음.");
             return input();
         }
 
-        Common.setPositionNumber(input, human);
-        return human;
+        return Common.setPositionNumber(input);
     }
 }
 

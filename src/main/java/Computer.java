@@ -6,8 +6,7 @@ public class Computer {
 
     public Computer(){
         answer = makeNumber();
-        answerPosition = new HashMap<>();
-        Common.setPositionNumber(answer, answerPosition);
+        answerPosition = Common.setPositionNumber(answer);
     }
 
     public String getAnswer() {

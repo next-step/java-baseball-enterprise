@@ -17,10 +17,13 @@ public class Common {
         return !matcher.find();
     }
 
-    public static void setPositionNumber(String number, HashMap<Character, Integer> hashMap) {
+    public static HashMap<Character, Integer> setPositionNumber(String number) {
+        HashMap<Character, Integer> result = new HashMap<>();
         for(int i = 0; i < number.length(); i++){
-            hashMap.put(number.charAt(i), i);
+            result.put(number.charAt(i), i);
         }
+
+        return result;
     }
 }
 
