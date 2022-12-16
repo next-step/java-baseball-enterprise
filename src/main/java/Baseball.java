@@ -1,30 +1,31 @@
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Baseball {
 
     private static Set<Integer> numbers = new LinkedHashSet<>();
     private static Set<Integer> numbers2 = new LinkedHashSet<>();
+
     public static void main(String[] args) {
-
         while (true){
-            String result = "";
-
             create3Number();
-
-            while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
-                insert3Number();
-                result = Result.getResult(numbers, numbers2);
-                System.out.println(result);
-            }
-
+            playGame();
             int choice = endOrRestart();
 
-            if (choice == 1) {
-                continue;
-            }
-            else if (choice == 2) {
-                break;
-            }
+            if (choice == 1) continue;
+            if (choice == 2) break;
+        }
+    }
+
+    public static void playGame() {
+        String result = "";
+
+        while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
+            insert3Number();
+            result = Result.getResult(numbers, numbers2);
+            System.out.println(result);
         }
     }
 
@@ -44,6 +45,10 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
         String number = sc.nextLine();
 
+        stringToSet(number);
+    }
+
+    public static void stringToSet(String number) {
         for (int i = 0; i < number.length(); i++)
         {
             numbers2.add(number.charAt(i) - '0');

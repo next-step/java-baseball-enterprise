@@ -2,27 +2,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballTest {
 
     private Set<Integer> numbers = new LinkedHashSet<>();
     private Set<Integer> numbers2 = new LinkedHashSet<>();
 
+    void init() {
+        numbers = new LinkedHashSet<>();
+        numbers2 = new LinkedHashSet<>();
+    }
     @BeforeEach
     void setUp() {
-        numbers = new LinkedHashSet<>();
+        init();
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
 
-        numbers2 = new LinkedHashSet<>();
         numbers2.add(3);
         numbers2.add(2);
         numbers2.add(1);
@@ -48,12 +50,16 @@ class BaseballTest {
         Scanner sc = TestUtil.getScanner("123");
         String number = sc.nextLine();
 
+        stringToSet(number);
+
+        assertThat(numbers2.size()).isEqualTo(3);
+    }
+
+    void stringToSet(String number) {
         for (int i = 0; i < number.length(); i++)
         {
             numbers2.add(number.charAt(i) - '0');
         }
-
-        assertThat(numbers2.size()).isEqualTo(3);
     }
 
     @Test
