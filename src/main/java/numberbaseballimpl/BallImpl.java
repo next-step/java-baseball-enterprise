@@ -32,10 +32,12 @@ public class BallImpl implements Ball {
     }
 
     private static void checkNumberLength(int number) {
-        if (isTooShortNumber(number))
+        if (isTooShortNumber(number)) {
             throw new IllegalArgumentException("Number is too short.");
-        if (isTooLongNumber(number))
+        }
+        if (isTooLongNumber(number)) {
             throw new IllegalArgumentException("Number is too long.");
+        }
     }
 
     private static boolean isTooShortNumber(int number) {
@@ -53,13 +55,15 @@ public class BallImpl implements Ball {
     }
 
     private static void checkDuplication(Set<Integer> numberSet, int digit) {
-        if (numberSet.contains(digit))
+        if (numberSet.contains(digit)) {
             throw new IllegalArgumentException("Number must not duplicate.");
+        }
     }
 
     private static void checkZero(int digit) {
-        if (digit == 0)
+        if (digit == 0) {
             throw new IllegalArgumentException("Number must haven't zero.");
+        }
     }
 
     @Override
