@@ -18,14 +18,15 @@ public class Numbers implements Iterable<Number> {
 
     public static Numbers from(String numbers) {
         if (!consistByNumbersOfSpecificSize(numbers) || hasDuplicatedNumber(numbers)) {
-            String message = String.format("[입력값 : %s] 중복이 없는 " + SIZE + "자리 숫자만 가능합니다.", numbers);
-            throw new IllegalArgumentException(message);
+            String message = "[입력값 : %s] 중복이 없는 %d자리 숫자만 가능합니다.";
+            throw new IllegalArgumentException(String.format(message, numbers, SIZE));
         }
         return new Numbers(collectToList(numbers));
     }
 
     private static boolean consistByNumbersOfSpecificSize(String numbers) {
-        return numbers.matches("[1-9]{" + SIZE + "}");
+        String regex = "[1-9]{%d}";
+        return numbers.matches(String.format(regex, SIZE));
     }
 
     private static boolean hasDuplicatedNumber(String numbers) {
