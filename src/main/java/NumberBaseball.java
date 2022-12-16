@@ -30,6 +30,12 @@ public class NumberBaseball {
             random_numbers[i] = numberList.get(i);
         }
     }
+
+    public void get_random_numbers_count() {
+        for(int i = 0; i < NUMBER_COUNT; ++i){
+            random_numbers_count[random_numbers[i]] = true;
+        }
+    }
     public boolean do_game() {
         initialize_parameter();
         generate_random_numbers();
