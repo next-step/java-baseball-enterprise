@@ -12,14 +12,37 @@ public class JavaBaseball {
     static boolean continueGame = true;
 
     public static void main(String[] args) {
-        runBaseBall();
+        while (continueGame) {
+            runBaseBall();
+        }
     }
 
     /*
      * 숫자야구 실행
      */
     static void runBaseBall() {
-        
+        System.out.println(answer);
+        initScoreMap();
+        while (!isThreeStrike()) {
+            initScoreMap();
+            userInput = BaseballScanner.getUserInputNumberMap();
+            score();
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        askRestart();
+    }
+
+    /*
+     * 첫 게임 종료 후 재시작 여부 확인
+     */
+    private static void askRestart() {
+        int restartInput = BaseballScanner.getRestartInput();
+        if (restartInput == RESTART_GAME) {
+            continueGame = true;
+            answer.resetAnswer();
+            return;
+        }
+        continueGame = false;
     }
 
     /*
