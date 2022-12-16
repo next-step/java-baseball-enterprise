@@ -15,6 +15,9 @@ public class NBClient {
         return str.length() == NUM_LENGTH && Integer.parseInt(str) >= 111 && Integer.parseInt(str) <= 999;
     }
 
+    /*
+        숫자를 입력받고, 사용 가능한 입력인지 확인한다. 아닐 시, 다시 입력받는다.
+     */
     private static String get_user_number() {
         String in;
         do {
@@ -25,11 +28,17 @@ public class NBClient {
         return in;
     }
 
+    /*
+        게임을 계속 진행할지 입력받는다.
+     */
     private static int get_goStop() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return sc.nextInt();
     }
 
+    /*
+        카운트 개수를 출력한다.
+     */
     private static void print_count(int[] count) {
         if (count[STRIKE] != 0)
             System.out.printf("%d 스트라이크 ", count[STRIKE]);
@@ -38,7 +47,10 @@ public class NBClient {
         System.out.print("\n");
     }
 
-    private static void do_game(NumberBaseball nb) {
+    /*
+        3스트라이크가 나올 때까지 게임을 진행한다.
+     */
+    private static void proceed_game(NumberBaseball nb) {
         int[] count = {0, 0};
 
         while (count[0] != NUM_LENGTH) {
@@ -52,7 +64,7 @@ public class NBClient {
 
         nb.set_random_number(NUM_LENGTH);
         do {
-            do_game(nb);
+            proceed_game(nb);
         } while (get_goStop() == 1);
     }
 }

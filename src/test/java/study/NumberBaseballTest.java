@@ -8,6 +8,9 @@ public class NumberBaseballTest {
     final int NUM_LENGTH = 3;
     final int TEST_NUM = 100;
 
+    // 같은 숫자가 두 번 등장하지 않는지 확인하는 메소드
+    // indentation depth 2 미만으로 하려면 boolean 을 주고 받는 함수를 작성해야 하는데, 오히려 가독성이 너무 떨어져서 그냥 제출했습니다...
+    // 좋은 방법 있을까요?
     boolean check_valid(String num) {
         int[] table = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 

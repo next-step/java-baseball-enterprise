@@ -41,17 +41,21 @@ public class NumberBaseball {
 
     /*
         두 문자열을 비교하여 스트라이크/볼 숫자를 세서 반환한다.
-        반환은 int 배열에 스트라이크, 볼 순서로 저장한다 -- 차라리 DTO 클래스 정의하는 것이 나을까?
+        반환은 int 배열에 스트라이크, 볼 순서로 저장한다 -- 차라리 Count 클래스 정의하는 것이 나을까?
      */
     public int[] compare_count(String user_number) {
         int[] count = {0, 0};
 
         for (int i = 0; i < user_number.length(); i++)
-            _compare_count(user_number.charAt(i), i, count);
+            judge(user_number.charAt(i), i, count);
         return count;
     }
 
-    private void _compare_count(char num, int index, int[] count) {
+    /*
+        숫자 하나와 위치를 넘겨받아, 컴퓨터 숫자와 비교하여 볼, 스트라이크를 센다.
+        야구의 심판 역할
+     */
+    private void judge(char num, int index, int[] count) {
         if (computer_number.charAt(index) == num) {
             count[STRIKE] += 1;
             return;
