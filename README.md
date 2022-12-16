@@ -10,8 +10,6 @@
 * Ball
 * Hint test
 * Hint
-* Enemy test
-* Enemy
 * NumberBaseball test
 * NumberBaseball
 * NumberbaseballUI
