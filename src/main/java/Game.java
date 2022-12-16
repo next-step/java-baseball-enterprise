@@ -28,7 +28,7 @@ public class Game {
      */
     public void play() {
         System.out.println(scoreBoard.getAnswer());
-        while (scoreBoard.getStrikeCnt() != 3) {
+        while (scoreBoard.getStrike() != 3) {
             userInput = Util.getNumberInput();
             scoreBoard.checkScore(userInput);
             scoreBoard.printScore();

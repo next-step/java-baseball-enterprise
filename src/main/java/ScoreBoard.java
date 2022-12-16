@@ -1,25 +1,26 @@
 import java.util.HashMap;
 
 public class ScoreBoard {
-    private final HashMap<ScoreType, Integer> scoreMap;
     private Answer answer;
     private HashMap<Integer, Integer> input; // 전역 변수 선언보다 좋은 방법이 있는지 고민해보자.
+    private int strike = 0;
+    private int ball = 0;
+    private int nothing = 0;
     
     public ScoreBoard() {
-        this.scoreMap = new HashMap<>(){{
-            put(ScoreType.S, 0);
-            put(ScoreType.B, 0);
-            put(ScoreType.N, 0);
-        }};
         this.answer = new Answer();
     }
 
-    public int getStrikeCnt() {
-        return scoreMap.get(ScoreType.S);
+    public int getStrike() {
+        return strike;
     }
 
-    public int getBallCnt() {
-        return scoreMap.get(ScoreType.B);
+    public int getBall() {
+        return ball;
+    }
+
+    public int getNothing() {
+        return nothing;
     }
 
     public Answer getAnswer() {
@@ -50,11 +51,15 @@ public class ScoreBoard {
      */
     public void printScore() {
         String scoreStr = "";
-        if (getStrikeCnt() != 0) {
-            scoreStr += getStrikeCnt() + " 스트라이크 ";
+        if (nothing == 3) {
+            System.out.println("일치하는 숫자가 없습니다.");
+            return;
         }
-        if (getBallCnt() != 0) {
-            scoreStr += getBallCnt() + " 볼 ";
+        if (strike != 0) {
+            scoreStr += strike + " 스트라이크 ";
+        }
+        if (ball != 0) {
+            scoreStr += ball + " 볼 ";
         }
         System.out.println(scoreStr);
     }
@@ -67,7 +72,7 @@ public class ScoreBoard {
             checkStrikeOrBall(num);
             return;
         }
-        addScore(ScoreType.N);
+        nothing++;
     }
 
     /*
@@ -75,25 +80,18 @@ public class ScoreBoard {
      */
     private void checkStrikeOrBall(int num) {
         if (answer.getIndex(num) == input.get(num)) {
-            addScore(ScoreType.S);
+            strike++;
             return;
         }
-        addScore(ScoreType.B);
+        ball++;
     }
 
     /*
-     * scoreMap에 score count(Strike, Ball, Nothing)를 기록함
-     */
-    private void addScore(ScoreType type) {
-        scoreMap.put(type, scoreMap.get(type) + 1);
-    }
-
-    /*
-     * scoreMap 카운트를 초기화함. 유저의 다음 입력값을 새로 받기 위함임.
+     * 카운트를 초기화함. 유저의 다음 입력값을 새로 받기 위함임.
      */
     public void clearCount() {
-        scoreMap.put(ScoreType.S, 0);
-        scoreMap.put(ScoreType.B, 0);
-        scoreMap.put(ScoreType.N, 0);
+        strike = 0;
+        ball = 0;
+        nothing = 0;
     }
 }
