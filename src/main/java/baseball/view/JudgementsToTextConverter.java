@@ -8,12 +8,15 @@ public class JudgementsToTextConverter {
         if (judgements.isNothing()) {
             return nothingText();
         }
-
         if (judgements.isThreeStrike()) {
-            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임종료";
+            return threeStrikeText();
         }
-
         return strikeText(judgements) + ballText(judgements);
+    }
+
+    private String threeStrikeText() {
+        return "3스트라이크\n" +
+                "3개의 숫자를 모두 맞히셨습니다! 게임종료";
     }
 
     private String nothingText() {
