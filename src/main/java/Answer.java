@@ -1,30 +1,53 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Answer {
-    
-    private ArrayList<Integer> answerList = new ArrayList<>();
+
+    /*
+     * key: 정답 숫자, value: 정답 숫자의 index
+     * 예) 정답 숫자가 567인 경우: {5=0, 6=1, 7=2}
+     */
+    private final HashMap<Integer, Integer> answerMap = new HashMap<>();
+    private int idx = 0;
 
     public Answer() {
         setAnswer();
     }
 
-    public ArrayList<Integer> getAnswerList() {
-        return answerList;
+    public HashMap<Integer, Integer> getAnswerMap() {
+        return answerMap;
     }
 
     /*
      * 정답 숫자 조합을 재설정함. 게임 재시작시 사용.
      */
     public void resetAnswer() {
-        answerList.clear();
+        answerMap.clear();
+        idx = 0;
         setAnswer();
+    }
+
+    /*
+     * answerMap에 특정 숫자가 포함돼있는지 확인
+     */
+    public boolean contains(int num) {
+        if (answerMap.containsKey(num)) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * answerMap에 포함된 숫자의 index값(몇 번째 정답숫자인지)을 확인
+     */
+    public Integer getIndex(int num) {
+        return answerMap.get(num);
     }
 
     /*
      * 3개의 중복되지 않는 숫자를 답으로 선택하여 answer 리스트에 추가.
      */
     private void setAnswer() {
-        while (answerList.size() < 3) {
+        while (answerMap.size() < 3) {
             addAnswerNumber();
         }
     }
@@ -36,8 +59,9 @@ public class Answer {
     private void addAnswerNumber() {
         int num = pickNumber();
         if (validateDuplication(num)) {
-            answerList.add(num);
-        };
+            answerMap.put(num, idx++);
+        }
+        ;
     }
 
     /*
@@ -56,7 +80,7 @@ public class Answer {
      * 중복이 있을 시 false, 없을 시 true 리턴.
      */
     private boolean validateDuplication(int num) {
-        if (answerList.contains(num)) {
+        if (answerMap.containsKey(num)) {
             return false;
         }
         return true;
@@ -64,6 +88,6 @@ public class Answer {
 
     @Override
     public String toString() {
-        return answerList.toString();
-    }   
+        return answerMap.toString();
+    }
 }
