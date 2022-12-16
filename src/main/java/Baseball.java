@@ -5,14 +5,26 @@ public class Baseball {
     private static Set<Integer> numbers = new LinkedHashSet<>();
     private static Set<Integer> numbers2 = new LinkedHashSet<>();
     public static void main(String[] args) {
-        String result = "";
 
-        create3Number();
+        while (true){
+            String result = "";
 
-        while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
-            insert3Number();
-            result = Result.getResult(numbers, numbers2);
-            System.out.println(result);
+            create3Number();
+
+            while (!result.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")){
+                insert3Number();
+                result = Result.getResult(numbers, numbers2);
+                System.out.println(result);
+            }
+
+            int choice = endOrRestart();
+
+            if (choice == 1) {
+                continue;
+            }
+            else if (choice == 2) {
+                break;
+            }
         }
     }
 
@@ -36,5 +48,13 @@ public class Baseball {
         {
             numbers2.add(number.charAt(i) - '0');
         }
+    }
+
+    public static int endOrRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+
+        return choice;
     }
 }
