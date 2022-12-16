@@ -2,6 +2,7 @@ package view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -63,18 +64,18 @@ class InputViewTest {
     @Test
     @DisplayName("validate_three_number_test_length_fail_test")
     void validateThreeNumberLengthFailTest() throws  Exception{
-        Method lengthIsThree = InputViewImpl.class.getDeclaredMethod("lengthIsThree", String.class);
-        lengthIsThree.setAccessible(true);
-        boolean lengthIsThreeResult = (boolean) lengthIsThree.invoke(inputView, "1234");
-        assertThat(lengthIsThreeResult).isFalse();
+        Method checkLength = InputViewImpl.class.getDeclaredMethod("checkLength", String.class, Integer.class);
+        checkLength.setAccessible(true);
+        boolean checkLengthResult = (boolean) checkLength.invoke(inputView, "1234", 3);
+        assertThat(checkLengthResult).isFalse();
     }
     @Test
     @DisplayName("validate_three_number_test_length_success_test")
     void validateThreeNumberLengthSuccessTest() throws  Exception{
-        Method lengthIsThree = InputViewImpl.class.getDeclaredMethod("lengthIsThree", String.class);
-        lengthIsThree.setAccessible(true);
-        boolean lengthIsThreeResult = (boolean) lengthIsThree.invoke(inputView, "123");
-        assertThat(lengthIsThreeResult).isTrue();
+        Method checkLength = InputViewImpl.class.getDeclaredMethod("checkLength", String.class, Integer.class);
+        checkLength.setAccessible(true);
+        boolean checkLengthResult = (boolean) checkLength.invoke(inputView, "123",3);
+        assertThat(checkLengthResult).isTrue();
     }
 
     @Test
@@ -85,6 +86,29 @@ class InputViewTest {
         boolean validateThreeNumberResult = (boolean) validateThreeNumbers.invoke(inputView, "123");
         assertThat(validateThreeNumberResult).isTrue();
     }
+
+    @Test
+    @DisplayName("validate_one_number_bound_success_test")
+    void validateOneNumberBoundSuccessTest() throws Exception{
+        Method validateOptionBound = InputViewImpl.class.getDeclaredMethod("validateOptionBound", String.class);
+        validateOptionBound.setAccessible(true);
+        boolean validateResult = (boolean) validateOptionBound.invoke(inputView, "1");
+        assertThat(validateResult).isTrue();
+        validateResult = (boolean) validateOptionBound.invoke(inputView, "2");
+        assertThat(validateResult).isTrue();
+    }
+
+
+    @Test
+    @DisplayName("validate_one_number_bound_fail_test")
+    void validateOneNumberBoundFailTest() throws Exception{
+        Method validateOptionBound = InputViewImpl.class.getDeclaredMethod("validateOptionBound", String.class);
+        validateOptionBound.setAccessible(true);
+        boolean validateResult = (boolean) validateOptionBound.invoke(inputView, "3");
+        assertThat(validateResult).isFalse();
+
+    }
+
 
 
 }

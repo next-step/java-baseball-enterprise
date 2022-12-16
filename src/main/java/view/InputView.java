@@ -6,4 +6,6 @@ public interface InputView {
 
     List<Integer> getThreeNumbers();
 
+    Integer readOneNumber();
+
 }
