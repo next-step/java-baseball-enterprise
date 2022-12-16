@@ -8,15 +8,13 @@ public enum Command {
         return this == NEW_GAME;
     }
 
-    public static Command valueOf(int value) {
-        if (value == 1) {
+    public static Command from(String value) {
+        if (value.equals("1")) {
             return NEW_GAME;
         }
-
-        if (value == 2) {
+        if (value.equals("2")) {
             return SHUTDOWN;
         }
-
-        throw new IllegalArgumentException(String.format("[입력값 : %d]에 맞는 명령어가 없습니다.", value));
+        throw new IllegalArgumentException(String.format("[입력값 : %s]에 맞는 명령어가 없습니다.", value));
     }
 }

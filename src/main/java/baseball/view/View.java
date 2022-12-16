@@ -29,9 +29,14 @@ public class View {
     }
 
     public Command inputCommand() {
-        printStream.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int command = scanner.nextInt();
-        return Command.valueOf(command);
+        try {
+            printStream.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String command = scanner.next();
+            return Command.from(command);
+        } catch (IllegalArgumentException e) {
+            printStream.println(e.getMessage());
+            return inputCommand();
+        }
     }
 
     public void printJudgements(Judgements judgements) {
