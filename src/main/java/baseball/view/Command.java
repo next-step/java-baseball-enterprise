@@ -17,6 +17,6 @@ public enum Command {
             return SHUTDOWN;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(String.format("[입력값 : %d]에 맞는 명령어가 없습니다.", value));
     }
 }

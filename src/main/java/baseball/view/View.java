@@ -18,9 +18,14 @@ public class View {
     }
 
     public Numbers inputNumbers() {
-        printStream.println("숫자를 입력하세요 : ");
-        String inputNumbersText = scanner.next();
-        return Numbers.from(inputNumbersText);
+        try {
+            printStream.println("숫자를 입력하세요 : ");
+            String inputNumbersText = scanner.next();
+            return Numbers.from(inputNumbersText);
+        } catch (IllegalArgumentException e) {
+            printStream.println(e.getMessage());
+            return inputNumbers();
+        }
     }
 
     public Command inputCommand() {

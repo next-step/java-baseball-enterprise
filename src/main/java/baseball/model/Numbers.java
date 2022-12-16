@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Numbers implements Iterable<Number> {
@@ -43,6 +44,23 @@ public class Numbers implements Iterable<Number> {
             value.add(new Number(numbers.charAt(i), i));
         }
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Numbers numbers = (Numbers) o;
+        return Objects.equals(value, numbers.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     @Override

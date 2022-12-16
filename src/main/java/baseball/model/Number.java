@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.Objects;
+
 public class Number {
 
     private final char value;
@@ -28,5 +30,22 @@ public class Number {
 
     private boolean isStrike(Number number) {
         return value == number.value && index == number.index;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Number number = (Number) o;
+        return value == number.value && index == number.index;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, index);
     }
 }
