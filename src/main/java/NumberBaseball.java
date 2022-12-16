@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class NumberBaseball {
     final int NUMBER_COUNT = 3;
     final int MAX_NUM = 9;
@@ -8,6 +9,14 @@ public class NumberBaseball {
     int[] input_numbers = new int[NUMBER_COUNT];
     int strike;
     int ball;
+
+    public void initialize_parameter(){
+        Arrays.fill(random_numbers, 0);
+        Arrays.fill(random_numbers_count, false);
+        Arrays.fill(input_numbers, 0);
+        strike = 0;
+        ball = 0;
+    }
     public boolean do_game() {
         initialize_parameter();
         generate_random_numbers();
