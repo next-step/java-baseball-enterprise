@@ -31,8 +31,18 @@ public class HintImpl implements Hint {
     }
 
     @Override
+    public boolean hasStrike() {
+        return strike != 0;
+    }
+
+    @Override
     public int getStrike() {
         return strike;
+    }
+
+    @Override
+    public boolean hasBall() {
+        return ball != 0;
     }
 
     @Override
