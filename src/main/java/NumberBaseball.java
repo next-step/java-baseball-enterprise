@@ -64,6 +64,19 @@ public class NumberBaseball {
             count_strike_or_ball(i);
         }
     }
+
+    public void print_game_result() {
+        if(strike > 0){
+            System.out.print(strike + " 스트라이크 ");
+        }
+        if(ball > 0){
+            System.out.print(ball + "볼");
+        }
+        if(strike == 0 && ball == 0){
+            System.out.print("낫싱");
+        }
+        System.out.print("\n");
+    }
     public boolean do_game() {
         initialize_parameter();
         generate_random_numbers();
