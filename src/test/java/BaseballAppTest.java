@@ -1,3 +1,4 @@
+import config.BaseballConfig;
 import domain.BaseballGameImpl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -7,11 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballAppTest {
 
-    BaseballAppImpl baseballApp = new BaseballAppImpl(new BaseballGameImpl());
+    BaseballConfig baseballConfig = new BaseballConfig();
+    BaseballAppImpl baseballApp = new BaseballAppImpl(baseballConfig);
 
     @Test
     @DisplayName("baseball_app_run")
-    public void baseballAppRunTest(){
+    public void baseballAppRunTest() {
         baseballApp.run();
     }
 
