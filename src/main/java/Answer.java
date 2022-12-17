@@ -13,17 +13,21 @@ public class Answer {
         setAnswer();
     }
 
-    public HashMap<Integer, Integer> getAnswerMap() {
-        return answerMap;
+    /*
+     * 테스트 코드 작성을 위한 static 생성자
+     */
+    static Answer forTestCode(int first, int second, int third) {
+        Answer answer = new Answer();
+        answer.answerMap.clear();
+
+        answer.answerMap.put(first, 0);
+        answer.answerMap.put(second, 1);
+        answer.answerMap.put(third, 2);
+        return answer;
     }
 
-    /*
-     * 정답 숫자 조합을 재설정함. 게임 재시작시 사용.
-     */
-    public void resetAnswer() {
-        answerMap.clear();
-        idx = 0;
-        setAnswer();
+    public HashMap<Integer, Integer> getAnswerMap() {
+        return answerMap;
     }
 
     /*
