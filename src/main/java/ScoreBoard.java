@@ -10,20 +10,15 @@ public class ScoreBoard {
         this.answer = new Answer();
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getNothing() {
-        return nothing;
-    }
-
     public Answer getAnswer() {
-        return this.answer;
+        return answer;
+    }
+
+    /*
+     * 3스트라이크 여부 리턴
+     */
+    public boolean isThreeStrike() {
+        return strike == 3;
     }
 
     /*
