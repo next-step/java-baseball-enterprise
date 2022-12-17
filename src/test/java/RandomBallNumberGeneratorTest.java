@@ -1,9 +1,9 @@
-import domain.BallNumber;
+import domain.ballnumber.BallNumber;
+import domain.ballnumber.generator.RandomBallNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,7 @@
-import domain.BallNumber;
+package domain.ballnumber.generator;
+
+import domain.ballnumber.BallNumber;
+import domain.ballnumber.generator.BallNumberGenerator;
 
 import java.util.*;
 

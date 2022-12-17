@@ -1,4 +1,6 @@
-import domain.BallNumber;
+package domain.ballnumber.generator;
+
+import domain.ballnumber.BallNumber;
 
 public interface BallNumberGenerator {
 

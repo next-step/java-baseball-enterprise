@@ -1,6 +1,6 @@
 package config;
 
-import domain.BallNumberGenMode;
+import domain.ballnumber.generator.BallNumberGenMode;
 
 public class GlobalData {
 

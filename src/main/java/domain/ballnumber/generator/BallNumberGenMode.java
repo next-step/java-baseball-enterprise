@@ -1,4 +1,4 @@
-package domain;
+package domain.ballnumber.generator;
 
 public enum BallNumberGenMode {
     RANDOM

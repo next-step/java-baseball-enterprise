@@ -1,14 +1,11 @@
 package view;
 
-import domain.BallNumber;
+import config.GlobalData;
+import domain.ballnumber.BallNumber;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class InputView {
 
@@ -18,16 +15,24 @@ public class InputView {
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public BallNumber inputGuessedBallNumber() {
+    public BallNumber inputGuessedBallNumber() throws Exception{
         System.out.print("숫자를 입력해주세요 : ");
-        String input = "";
-        try {
-            input = br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // 유효성 검사 구간
+        String input = br.readLine();
+        validateBallNumberInput(input);
         return new BallNumber(stringToIntList(input));
+    }
+
+    public void validateBallNumberInput(String input) {
+        // 길이 검사
+        if(input.length()!= GlobalData.BALL_NUMBER_LENGTH)
+            throw new IllegalArgumentException(GlobalData.BALL_NUMBER_LENGTH+" 자리 숫자를 입력해주세요.");
+        for(char c : input.toCharArray()) {
+            validateBallNumberChar(c);
+        }
+    }
+
+    public void validateBallNumberChar(char c) {
+        if(c<'1' || c>'9') throw new IllegalArgumentException("각 자리는 1 이상 9 이하의 숫자로 이루어져야 합니다.");
     }
 
     public List<Integer> stringToIntList(String input) {
