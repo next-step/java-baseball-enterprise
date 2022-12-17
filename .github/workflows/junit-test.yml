@@ -3,6 +3,9 @@ name: JUnit Test
 on:
   push:
     branches:
+      - "main"
+      - "release"
+      - "develop"
       - "feature/github-actions"
   pull_request:
     branches:
