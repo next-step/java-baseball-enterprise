@@ -31,4 +31,25 @@ public class Util {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Integer.parseInt(sc.nextLine());
     }
+
+    /*
+     * 채점 결과 터미널에 출력
+     */
+    public static void printScore(ScoreBoard scoreBoard) {
+        String scoreStr = "";
+        if (scoreBoard.getNothing() == 3) {
+            System.out.println("일치하는 숫자가 없습니다.");
+            return;
+        }
+        if (scoreBoard.getStrike() != 0) {
+            scoreStr += scoreBoard.getStrike() + " 스트라이크";
+        }
+        if (scoreBoard.getStrike() != 0 && scoreBoard.getBall() != 0) {
+            scoreStr += " ";
+        }
+        if (scoreBoard.getBall() != 0) {
+            scoreStr += scoreBoard.getBall() + "볼";
+        }
+        System.out.println(scoreStr);
+    }
 }
