@@ -6,7 +6,7 @@ public class RandomBallNumberGenerator implements BallNumberGenerator {
 
     @Override
     public BallNumber generate(int length) {
-        Set<Integer> numberSet = new HashSet<>();
+        Set<Integer> numberSet = new LinkedHashSet<>();
         while(numberSet.size() < length) {
             numberSet.add((int)(Math.random()*1000)%9+1);
         }

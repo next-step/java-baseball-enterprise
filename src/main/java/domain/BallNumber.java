@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BallNumber {
 
-    private List<Integer> digits = new ArrayList<>();
+    private List<Integer> digits;
 
     public BallNumber(List<Integer> numbers) {
         this.digits = new ArrayList<>();
