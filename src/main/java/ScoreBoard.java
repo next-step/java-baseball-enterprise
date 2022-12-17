@@ -10,8 +10,34 @@ public class ScoreBoard {
         this.answer = new Answer();
     }
 
+    private ScoreBoard(Answer answer, int strike, int ball, int nothing) {
+        this.answer = answer;
+        this.strike = strike;
+        this.ball = ball;
+        this.nothing = nothing;
+    }
+
+    /*
+     * 테스트 코드 작성을 위한 static 생성자
+     */
+    static ScoreBoard forTestCode(Answer answer, int strike, int ball, int nothing) {
+        return new ScoreBoard(answer, strike, ball, nothing);
+    }
+
     public Answer getAnswer() {
         return answer;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getNothing() {
+        return nothing;
     }
 
     /*
@@ -25,7 +51,7 @@ public class ScoreBoard {
      * 정답 숫자 재설정, 카운트 초기화. 게임 재시작시 사용.
      */
     public void reset() {
-        answer.resetAnswer();
+        answer = new Answer();
         clearCount();
     }
 
@@ -37,24 +63,6 @@ public class ScoreBoard {
         for (Integer i : userInput.keySet()) {
             checkNumber(i, userInput.get(i));
         }
-    }
-
-    /*
-     * 채점 결과 터미널에 출력
-     */
-    public void printScore() {
-        String scoreStr = "";
-        if (nothing == 3) {
-            System.out.println("일치하는 숫자가 없습니다.");
-            return;
-        }
-        if (strike != 0) {
-            scoreStr += strike + " 스트라이크 ";
-        }
-        if (ball != 0) {
-            scoreStr += ball + " 볼 ";
-        }
-        System.out.println(scoreStr);
     }
 
     /*
@@ -82,7 +90,7 @@ public class ScoreBoard {
     /*
      * 카운트를 초기화함. 유저의 다음 입력값을 새로 받기 위함임.
      */
-    public void clearCount() {
+    private void clearCount() {
         strike = 0;
         ball = 0;
         nothing = 0;
