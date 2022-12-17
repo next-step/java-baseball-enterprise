@@ -23,12 +23,15 @@ public class InputView {
     }
 
     public void validateBallNumberInput(String input) {
-        // 길이 검사
         if(input.length()!= GlobalData.BALL_NUMBER_LENGTH)
             throw new IllegalArgumentException(GlobalData.BALL_NUMBER_LENGTH+" 자리 숫자를 입력해주세요.");
+        Set<Character> numberSet = new HashSet<>();
         for(char c : input.toCharArray()) {
             validateBallNumberChar(c);
+            numberSet.add(c);
         }
+        if(numberSet.size()!=GlobalData.BALL_NUMBER_LENGTH)
+            throw new IllegalArgumentException("숫자는 중복되지 않습니다.");
     }
 
     public void validateBallNumberChar(char c) {
