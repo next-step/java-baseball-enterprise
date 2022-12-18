@@ -33,10 +33,13 @@ public class NumberBaseball {
     }
 
     private void startGame() {
-        List<Integer> guessNumber = getGuess();
-        int strikes = countStrikes(guessNumber);
-        int balls = countBalls(guessNumber);
-        displayResult(strikes, balls);
+        int strikes, balls;
+        do {
+            List<Integer> guessNumber = getGuess();
+            strikes = countStrikes(guessNumber);
+            balls = countBalls(guessNumber);
+            displayResult(strikes, balls);
+        } while (strikes != 3);
     }
 
     private void displayResult(int strikes, int balls) {
