@@ -2,13 +2,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import utils.InteractionUtil;
 import utils.NumberUtil;
 import utils.RandomUtil;
 
 public class NumberBaseball {
 
     private List<Integer> answer;
+    private final NumberBaseBallUI gameUI = new NumberBaseBallUI();
     private final int digit = 3;
 
     private boolean isValidAnswer(List<Integer> numbers) {
@@ -38,35 +38,21 @@ public class NumberBaseball {
             List<Integer> guessNumber = getGuess();
             strikes = countStrikes(guessNumber);
             balls = countBalls(guessNumber);
-            displayResult(strikes, balls);
+            gameUI.displayResult(strikes, balls);
         } while (strikes != 3);
 
         endGame();
     }
 
     private void endGame() {
-        String input;
+        String endOption;
         do {
-            input = InteractionUtil.getUserInput("끝내려면 1, 재시작하려면 2를 입력해주세요.");
-        } while (!input.equals("1") && !input.equals("2"));
+            endOption = gameUI.getEndOption();
+        } while (!endOption.equals("1") && !endOption.equals("2"));
 
-        if (input.equals("2")) {
+        if (endOption.equals("2")) {
             init();
         }
-    }
-
-    private void displayResult(int strikes, int balls) {
-        StringBuilder message = new StringBuilder();
-        if (strikes == 0 && balls == 0) {
-            message.append("낫싱");
-        }
-        if (strikes > 0) {
-            message.append(strikes).append(" 스트라이크 ");
-        }
-        if (balls > 0) {
-            message.append(balls).append(" 볼");
-        }
-        System.out.println(message);
     }
 
     private int countStrikes(List<Integer> guessNumber) {
@@ -93,7 +79,7 @@ public class NumberBaseball {
     private List<Integer> getGuess() {
         String guess;
         do {
-            guess = InteractionUtil.getUserInput("번호를 입력해주세요:");
+            guess = gameUI.getUserGuess();
         } while (!isValidGuess(guess));
 
         return NumberUtil.toNumberArray(guess);
