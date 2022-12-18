@@ -16,7 +16,8 @@ public class PermutationTest {
         List<Integer> list2 = permutation.map(lookUpTable);
         permutation.rand();
         List<Integer> list3 = permutation.map(lookUpTable);
-        assertThat(list1).isEqualTo(list2).isNotEqualTo(list3);
+        assertThat(list1).isEqualTo(list2);
+        assertThat(list1.equals(list3)).isEqualTo(list2.equals(list3));
     }
 
     @Test
