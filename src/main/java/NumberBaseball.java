@@ -36,6 +36,23 @@ public class NumberBaseball {
     private void startGame() {
         List<Integer> guessNumber = getGuess();
         List<Integer> result = calculateResult(guessNumber);
+        int strikes = result.get(0);
+        int balls = result.get(1);
+        displayResult(strikes, balls);
+    }
+
+    private void displayResult(int strikes, int balls) {
+        StringBuilder message = new StringBuilder();
+        if (strikes == 0 && balls == 0) {
+            message.append("낫싱");
+        }
+        if (strikes > 0) {
+            message.append(strikes).append(" 스트라이크 ");
+        }
+        if (balls > 0) {
+            message.append(balls).append(" 볼");
+        }
+        System.out.println(message);
     }
 
     private List<Integer> calculateResult(List<Integer> guessNumber) {
