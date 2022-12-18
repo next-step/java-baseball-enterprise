@@ -11,8 +11,8 @@ public class BaseballNumbers {
     private List<Integer> numbers;
 
     public BaseballNumbers(int digit) {
-        int validatedDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
-        setRandomNumbers(validatedDigit);
+        int validDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
+        setRandomNumbers(validDigit);
     }
 
     public BaseballNumbers(List<Integer> numbers) {
