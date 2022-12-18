@@ -32,16 +32,17 @@ public class NumberBaseball {
     }
 
     private void startGame() {
-        int guessNumber = getGuess();
+        List<Integer> guessNumber = getGuess();
+        guessNumber.forEach(System.out::println);
     }
 
-    private int getGuess() {
+    private List<Integer> getGuess() {
         String guess;
         do {
             guess = InteractionUtil.getUserInput("번호를 입력해주세요:");
         } while (!isValidGuess(guess));
 
-        return Integer.parseInt(guess);
+        return NumberUtil.toNumberArray(guess);
     }
 
     public void init() {
