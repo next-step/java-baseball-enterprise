@@ -11,13 +11,22 @@ public class BaseballNumbers {
     private List<Integer> numbers;
 
     public BaseballNumbers(int digit) {
-        int validatedDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
-        setRandomNumbers(validatedDigit);
+        int validDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
+        setRandomNumbers(validDigit);
     }
 
     public BaseballNumbers(List<Integer> numbers) {
         this.numbers = new ArrayList<>(numbers.size());
         this.numbers.addAll(numbers);
+    }
+
+    public BaseballNumbers(int digit, int numbers) {
+        int validDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
+        this.numbers = new ArrayList<>(validDigit);
+        char[] characters = String.valueOf(numbers).toCharArray();
+        for (char character : characters) {
+            this.numbers.add(Character.getNumericValue(character));
+        }
     }
 
     private void setRandomNumbers(int digit) {
