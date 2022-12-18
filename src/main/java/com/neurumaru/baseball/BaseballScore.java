@@ -11,6 +11,9 @@ public class BaseballScore {
     }
 
     private void calculateScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        if (!isValidNumbers(playerNumbers, computerNumbers)) {
+            return;
+        }
         calculateStrikeScore(playerNumbers, computerNumbers);
         calculateBallScore(playerNumbers, computerNumbers);
     }
@@ -28,6 +31,10 @@ public class BaseballScore {
             ball += Boolean.compare(computerNumbers.contains(playerNumber), false);
         }
         ball -= strike;
+    }
+
+    private boolean isValidNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+        return playerNumbers != null && computerNumbers != null && playerNumbers.size() == computerNumbers.size();
     }
 
     public int getStrike() {
