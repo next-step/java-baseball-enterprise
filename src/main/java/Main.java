@@ -1,26 +1,20 @@
 
 public class Main {
-
-    static boolean continued;
-    static NumberGenerator numberGenerator = new NumberGenerator(3);
+    static NumberGenerator numberGenerator = new NumberGenerator();
     static Judge judge = new Judge();
 
     public static void main(String[] args) {
-
-        continued = true;
-        while (continued) {
-            continued = start();
-        }
-
+        do {
+            start();
+        } while (judge.restart());
     }
 
-    public static boolean start() {
+    public static void start() {
         boolean isCorrect = false;
         int[] answer = numberGenerator.getRandomNumbers();
         while (!isCorrect) {
             isCorrect = judge.judge(answer);
         }
-        return judge.restart();
     }
 
 }
