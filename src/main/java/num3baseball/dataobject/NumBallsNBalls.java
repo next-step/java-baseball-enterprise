@@ -42,6 +42,12 @@ public class NumBallsNBalls implements NumBalls{
         }
         isValidNumber(nums);
     }
+
+    public NumBallsNBalls(ArrayList<Integer> nums) throws WrongNumberException{
+        this.size = nums.size();
+        isValidNumber(nums);
+        this.nums.addAll(nums);
+    }
     @Override
     public int getNum(int index) {
         return nums.get(index);
