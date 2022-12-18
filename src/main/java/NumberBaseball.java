@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class NumberBaseball {
     final int NUMBER_COUNT = 3;
     final int MAX_NUM = 9;
+    final int MIN_NUM = 1;
     final int CONTINUE = 1;
     final int END = 2;
     int[] random_numbers = new int[NUMBER_COUNT];
