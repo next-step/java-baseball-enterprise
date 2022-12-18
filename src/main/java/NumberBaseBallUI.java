@@ -5,12 +5,15 @@ public class NumberBaseBallUI {
     private final Scanner sc = new Scanner(System.in);
 
     public String getUserGuess() {
-        System.out.println("숫자를 입력해주세요: ");
-        return sc.next();
+        return getInput("숫자를 입력해주세요: ");
     }
 
     public String getEndOption() {
-        System.out.println("끝내려면 1, 재시작하려면 2를 입력해주세요: ");
+        return getInput("끝내려면 1, 재시작하려면 2를 입력해주세요: ");
+    }
+
+    private String getInput(String message) {
+        System.out.println(message);
         return sc.next();
     }
 
