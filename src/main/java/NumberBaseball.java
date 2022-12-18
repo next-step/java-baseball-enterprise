@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -35,9 +34,8 @@ public class NumberBaseball {
 
     private void startGame() {
         List<Integer> guessNumber = getGuess();
-        List<Integer> result = calculateResult(guessNumber);
-        int strikes = result.get(0);
-        int balls = result.get(1);
+        int strikes = countStrikes(guessNumber);
+        int balls = countBalls(guessNumber);
         displayResult(strikes, balls);
     }
 
@@ -53,15 +51,6 @@ public class NumberBaseball {
             message.append(balls).append(" 볼");
         }
         System.out.println(message);
-    }
-
-    private List<Integer> calculateResult(List<Integer> guessNumber) {
-        List<Integer> result = new ArrayList<>(2);
-
-        result.add(countStrikes(guessNumber));
-        result.add(countBalls(guessNumber));
-
-        return result;
     }
 
     private int countStrikes(List<Integer> guessNumber) {
