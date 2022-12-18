@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import utils.InteractionUtil;
 import utils.RandomUtil;
 
 public class NumberBaseball {
@@ -14,6 +15,20 @@ public class NumberBaseball {
         return numSet.size() == numbers.size();
     }
 
+    private boolean isValidGuess(String guess) {
+        if (guess.length() != this.digit) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(guess);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+
+        return true;
+    }
+
     private void setAnswer() {
         List<Integer> randomNumbers;
         do {
@@ -25,7 +40,21 @@ public class NumberBaseball {
         this.answer = randomNumbers;
     }
 
-    public void start() {
+    private void startGame() {
+        int guessNumber = getGuess();
+    }
+
+    private int getGuess() {
+        String guess;
+        do {
+            guess = InteractionUtil.getUserInput("번호를 입력해주세요:");
+        } while (!isValidGuess(guess));
+
+        return Integer.parseInt(guess);
+    }
+
+    public void init() {
         setAnswer();
+        startGame();
     }
 }
