@@ -20,6 +20,15 @@ public class BaseballNumbers {
         this.numbers.addAll(numbers);
     }
 
+    public BaseballNumbers(int digit, int numbers) {
+        int validDigit = cutMinMax(digit, MIN_DIGIT, MAX_DIGIT);
+        this.numbers = new ArrayList<>(validDigit);
+        char[] characters = String.valueOf(numbers).toCharArray();
+        for (char character : characters) {
+            this.numbers.add(Character.getNumericValue(character));
+        }
+    }
+
     private void setRandomNumbers(int digit) {
         Permutation permutation = new Permutation(9, digit);
         permutation.rand();

@@ -8,11 +8,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseballNumbersTest {
     @Test
-    void BaseballNumbersConstructorTest() {
+    void BaseballNumbersConstructor0Test() {
         BaseballNumbers baseballNumbers = new BaseballNumbers(3);
         List<Integer> numbers = baseballNumbers.getNumbers();
         for (Integer number : numbers) {
             assertThat(number).isIn(BaseballNumbers.lookUpTable);
+        }
+    }
+
+    @Test
+    void BaseballNumbersConstructor1Test() {
+        BaseballNumbers baseballNumbers = new BaseballNumbers(3, 435);
+        List<Integer> numbers = baseballNumbers.getNumbers();
+        for (int i = 0, number = 435; i < numbers.size(); i++, number /= 10) {
+            assertThat(numbers.get(numbers.size() - 1 - i)).isEqualTo(number % 10);
         }
     }
 
