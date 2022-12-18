@@ -2,6 +2,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import utils.InteractionUtil;
+import utils.NumberUtil;
 import utils.RandomUtil;
 
 public class NumberBaseball {
@@ -16,17 +17,7 @@ public class NumberBaseball {
     }
 
     private boolean isValidGuess(String guess) {
-        if (guess.length() != this.digit) {
-            return false;
-        }
-
-        try {
-            Integer.parseInt(guess);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-
-        return true;
+        return guess.length() == this.digit && NumberUtil.isNumber(guess);
     }
 
     private void setAnswer() {
