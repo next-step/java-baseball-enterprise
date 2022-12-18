@@ -19,14 +19,12 @@ public class BaseballScore {
     }
 
     private void calculateStrikeScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
-        strike = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
             strike += Boolean.compare(playerNumbers.get(i).equals(computerNumbers.get(i)), false);
         }
     }
 
     private void calculateBallScore(List<Integer> playerNumbers, List<Integer> computerNumbers) {
-        ball = 0;
         for (Integer playerNumber : playerNumbers) {
             ball += Boolean.compare(computerNumbers.contains(playerNumber), false);
         }
