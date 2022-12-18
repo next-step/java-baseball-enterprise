@@ -40,6 +40,19 @@ public class NumberBaseball {
             balls = countBalls(guessNumber);
             displayResult(strikes, balls);
         } while (strikes != 3);
+
+        endGame();
+    }
+
+    private void endGame() {
+        String input;
+        do {
+            input = InteractionUtil.getUserInput("끝내려면 1, 재시작하려면 2를 입력해주세요.");
+        } while (!input.equals("1") && !input.equals("2"));
+
+        if (input.equals("2")) {
+            init();
+        }
     }
 
     private void displayResult(int strikes, int balls) {
