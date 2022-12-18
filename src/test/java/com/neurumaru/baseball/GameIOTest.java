@@ -7,24 +7,24 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameUITest {
+public class GameIOTest {
     @Test
     void getStringTest() {
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("Test.TestTag", "Test String");
-        GameUI gameUI = new GameUI(System.in, System.out, stringMap);
-        assertThat(gameUI.getString("Test.TestTag")).isEqualTo("Test String");
-        assertThat(gameUI.getString("Test.NoExist")).isEqualTo(null);
+        GameIO gameIO = new GameIO(System.in, System.out, stringMap);
+        assertThat(gameIO.getString("Test.TestTag")).isEqualTo("Test String");
+        assertThat(gameIO.getString("Test.NoExist")).isEqualTo(null);
     }
 
     @Test
     void mapStringTest() {
         Map<String, String> map = new HashMap<>();
         map.put("{0}", "10");
-        GameUI gameUI = new GameUI(System.in, System.out);
-        assertThat(gameUI.mapString("5 + 5 = {0}", map)).isEqualTo("5 + 5 = 10");
-        assertThat(gameUI.mapString("{0} + {0} = 20", map)).isEqualTo("10 + 10 = 20");
-        assertThat(gameUI.mapString("5 + 5 = {1}", map)).isEqualTo("5 + 5 = {1}");
+        GameIO gameIO = new GameIO(System.in, System.out);
+        assertThat(gameIO.mapString("5 + 5 = {0}", map)).isEqualTo("5 + 5 = 10");
+        assertThat(gameIO.mapString("{0} + {0} = 20", map)).isEqualTo("10 + 10 = 20");
+        assertThat(gameIO.mapString("5 + 5 = {1}", map)).isEqualTo("5 + 5 = {1}");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class GameUITest {
         Map<String, String> map = new HashMap<>();
         map.put("{0}", "10");
         map.put("{1}", "100");
-        GameUI gameUI = new GameUI(System.in, System.out, stringMap);
-        assertThat(gameUI.getMappedString("Test.TestTag", map)).isEqualTo("10 * 10 = 100");
+        GameIO gameIO = new GameIO(System.in, System.out, stringMap);
+        assertThat(gameIO.getMappedString("Test.TestTag", map)).isEqualTo("10 * 10 = 100");
     }
 }

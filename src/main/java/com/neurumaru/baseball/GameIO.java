@@ -6,16 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class GameUI {
+public class GameIO {
     private final Scanner scanner;
     private final PrintStream printStream;
     private final Map<String, String> stringMap;
 
-    public GameUI(InputStream inputStream, PrintStream printStream) {
+    public GameIO(InputStream inputStream, PrintStream printStream) {
         this(inputStream, printStream, new HashMap<>());
     }
 
-    public GameUI(InputStream inputStream, PrintStream printStream, Map<String, String> stringMap) {
+    public GameIO(InputStream inputStream, PrintStream printStream, Map<String, String> stringMap) {
         this.scanner = new Scanner(inputStream);
         this.printStream = printStream;
         this.stringMap = stringMap;

@@ -1,13 +1,13 @@
 package com.neurumaru.baseball;
 
 public class BaseballStage extends RepeatedGame {
-    private final GameUI gameUI;
+    private final GameIO gameIO;
     private final int digit;
     private BaseballNumbers computerBaseballNumbers;
     private BaseballScore baseballScore;
 
-    public BaseballStage(GameUI gameUI, int digit) {
-        this.gameUI = gameUI;
+    public BaseballStage(GameIO gameIO, int digit) {
+        this.gameIO = gameIO;
         this.digit = digit;
     }
 
@@ -18,7 +18,7 @@ public class BaseballStage extends RepeatedGame {
 
     @Override
     public void startGame() {
-        gameUI.print(BaseballData.REQUEST_INPUT_NUMBER_TAG);
+        gameIO.print(BaseballData.REQUEST_INPUT_NUMBER_TAG);
         baseballScore = getBaseballScore(inputValid());
         printScore(baseballScore);
 
@@ -33,30 +33,30 @@ public class BaseballStage extends RepeatedGame {
         printStrike(score);
         printBall(score);
         printNothing(score);
-        gameUI.println();
+        gameIO.println();
     }
 
     private void printStrike(BaseballScore score) {
         if (score.getStrike() != 0) {
-            gameUI.print(BaseballData.STRIKE_TAG, BaseballData.getStrikeMap(score.getStrike()));
+            gameIO.print(BaseballData.STRIKE_TAG, BaseballData.getStrikeMap(score.getStrike()));
         }
     }
 
     private void printBall(BaseballScore score) {
         if (score.getBall() != 0) {
-            gameUI.print(BaseballData.BALL_TAG, BaseballData.getBallMap(score.getBall()));
+            gameIO.print(BaseballData.BALL_TAG, BaseballData.getBallMap(score.getBall()));
         }
     }
 
     private void printNothing(BaseballScore score) {
         if (score.getStrike() == 0 && score.getBall() == 0) {
-            gameUI.print(BaseballData.NOTHING_TAG);
+            gameIO.print(BaseballData.NOTHING_TAG);
         }
     }
 
     @Override
     public void endGame() {
-        gameUI.println(BaseballData.GAME_TERMINATION_TAG, BaseballData.getGameTerminationMap(digit));
+        gameIO.println(BaseballData.GAME_TERMINATION_TAG, BaseballData.getGameTerminationMap(digit));
     }
 
     @Override
@@ -65,9 +65,9 @@ public class BaseballStage extends RepeatedGame {
     }
 
     public int inputValid() {
-        int input = gameUI.input();
+        int input = gameIO.input();
         while (isValidInput(input)) {
-            input = gameUI.input();
+            input = gameIO.input();
         }
         return input;
     }
