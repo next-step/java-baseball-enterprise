@@ -32,13 +32,6 @@ public class BaseballNumbersTest {
     }
 
     @Test
-    void equalsTest() {
-        BaseballNumbers baseballNumbers1 = new BaseballNumbers(List.of(4, 3, 5));
-        BaseballNumbers baseballNumbers2 = new BaseballNumbers(List.of(4, 3, 5));
-        assertThat(baseballNumbers1.equals(baseballNumbers2)).isTrue();
-    }
-
-    @Test
     void cutMinMaxTest() {
         assertThat(BaseballNumbers.cutMinMax(10, 0, 9)).isEqualTo(9);
         assertThat(BaseballNumbers.cutMinMax(9, 0, 9)).isEqualTo(9);

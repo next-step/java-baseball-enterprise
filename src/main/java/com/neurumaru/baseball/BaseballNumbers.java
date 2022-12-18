@@ -39,10 +39,6 @@ public class BaseballNumbers {
         return numbers;
     }
 
-    public boolean equals(BaseballNumbers baseballNumbers) {
-        return numbers.equals(baseballNumbers.getNumbers());
-    }
-
     public static int cutMinMax(int number, int min, int max) {
         return Math.max(Math.min(number, max), min);
     }
