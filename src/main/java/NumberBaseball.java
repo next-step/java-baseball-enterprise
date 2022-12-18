@@ -21,7 +21,7 @@ public class NumberBaseball {
         return guess.length() == this.digit && NumberUtil.isNumber(guess);
     }
 
-    private void setAnswer() {
+    private void setValidAnswer() {
         List<Integer> randomNumbers;
         do {
             randomNumbers = RandomUtil.generateRandomNumbers(digit);
@@ -35,7 +35,7 @@ public class NumberBaseball {
     private void startGame() {
         int strikes, balls;
         do {
-            List<Integer> guessNumber = getGuess();
+            List<Integer> guessNumber = getValidGuess();
             strikes = countStrikes(guessNumber);
             balls = countBalls(guessNumber);
             gameUI.displayResult(strikes, balls);
@@ -76,7 +76,7 @@ public class NumberBaseball {
         return balls;
     }
 
-    private List<Integer> getGuess() {
+    private List<Integer> getValidGuess() {
         String guess;
         do {
             guess = gameUI.getUserGuess();
@@ -86,7 +86,7 @@ public class NumberBaseball {
     }
 
     public void init() {
-        setAnswer();
+        setValidAnswer();
         startGame();
     }
 }
