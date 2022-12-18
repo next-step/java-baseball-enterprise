@@ -25,8 +25,6 @@ public class NumberBaseball {
         List<Integer> randomNumbers;
         do {
             randomNumbers = RandomUtil.generateRandomNumbers(digit);
-            randomNumbers.forEach(System.out::println);
-            System.out.println();
         } while (!isValidAnswer(randomNumbers));
 
         this.answer = randomNumbers;
