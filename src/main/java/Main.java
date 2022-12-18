@@ -1,19 +1,19 @@
 import numberbaseball.*;
 import numberbaseballimpl.BallImpl;
 import numberbaseballimpl.BaseImpl;
-import numberbaseballimpl.NumberBaseballImpl;
+import numberbaseballimpl.EnemyImpl;
 import numberbaseballimpl.NumberBaseballUIImpl;
 
 import java.util.Scanner;
 
 public class Main {
 
-    private static NumberBaseball numberBaseball;
+    private static Enemy enemy;
     private static NumberBaseballUI ui;
 
     public static void main(String[] args) {
         Base base = BaseImpl.createRandomBase();
-        numberBaseball = NumberBaseballImpl.from(base);
+        enemy = EnemyImpl.from(base);
         ui = NumberBaseballUIImpl.from(new Scanner(System.in));
         playNumberBaseball();
     }
@@ -22,7 +22,7 @@ public class Main {
         boolean isContinue = true;
         while (isContinue) {
             Base base = BaseImpl.createRandomBase();
-            numberBaseball.reset(base);
+            enemy.reset(base);
             playNumberBaseballRound();
             ui.printEnd();
             isContinue = isContinue();
@@ -33,7 +33,7 @@ public class Main {
         boolean solved = false;
         while (!solved) {
             Ball ball = createBall();
-            Hint hint = numberBaseball.shoot(ball);
+            Hint hint = enemy.shoot(ball);
             ui.printHint(hint);
             solved = hint.isAnswer();
         }

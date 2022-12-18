@@ -3,17 +3,17 @@ package numberbaseballimpl;
 import numberbaseball.Ball;
 import numberbaseball.Base;
 import numberbaseball.Hint;
-import numberbaseball.NumberBaseball;
+import numberbaseball.Enemy;
 
-public class NumberBaseballImpl implements NumberBaseball {
+public class EnemyImpl implements Enemy {
 
     private Base base;
 
-    public static NumberBaseball from(Base base) {
-        return new NumberBaseballImpl(base);
+    public static Enemy from(Base base) {
+        return new EnemyImpl(base);
     }
 
-    private NumberBaseballImpl(Base base) {
+    private EnemyImpl(Base base) {
         reset(base);
     }
 

@@ -1,6 +1,6 @@
 package numberbaseball;
 
-public interface NumberBaseball {
+public interface Enemy {
 
     void reset(Base base);
 

@@ -2,36 +2,36 @@ package numberbaseball;
 
 import numberbaseballimpl.BallImpl;
 import numberbaseballimpl.BaseImpl;
-import numberbaseballimpl.NumberBaseballImpl;
+import numberbaseballimpl.EnemyImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class NumberBaseballTest {
+class EnemyTest {
 
     @Test
     void from_throwException_baseIsNull() {
         assertThrows(IllegalArgumentException.class, () -> {
-            NumberBaseballImpl.from(null);
+            EnemyImpl.from(null);
         });
     }
 
     @Test
     void reset_throwException_baseIsNull() {
         Base base = BaseImpl.createRandomBase();
-        NumberBaseball numberBaseball = NumberBaseballImpl.from(base);
+        Enemy enemy = EnemyImpl.from(base);
         assertThrows(IllegalArgumentException.class, () -> {
-            numberBaseball.reset(null);
+            enemy.reset(null);
         });
     }
 
     @Test
     void shoot_throwException_ballIsNull() {
         Base base = BaseImpl.createRandomBase();
-        NumberBaseball numberBaseball = NumberBaseballImpl.from(base);
+        Enemy enemy = EnemyImpl.from(base);
         assertThrows(IllegalArgumentException.class, () -> {
-            numberBaseball.shoot(null);
+            enemy.shoot(null);
         });
     }
 
@@ -39,8 +39,8 @@ class NumberBaseballTest {
     void shoot_willReturnAnswerHint_ballEqualsBase() {
         Base base = BaseImpl.createRandomBase();
         Ball ball = baseToBall(base);
-        NumberBaseball numberBaseball = NumberBaseballImpl.from(base);
-        Hint hint = numberBaseball.shoot(ball);
+        Enemy enemy = EnemyImpl.from(base);
+        Hint hint = enemy.shoot(ball);
         assertTrue(hint.isAnswer());
     }
 
