@@ -37,9 +37,21 @@ public class GameUI {
         return mapString(base, map);
     }
 
+    public void print(String tag) {
+        printStream.print(getString(tag));
+    }
+
     public void print(String tag, Map<String, String> map) {
         String string = getMappedString(tag, map);
         printStream.print(string);
+    }
+
+    public void println() {
+        printStream.println();
+    }
+
+    public void println(String tag) {
+        printStream.println(getString(tag));
     }
 
     public void println(String tag, Map<String, String> map) {
