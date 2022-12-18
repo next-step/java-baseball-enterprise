@@ -5,3 +5,9 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 기능 요구사항
+- [x] 3자리 수를 0~9 숫자 3개로 변환
+- [x] 1~9의 서로 다른 임의의 숫자 3개 생성
+- [x] 스트라이크 / 볼 / 낫싱 판별
+- [x] 메인 로직 - 게임 종료 조건 만족할 때까지 게임 반복
