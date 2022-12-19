@@ -12,7 +12,7 @@ public class BaseballNumbersTest {
         BaseballNumbers baseballNumbers = new BaseballNumbers(3);
         List<Integer> numbers = baseballNumbers.getNumbers();
         for (Integer number : numbers) {
-            assertThat(number).isIn(BaseballNumbers.lookUpTable);
+            assertThat(number).isIn(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
         }
     }
 

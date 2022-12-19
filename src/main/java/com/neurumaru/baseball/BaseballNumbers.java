@@ -6,7 +6,7 @@ import java.util.List;
 public class BaseballNumbers {
     private static final int MIN_DIGIT = 1;
     private static final int MAX_DIGIT = 9;
-    protected static final List<Integer> lookUpTable = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    private static final List<Integer> LOOK_UP_TABLE = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
     private List<Integer> numbers;
 
@@ -32,7 +32,7 @@ public class BaseballNumbers {
     private void setRandomNumbers(int digit) {
         Permutation permutation = new Permutation(9, digit);
         permutation.rand();
-        numbers = permutation.map(lookUpTable);
+        numbers = permutation.map(LOOK_UP_TABLE);
     }
 
     public List<Integer> getNumbers() {
