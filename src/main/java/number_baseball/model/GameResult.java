@@ -27,9 +27,7 @@ public class GameResult {
         }
 
         if (ball > 0) {
-            System.out.printf("%d 볼 ", this.ball);
+            System.out.printf("%d 볼\n", this.ball);
         }
-
-        System.out.println();
     }
 }
