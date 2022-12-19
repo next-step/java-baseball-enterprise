@@ -111,6 +111,4 @@ public class GameTest {
         assertThat(result.isFinished())
                 .isEqualTo(false);
     }
-
-
 }
