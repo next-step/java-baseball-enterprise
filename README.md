@@ -5,3 +5,12 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 기능 목록
+1. 정답 설정 기능(중복되지 않는 임의의 3자리 난수)
+2. 정답 재설정 기능
+> 새 게임 시작시 사용
+3. 숫자 입력 받기 기능
+4. 채점 기능
+5. 정답시 분기 기능
+6. main 메서드
