@@ -10,9 +10,9 @@
 * Ball
 * Hint test
 * Hint
-* NumberBaseball test
-* NumberBaseball
+* Enemy
+* Enemy test
 * NumberbaseballUI
-* Main
+* NumberBaseball
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
