@@ -36,20 +36,16 @@ public class Util {
      * 채점 결과 터미널에 출력
      */
     public static void printScore(ScoreBoard scoreBoard) {
-        String scoreStr = "";
         if (scoreBoard.getNothing() == 3) {
             System.out.println("일치하는 숫자가 없습니다.");
             return;
         }
-        if (scoreBoard.getStrike() != 0) {
-            scoreStr += scoreBoard.getStrike() + " 스트라이크";
-        }
-        if (scoreBoard.getStrike() != 0 && scoreBoard.getBall() != 0) {
-            scoreStr += " ";
-        }
-        if (scoreBoard.getBall() != 0) {
-            scoreStr += scoreBoard.getBall() + "볼";
-        }
+
+        String scoreStr = "";
+        if (scoreBoard.getStrike() != 0) scoreStr += scoreBoard.getStrike() + " 스트라이크";
+        if (scoreBoard.getStrike() != 0 && scoreBoard.getBall() != 0) scoreStr += " ";
+        if (scoreBoard.getBall() != 0) scoreStr += scoreBoard.getBall() + "볼";
+
         System.out.println(scoreStr);
     }
 }
