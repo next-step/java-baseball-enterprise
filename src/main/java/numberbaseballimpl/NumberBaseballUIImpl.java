@@ -19,11 +19,11 @@ public class NumberBaseballUIImpl implements NumberBaseballUI {
 
     @Override
     public int inputBall() {
-        int ball;
-        do {
+        int ball = -1;
+        while (ball == -1) {
             printBallInput();
             ball = getInt();
-        } while (ball == -1);
+        }
         return ball;
     }
 
