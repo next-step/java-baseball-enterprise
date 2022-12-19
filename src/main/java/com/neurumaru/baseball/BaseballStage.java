@@ -19,7 +19,8 @@ public class BaseballStage extends RepeatedGame {
     @Override
     public void startGame() {
         gameIO.print(BaseballData.REQUEST_INPUT_NUMBER_TAG);
-        baseballScore = getBaseballScore(inputValid());
+        BaseballStageInputValidator validator = new BaseballStageInputValidator(digit);
+        baseballScore = getBaseballScore(gameIO.inputValid(validator));
         printScore(baseballScore);
 
     }
@@ -62,17 +63,5 @@ public class BaseballStage extends RepeatedGame {
     @Override
     public boolean isRepeated() {
         return baseballScore.getStrike() != digit;
-    }
-
-    public int inputValid() {
-        int input = gameIO.input();
-        while (isValidInput(input)) {
-            input = gameIO.input();
-        }
-        return input;
-    }
-
-    public boolean isValidInput(int input) {
-        return Math.log10(input) + 1 == digit;
     }
 }

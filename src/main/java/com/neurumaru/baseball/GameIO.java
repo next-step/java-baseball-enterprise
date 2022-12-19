@@ -62,4 +62,12 @@ public class GameIO {
     public int input() {
         return scanner.nextInt();
     }
+
+    public int inputValid(Validator<Integer> validator) {
+        int integer = input();
+        while (!validator.isValid(integer)) {
+            integer = input();
+        }
+        return integer;
+    }
 }

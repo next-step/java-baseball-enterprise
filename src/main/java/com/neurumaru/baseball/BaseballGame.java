@@ -29,14 +29,7 @@ public class BaseballGame extends RepeatedGame {
     @Override
     public boolean isRepeated() {
         gameIO.println(BaseballData.RESTART_TAG, BaseballData.getRestartMap(restart_number, quit_number));
-        int input = gameIO.input();
-        while (!isValidInput(input)) {
-            input = gameIO.input();
-        }
-        return input == restart_number;
-    }
-
-    public boolean isValidInput(int input) {
-        return input == restart_number || input == quit_number;
+        BaseballGameInputValidator validator = new BaseballGameInputValidator(restart_number, quit_number);
+        return gameIO.inputValid(validator) == restart_number;
     }
 }
