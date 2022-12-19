@@ -2,7 +2,6 @@ package baseball.validator;
 
 import baseball.constant.Constant;
 import baseball.domain.BaseballNumbers;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.regex.Pattern;

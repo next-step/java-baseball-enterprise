@@ -38,7 +38,7 @@ public class StrikeBallCount {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof StrikeBallCount){
+        if (obj instanceof StrikeBallCount) {
             StrikeBallCount strikeBallCount = (StrikeBallCount) obj;
             return strikeCount == strikeBallCount.getStrikeCount() && ballCount == strikeBallCount.getBallCount();
         }

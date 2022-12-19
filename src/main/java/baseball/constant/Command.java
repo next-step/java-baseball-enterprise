@@ -1,8 +1,7 @@
 package baseball.constant;
 
 public enum Command {
-    RESTART("1"),
-    QUIT("2");
+    RESTART("1"), QUIT("2");
 
     private final String value;
 

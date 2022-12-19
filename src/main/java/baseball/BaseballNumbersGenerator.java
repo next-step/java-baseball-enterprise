@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.constant.Constant;
 import baseball.domain.BaseballNumbers;
-
 import java.util.Random;
 
 public class BaseballNumbersGenerator {

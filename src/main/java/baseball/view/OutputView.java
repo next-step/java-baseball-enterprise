@@ -15,8 +15,7 @@ public class OutputView {
         if (sb.length() == 0) {
             sb.append(NOTHING_KOR);
         }
-        System.out.println(sb.toString()
-                .trim());
+        System.out.println(sb.toString().trim());
     }
 
     public void addString(int num, String kor_string) {

@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.constant.Constant;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class BaseballNumbers {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof BaseballNumbers){
+        if (obj instanceof BaseballNumbers) {
             return numbers.equals(((BaseballNumbers) obj).numbers);
         }
         return false;

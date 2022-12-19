@@ -1,13 +1,13 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import baseball.validator.InputRestartValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputRestartValidatorTest {
     private static final String INVALID_RESTART_INPUT_ERROR_MESSAGE = "[ERROR] 입력을 확인해주세요.";
