@@ -1,22 +1,43 @@
-import constant.NumberConstant;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Computer {
-    int number;
+    List<Integer> numbers;
 
-    public void initializeRandomNumber() {
-        this.number = generateRandomNumberBetween(NumberConstant.MIN, NumberConstant.MAX);
+    Computer() {
+        this.numbers = generateNumberList();
     }
 
-    private int generateRandomNumberBetween(int min, int max) {
-        try {
-            return SecureRandom.getInstanceStrong()
-                    .nextInt(max + 1 - min) + min;
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+    private void calculate(List<Integer> input) {
+        Result result = new Result();
+        calculateStrike(input, result);
+        calculateBall(input, result);
+    }
+
+    private void calculateBall(List<Integer> input, Result result) {
+        input.retainAll(numbers);
+        result.addBall(input.size());
+    }
+
+    private void calculateStrike(List<Integer> input, Result result) {
+        for(int i = 0 ; i < numbers.size() ; i++) {
+            addValueIfIsStrike(input, result, i);
         }
+    }
+
+    private void addValueIfIsStrike(List<Integer> input, Result result, int i) {
+        if(numbers.get(i).equals(input.get(i))) {
+            result.addStrike();
+        }
+    }
+
+    private List<Integer> generateNumberList() {
+        List<Integer> numberList = new ArrayList<>();
+        for(int i = 1 ; i <= 9 ; i++) {
+            numberList.add(i);
+        }
+        Collections.shuffle(numberList);
+        return numberList.subList(0, 3);
     }
 }
