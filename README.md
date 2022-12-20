@@ -5,3 +5,7 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 기능 목록
+1. setUp & input 받아서 validation 진행
+2. 

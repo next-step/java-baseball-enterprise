@@ -5,6 +5,7 @@ public class Main {
     private static String answer;
     private static boolean isFinish;
     private static Scanner scanner;
+    private static InputValidator validator;
     public static void main(String[] args) {
         String input;
 
@@ -12,6 +13,7 @@ public class Main {
 
         while(!isFinish){
             input = getInput();
+
         }
     }
     private static void setUp(){
@@ -19,29 +21,16 @@ public class Main {
         isFinish = false;
         answer = String.valueOf(random.nextInt()%1000);
         scanner = new Scanner(System.in);
+        validator = new InputValidator();
     }
     private static String getInput(){
         String input;
         do{
-            System.out.print(Message.INPUT_MSG);
-            input = scanner.nextLine();
-        }while(inputCheck(input));
+            System.out.print(Message.INPUT_MSG.getMsgStr());
+            input = scanner.nextLine().trim();
+        }while(!validator.validate(input));
 
         return input;
     }
-    private static boolean inputCheck(String input){
-        if(input.length() != 3){
-            System.out.println(Message.INVALID_INPUT_WARNING);
-            return true;
-        }
 
-        try{
-            Integer.parseInt(input);
-        }catch (NumberFormatException numberFormatException){
-            System.out.println(Message.INVALID_INPUT_WARNING);
-            return true;
-        }
-
-        return false;
-    };
 }
