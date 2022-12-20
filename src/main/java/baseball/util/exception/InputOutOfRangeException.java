@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.util.exception;
 
 
 public class InputOutOfRangeException extends RuntimeException{
