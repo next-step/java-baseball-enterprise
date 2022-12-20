@@ -10,4 +10,18 @@ public class StringTest {
         String actual = "abc".replace("b", "d");
         assertThat(actual).isEqualTo("adc");
     }
+
+    @Test
+    void splitWithContains() {
+        String actual = "1,2";
+        String resultString[] = actual.split(",");
+        assertThat(resultString).contains("1", "2");
+    }
+
+    @Test
+    void splitWithContainsExactly() {
+        String actual = "1";
+        String resultString[] = actual.split(",");
+        assertThat(resultString).containsExactly("1");
+    }
 }
