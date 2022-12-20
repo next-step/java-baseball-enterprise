@@ -17,6 +17,6 @@ public interface Baseball {
 	 * @return int[2] - 0: strike, 1: ball
 	 */
 	public int[] getMatchResult(int[] computerNumber, int[] playerNumber);
-	public String drawMatchResult(int[] matchResult);
+	public void drawMatchResult(int[] matchResult);
 	public boolean isGameOver(int[] matchResult);
 }

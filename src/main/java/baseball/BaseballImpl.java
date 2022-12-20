@@ -83,16 +83,34 @@ public class BaseballImpl implements Baseball{
 	 */
 	@Override
 	public int[] getMatchResult(int[] computerNumber, int[] playerNumber) {
-		return new int[2];
+		int strike = 0;
+		int ball = 0;
+
+		if(computerNumber[0] == playerNumber[0]) strike++;
+		if(computerNumber[0] == playerNumber[1] || computerNumber[0] == playerNumber[2]) ball++;
+
+		if(computerNumber[1] == playerNumber[1]) strike++;
+		if(computerNumber[1] == playerNumber[0] || computerNumber[1] == playerNumber[2]) ball++;
+
+		if(computerNumber[2] == playerNumber[2]) strike++;
+		if(computerNumber[2] == playerNumber[0] || computerNumber[2] == playerNumber[1]) ball++;
+
+		int[] matchResult = {strike, ball};
+		return matchResult;
 	}
 
 	@Override
-	public String drawMatchResult(int[] matchResult) {
-		return null;
+	public void drawMatchResult(int[] matchResult) {
+		if(matchResult[0] > 0)
+			System.out.println(matchResult[0] + " 스트라이크 ");
+		if(matchResult[1] > 0)
+			System.out.println(matchResult[1] + " 볼");
+		if(matchResult[0] + matchResult[1] == 0)
+			System.out.println("낫싱");
 	}
 
 	@Override
 	public boolean isGameOver(int[] matchResult) {
-		return false;
+		return matchResult[0]==3;
 	}
 }
