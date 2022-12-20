@@ -37,7 +37,7 @@ public class BaseballImpl implements Baseball{
 	}
 
 	@Override
-	public boolean checkValidOfPlayerInput(int[] playerInput) {
+	public boolean checkValidOfNumber(int[] number) {
 		return false;
 	}
 

@@ -6,7 +6,7 @@ public interface Baseball {
 	public void drawStartMessage();
 	public int[] generateNumber();
 	public int[] getPlayerInput();
-	public boolean checkValidOfPlayerInput(int[] playerInput);
+	public boolean checkValidOfNumber(int[] number);
 	public boolean check1to9(int[] playerInput);
 	public boolean checkDuplicate(int[] playerInput);
 
