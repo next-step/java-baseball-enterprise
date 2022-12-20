@@ -16,9 +16,9 @@ public class GameResult {
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
 
-        checkIsNothing(sb);
-        checkStrikeCount(sb);
-        checkBallCount(sb);
+        sb.append(checkIsNothing());
+        sb.append(checkStrikeCount());
+        sb.append(checkBallCount());
 
         return sb.toString();
     }
@@ -31,22 +31,16 @@ public class GameResult {
         ballCount += 1;
     }
 
-    public void checkIsNothing(StringBuilder sb) {
-        if (strikeCount + ballCount == 0) {
-            sb.append("낫싱");
-        }
+    public String checkIsNothing() {
+        return strikeCount + ballCount == 0 ? "낫싱" : "";
     }
 
-    public void checkStrikeCount(StringBuilder sb) {
-        if (strikeCount > 0) {
-            sb.append(strikeCount + "스트라이크 ");
-        }
+    public String checkStrikeCount() {
+        return strikeCount > 0 ? strikeCount + "스트라이크 " : "";
     }
 
-    public void checkBallCount(StringBuilder sb) {
-        if (ballCount > 0) {
-            sb.append(ballCount + "볼");
-        }
+    public String checkBallCount() {
+        return ballCount > 0 ? ballCount + "볼" : "";
     }
 
 }
