@@ -16,7 +16,7 @@ public class Number_Baseball {
         this.user_number = "";
         this.isEnd = false;
         this.letter = 3;
-        create_random_number = new Create_Random_Number();
+        create_random_number = new Create_Random_Number(this.letter);
         create_user_number = new Create_User_Number();
         number_matching = new Number_Matching();
     }
