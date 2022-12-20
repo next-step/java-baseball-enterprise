@@ -2,14 +2,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer2 {
+public class Computer {
     List<Integer> numbers = new ArrayList<>();
 
-    public Computer2() {
+    public Computer() {
         this.numbers = generateNumberList();
     }
 
-    private Result calculate(List<Integer> input) {
+    public Computer(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public Result calculate(List<Integer> input) {
         Result result = new Result(0, 0);
         calculateStrike(input, result);
         calculateBall(input, result);
@@ -33,7 +37,7 @@ public class Computer2 {
         }
     }
 
-    private List<Integer> generateNumberList() {
+    public List<Integer> generateNumberList() {
         List<Integer> numberList = new ArrayList<>();
         for(int i = 1 ; i <= 9 ; i++) {
             numberList.add(i);
