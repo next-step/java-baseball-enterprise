@@ -11,7 +11,7 @@ public class RandomUtil {
         List<Integer> arr = new ArrayList<>(length);
 
         for (int i = 0; i < length; ++i) {
-            arr.add(random.nextInt(10));
+            arr.add(random.nextInt(9) + 1);
         }
 
         return arr;
