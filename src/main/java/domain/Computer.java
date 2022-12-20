@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Computer {
 
-    private final int MIN = 1;
-    private final int MAX = 9;
+    private static final int MIN = 1;
+    private static final int MAX = 9;
 
     private final Random random;
 

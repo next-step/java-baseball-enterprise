@@ -8,7 +8,7 @@ public class Console {
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public Console() {
         scanner = new Scanner(System.in);
