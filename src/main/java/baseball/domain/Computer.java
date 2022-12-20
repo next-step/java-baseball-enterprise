@@ -1,3 +1,7 @@
+package baseball.domain;
+
+import baseball.domain.Result;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

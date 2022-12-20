@@ -1,4 +1,6 @@
-import org.junit.jupiter.api.BeforeAll;
+package baseball;
+
+import baseball.domain.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

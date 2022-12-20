@@ -1,15 +1,13 @@
+package baseball;
+
+import baseball.domain.Computer;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class BaseballTest {
     @ParameterizedTest
@@ -53,7 +51,7 @@ public class BaseballTest {
 
     private void validateResult(String answer, String input, String expected) {
         Computer computer = new Computer(stringToIntegerList(answer));
-        assertThat(computer.calculate(stringToIntegerList(input))
+        Assertions.assertThat(computer.calculate(stringToIntegerList(input))
                 .exportResultString())
                 .isEqualTo(expected);
     }
