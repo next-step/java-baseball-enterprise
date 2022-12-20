@@ -21,11 +21,17 @@ class BaseBallGameTest {
 //    @Test
 //    void setNumbers() {
 //    }
-//
-//    @Test
-//    void getRandomNumber() {
-//    }
-//
+
+    @Test
+    void getRandomNumber() {
+        int result = baseBallGame.getRandomNumber();
+        assertTrue(result>= BaseBallGame.RANGE_LOW);
+        assertTrue(result<= BaseBallGame.RANGE_HIGH);
+        for (int number: baseBallGame.numbers) {
+            assertNotEquals(result, number);
+        }
+    }
+
 //    @Test
 //    void getInputs() {
 //    }
