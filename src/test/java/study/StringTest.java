@@ -1,8 +1,12 @@
 package study;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -29,5 +33,22 @@ public class StringTest {
     void substring() {
         String actual = "(1,2)";
         assertThat(actual.substring(1, actual.length() - 1)).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("특정 위치의 문자 가져오기")
+    void charAt() {
+        String actual = "abc";
+        assertThat(actual.charAt(2)).isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("범위 밖의 문자 가져오기")
+    void charAtOutOfRange() {
+        String actual = "abc";
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                actual.charAt(4);
+            }).withMessageMatching("String index out of range: \\d+");
     }
 }
