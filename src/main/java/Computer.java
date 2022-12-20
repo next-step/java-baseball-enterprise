@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer {
-    List<Integer> numbers;
+public class Computer2 {
+    List<Integer> numbers = new ArrayList<>();
 
-    Computer() {
+    public Computer2() {
         this.numbers = generateNumberList();
     }
 
