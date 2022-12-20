@@ -8,7 +8,8 @@ public class BaseBallGame {
 
     // 초기화 및 게임 시작
     void initGame(){
-
+        this.restart = false;
+        this.numbers = new int[DIGIT_SIZE];
     }
 
     // 임의의 수 3개 선택
