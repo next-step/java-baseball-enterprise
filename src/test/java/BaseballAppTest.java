@@ -11,10 +11,6 @@ class BaseballAppTest {
     BaseballConfig baseballConfig = new BaseballConfig();
     BaseballAppImpl baseballApp = new BaseballAppImpl(baseballConfig);
 
-    @Test
-    @DisplayName("baseball_app_run")
-    public void baseballAppRunTest() {
-        baseballApp.run();
-    }
+
 
 }

@@ -22,6 +22,10 @@ public class JudgeResult {
         this.ballNum = ballNum;
         this.strikesNum = strikesNum;
     }
+    public void change(JudgeResult judgeResult){
+        this.strikesNum = judgeResult.getStrikesNum();
+        this.ballNum = judgeResult.getBallNum();
+    }
 
 
     public String toString() {

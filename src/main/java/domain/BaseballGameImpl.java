@@ -2,10 +2,11 @@ package domain;
 
 import config.BaseballConfig;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameImpl extends BaseballGame {
+    List<Integer> answer;
+    List<Integer> inputNumbers;
 
 
     public BaseballGameImpl(BaseballConfig baseballConfig) {
@@ -17,14 +18,32 @@ public class BaseballGameImpl extends BaseballGame {
     public void play(int option) {
         if (option == 2)
             return;
-        List<Integer> answer = threeNumberGenerator.generate();
-        List<Integer> inputNumbers;
-        JudgeResult judgeResult = new JudgeResult(0, 0);
+        answer = threeNumberGenerator.generate();
+        JudgeResult judgeResult;
         do {
-            inputNumbers = this.inputView.getThreeNumbers();
-            JudgeResult judge = baseballReferee.judge(answer, inputNumbers);
-            judgeResult.change(judge.getStrikesNum(), judge.getBallNum());
+            inputNumbers = readThreeNumber();
+            judgeResult = judgeAndPrint(answer, inputNumbers);
         } while (judgeResult.getStrikesNum() != 3);
+        gameEnd();
+    }
+
+    private JudgeResult judgeAndPrint(List<Integer> answer, List<Integer> inputNumbers) {
+        JudgeResult judgeResult;
+        judgeResult = baseballReferee.judge(answer, inputNumbers);
+        outputView.printStrikeAndBall(judgeResult);
+        return judgeResult;
+    }
+
+    private void gameEnd() {
+        outputView.printGameResult();
+        outputView.printInputGameOption();
         play(inputView.readOneNumber());
+    }
+
+    private List<Integer> readThreeNumber() {
+        List<Integer> inputNumbers;
+        outputView.printInputThreeNumber();
+        inputNumbers = this.inputView.readThreeNumber();
+        return inputNumbers;
     }
 }
