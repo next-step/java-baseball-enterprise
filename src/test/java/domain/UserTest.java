@@ -14,14 +14,6 @@ public class UserTest {
         user.setNumbers("123");
         String actual = user.getNumbers().toString();
         assertThat(actual).isEqualTo("[1, 2, 3]");
-
-        user.reset();
-        try {
-            user.setNumbers("111");
-        } catch (IllegalArgumentException e) {
-            actual = e.getMessage();
-        }
-        assertThat(actual).isEqualTo("잘못된 입력입니다.");
     }
 
     @Test
