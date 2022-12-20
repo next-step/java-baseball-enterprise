@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.Random;
+import java.util.*;
 
 public class Computer {
 
@@ -11,6 +11,17 @@ public class Computer {
 
     public Computer() {
         random = new Random();
+    }
+
+    public String generateThreeDifferentNumber() {
+        Set<Integer> set = new HashSet<>();
+
+        while (set.size() < 3) {
+            set.add(generateRandomNumber());
+        }
+
+        return set.toString()
+                .replaceAll("[^0-9]", "");
     }
 
     public int generateRandomNumber() {
