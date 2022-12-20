@@ -3,24 +3,33 @@ package domain;
 import java.util.*;
 
 public class Computer {
-    private List<Integer> numbers;
+    private final ArrayList<Integer> numbers;
 
-    public Computer(List<Integer> numbers) {
+    public Computer(ArrayList<Integer> numbers) {
         this.numbers = numbers;
     }
 
     public Computer() {
-        Set<Integer> numberSet = new HashSet<>();
+        this.numbers =  new ArrayList<>();
+    }
+
+    public void reset(){
+        this.numbers.clear();
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
 
-        while(numberSet.size() < 3){
-            numbers.add(random.nextInt(9) + 1);
+        while(this.numbers.size() < 3){
+            this.computerNumAdd(random.nextInt(9) + 1);
         }
-        this.numbers =  new ArrayList<Integer>(numberSet);
+
+    }
+    public ArrayList<Integer> getNumbers() {
+        return numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public void computerNumAdd(int num){
+        if (!this.numbers.contains(num)){
+            this.numbers.add(num);
+        }
     }
 }
