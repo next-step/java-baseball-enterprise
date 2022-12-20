@@ -20,7 +20,7 @@ public class BaseballGame {
         return currentGameResult;
     }
 
-    public void compareNumber(char userNum, char computerNum) {
+    private void compareNumber(char userNum, char computerNum) {
         if (!computerNumbers.contains(String.valueOf(userNum))) {
             return;
         }
