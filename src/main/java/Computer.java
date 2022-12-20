@@ -3,16 +3,21 @@ import java.util.Collections;
 import java.util.List;
 
 public class Computer {
-    List<Integer> numbers;
+    List<Integer> numbers = new ArrayList<>();
 
-    Computer() {
+    public Computer() {
         this.numbers = generateNumberList();
     }
 
-    private void calculate(List<Integer> input) {
-        Result result = new Result();
+    public Computer(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public Result calculate(List<Integer> input) {
+        Result result = new Result(0, 0);
         calculateStrike(input, result);
         calculateBall(input, result);
+        return result;
     }
 
     private void calculateBall(List<Integer> input, Result result) {
@@ -32,7 +37,7 @@ public class Computer {
         }
     }
 
-    private List<Integer> generateNumberList() {
+    public List<Integer> generateNumberList() {
         List<Integer> numberList = new ArrayList<>();
         for(int i = 1 ; i <= 9 ; i++) {
             numberList.add(i);
