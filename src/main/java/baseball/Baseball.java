@@ -7,8 +7,8 @@ public interface Baseball {
 	public int[] generateNumber();
 	public int[] getPlayerInput();
 	public boolean checkValidOfNumber(int[] number);
-	public boolean check1to9(int[] playerInput);
-	public boolean checkDuplicate(int[] playerInput);
+	public boolean check1to9(int[] number);
+	public boolean checkDuplicate(int[] number);
 
 	/**
 	 *

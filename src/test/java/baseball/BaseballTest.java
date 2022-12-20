@@ -13,6 +13,6 @@ public class BaseballTest {
 		Baseball game = new BaseballImpl();
 		int[] numbers = game.generateNumber();
 		assertThat(numbers.length).isEqualTo(3);
-		assertThat(game.checkValidOfPlayerInput(numbers)).isTrue();
+		assertThat(game.checkValidOfNumber(numbers)).isTrue();
 	}
 }

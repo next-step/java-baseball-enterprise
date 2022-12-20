@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class BaseballImpl implements Baseball{
 
@@ -13,6 +14,7 @@ public class BaseballImpl implements Baseball{
 	@Override
 	public void start() {
 		drawStartMessage();
+		int[] answer = generateNumber();
 	}
 
 	@Override
@@ -33,21 +35,43 @@ public class BaseballImpl implements Baseball{
 
 	@Override
 	public int[] getPlayerInput() {
-		return null;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("숫자를 입력하세요 : ");
+		int input = sc.nextInt();
+		int[] processed = {input/100, input/10%10, input%10};
+		return processed;
 	}
 
 	@Override
 	public boolean checkValidOfNumber(int[] number) {
-		return false;
+		if(number.length != 3)
+			return false;
+		if(!check1to9(number))
+			return false;
+		if(checkDuplicate(number))
+			return false;
+		return true;
 	}
 
 	@Override
-	public boolean check1to9(int[] playerInput) {
-		return false;
+	public boolean check1to9(int[] number) {
+		if(number[0] < 1 || number[0] > 9)
+			return false;
+		if(number[1] < 1 || number[1] > 9)
+			return false;
+		if(number[2] < 1 || number[2] > 9)
+			return false;
+		return true;
 	}
 
 	@Override
-	public boolean checkDuplicate(int[] playerInput) {
+	public boolean checkDuplicate(int[] number) {
+		if(number[0] == number[1])
+			return true;
+		if(number[1] == number[2])
+			return true;
+		if(number[0] == number[2])
+			return true;
 		return false;
 	}
 
