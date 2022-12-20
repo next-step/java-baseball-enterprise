@@ -2,9 +2,11 @@ package baseball.domain;
 
 import baseball.domain.Result;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Computer {
     List<Integer> numbers = new ArrayList<>();
@@ -46,7 +48,7 @@ public class Computer {
         for(int i = 1 ; i <= 9 ; i++) {
             numberList.add(i);
         }
-        Collections.shuffle(numberList);
+        Collections.shuffle(numberList, new Random(System.nanoTime()));
         return numberList.subList(0, 3);
     }
 }
