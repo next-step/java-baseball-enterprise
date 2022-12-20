@@ -5,13 +5,17 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import num3baseball.dataobject.NumBallsNBalls;
+import num3baseball.dataobject.TrialResult;
 import num3baseball.exception.WrongNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class NumBallsNBallsTest {
     @Test
@@ -61,5 +65,25 @@ public class NumBallsNBallsTest {
                 NumBallsNBalls t = new NumBallsNBalls(nums);
             }).doesNotThrowAnyException();
         }
+    }
+
+
+    private ArrayList<Integer> numToList(int num){
+        ArrayList<Integer> res = new ArrayList<>();
+        while(num>0){
+            res.add(0, num%10);
+            num/=10;
+        }
+        return res;
+    }
+    @ParameterizedTest
+    @CsvSource(value={"475:0", "492:1", "912:2", "231:3", "983:10", "192:11", "321:12", "923:20", "123:30"}, delimiter=':')
+    void NumBallsNBallsTest4(int trials, int sb){
+        int answer = 123;
+
+        NumBallsNBalls ans = new NumBallsNBalls(numToList(answer));
+        TrialResult res = ans.compare(new NumBallsNBalls(numToList(trials)));
+        assertThat(res.getStrike()).isEqualTo(sb/10);
+        assertThat(res.getBall()).isEqualTo(sb%10);
     }
 }

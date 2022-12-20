@@ -1,6 +1,7 @@
 package num3baseball.dataobject;
 
 import num3baseball.exception.WrongNumberException;
+import num3baseball.exception.WrongTypeException;
 
 import java.util.*;
 
@@ -51,5 +52,33 @@ public class NumBallsNBalls implements NumBalls{
     @Override
     public int getNum(int index) {
         return nums.get(index);
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    private void compareOne(int thisIndex, int trialIndex, TrialResult result){
+        if (trialIndex==-1){
+            return;
+        }
+        if (thisIndex == trialIndex){
+            result.setStrikeBall(result.getStrike()+1, result.getBall());
+        }
+        if (thisIndex != trialIndex){
+            result.setStrikeBall(result.getStrike(), result.getBall()+1);
+        }
+    }
+    @Override
+    public TrialResult compare(NumBalls trial) {
+        if (!(trial instanceof NumBallsNBalls) || trial.getSize()!=size){
+            throw new WrongTypeException();
+        }
+        TrialResult result = new TrialResult(size);
+        for (int i=0;i<size;i++){
+            compareOne(i, nums.indexOf(trial.getNum(i)), result);
+        }
+        return result;
     }
 }
