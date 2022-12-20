@@ -14,7 +14,7 @@ public class Computer {
         return numbers;
     }
 
-    private void resetRandomNumbers() {
+    public void resetRandomNumbers() {
         numbers = getThreeUniqueRandomNumbers();
     }
     public Integer[] getThreeUniqueRandomNumbers() {

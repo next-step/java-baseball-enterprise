@@ -1,4 +1,3 @@
-import java.util.Locale;
 
 public class BaseballGame {
     private View view = new View();
@@ -7,9 +6,36 @@ public class BaseballGame {
     private boolean isRun = true;
     public void run() {
         while (isRun) {
-            player.setNumbers(view.getPlayerInput());
+            Integer[] numbers = computer.getNumbers();
+            System.out.println(""+numbers[0]+numbers[1]+numbers[2]);
+            try {
+                player.setNumbers(view.getPlayerInput());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             int[] scores = computer.calculateScores(player.getNumbers());
             view.printScore(scores);
+            isRun = checkIsRun(scores);
         }
     }
+
+    public boolean checkIsRun(int[] scores) {
+        if (scores[0] != 3) return true;
+        try {
+            if (scores[0] == 3) return checkIsFinish(view.getPlayerRetryChoice());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    private boolean checkIsFinish(boolean playerRetryChoice) {
+        if (playerRetryChoice == true) {
+            computer.resetRandomNumbers();
+            return true;
+        }
+
+        return false;
+    }
+
 }
