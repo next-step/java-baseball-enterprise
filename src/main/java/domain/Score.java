@@ -30,16 +30,16 @@ public class Score {
 
     public String getScore(){
         StringBuilder sb = new StringBuilder();
-        if (sb.length() == 0){
-            return "아웃";
-        }
-        if (this.ball > 0){
-            sb.append(this.ball).append("볼");
+        if (this.ball == 0 && this.strike == 0 ){
+            return "낫싱";
         }
         if (this.strike > 0){
-            sb.append(this.strike).append("스트라이크");
+            sb.append(this.strike).append(" 스트라이크 ");
         }
-        return sb.toString();
+        if (this.ball > 0){
+            sb.append(this.ball).append(" 볼");
+        }
+        return sb.toString().trim();
     }
 
     public void reset() {
