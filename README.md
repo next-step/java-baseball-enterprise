@@ -49,46 +49,27 @@
 ```
 
 ## 기능 목록
-### 게임 클래스 (RepeatedGame)
-* 반복 시작 (repeatGame)
-* 게임 시작 (startGame)
-* 반복 확인 (isRepeated)
-### 게임 클래스 (BaseballGame)
-* 생성자 (BaseballGame)
-* 반복 함수 (startGame)
-  * 초기화 (initGame)
-    * 숫자 초기화 - 랜덤 (initNumber)
-    * 숫자 초기화 - 지정 (initNumber)
-  * 스테이지 시작 (startStage)
-  * 스테이지 종료 출력 (printStageEnd)
-* 반복 확인 (isRepeated)
-### 게임 스테이지 클래스 (BaseballStage)
-* 생성자 (BaseballStage)
-* 반복 함수 (startGame)
-  * 초기화 (initStage)
-    * 숫자 초기화 - 입력 (initNumber)
-    * 숫자 초기화 - 지정 (initNumber)
-  * 점수 가져오기 (getScore)
-  * 점수 출력하기 (printScore)
-* 반복 확인 (isRepeated)
-### 게임 숫자 클래스 (BaseballNumber)
-* 생성자 - 지정 (BaseballNumber)
-  * 정수 검증 (valid)
-    * 정수 범위 검증 (validNumberRange)
-    * 서로 다른 정수 검증 (validDifferentNumber)
-* 생성자 - 랜덤 (BaseballNumber)
-* 정수 일치 확인 (isEqual)
-* 정수 존재 확인 (isInList)
-### 게임 점수 클래스 (BaseballScore)
-* 생성자 (BaseballScore)
-  * 스트라이크 가져오기 (getStrikeScore)
-  * 볼 가져오기 (getBallScore)
+### 반복 클래스
+* 게임 반복해서 실행
+### 게임 (반복클래스 상속)
+* 스테이지를 반복해서 실행
+### 게임 스테이지 (반복클래스 상속)
+* 숫자를 받아오고 결과를 확인하는 과정을 반복
+### 게임 설정 및 데이터 저장
+* 게임 관련 설정 저장
+* 게임 관련 데이터 (태그 및 기본 데이터) 저장
+### 게임 숫자
+* 숫자 생성 및 가져오기
+  * 랜덤으로 생성
+  * 지정해서 생성
+### 게임 점수
+* 점수 계산 및 가져오기
+  * 숫자 검증
 ### 게임 UI 클래스 (GameUI)
-* 생성자 (GameUI)
-* 문장 출력 (print)
-  * 문장 가져오기 (getString)
-  * 문장 맵핑 (mapString)
-* 문장 받기 (input)
+* 문자 출력 및 입력
+  * 태그를 이용한 출력
+  * 태그 + 맵핑을 이용한 출력
+  * 검증 입력 (검증 조건을 미리 입력)
 ### XML 파서 (XmlParser)
 * HashMap 가져오기 (getHashMap)
   * Document 가져오기 (getDocument)
