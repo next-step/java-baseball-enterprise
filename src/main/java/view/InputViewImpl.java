@@ -23,11 +23,11 @@ public class InputViewImpl implements InputView {
     }
 
     @Override
-    public List<Integer> getThreeNumbers() {
+    public List<Integer> readThreeNumber() {
         String line;
         do {
             line = scanner.nextLine();
-        } while (validateThreeNumbers(line));
+        } while (!validateThreeNumbers(line));
         return parsingLine(line);
     }
 
@@ -36,7 +36,7 @@ public class InputViewImpl implements InputView {
         String line;
         do {
             line = scanner.nextLine();
-        } while (validateOneNumber(line));
+        } while (!validateOneNumber(line));
         return Integer.parseInt(line);
     }
 

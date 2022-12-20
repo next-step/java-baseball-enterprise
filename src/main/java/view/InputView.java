@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface InputView {
 
-    List<Integer> getThreeNumbers();
+    List<Integer> readThreeNumber();
 
     Integer readOneNumber();
 
