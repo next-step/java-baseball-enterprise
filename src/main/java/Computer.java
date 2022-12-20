@@ -4,8 +4,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import static constant.NumberConstant.MAX;
-
 public class Computer {
     int number;
 
