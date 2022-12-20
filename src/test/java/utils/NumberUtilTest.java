@@ -2,6 +2,7 @@ package utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,7 +24,19 @@ class NumberUtilTest {
         assertThat(NumberUtil.isNumber(possibleNumber)).isFalse();
     }
 
+    @DisplayName("int 형식의 문자열을 자릿수 별로 List<Integer> 형식으로 변환한다.")
     @Test
     void toNumberArray() {
+        // given
+        List<Integer> arr1 = List.of(1, 2, 3);
+        List<Integer> arr2 = List.of(6, 4, 2, 1, 2);
+
+        // when
+        List<Integer> resultArr1 = NumberUtil.toNumberArray("123");
+        List<Integer> resultArr2 = NumberUtil.toNumberArray("64212");
+
+        // then
+        assertThat(resultArr1).isEqualTo(arr1);
+        assertThat(resultArr2).isEqualTo(arr2);
     }
 }
