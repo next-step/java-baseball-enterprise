@@ -1,36 +1,32 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    private static String answer;
+    private static int[] answer;
+    private static int[] input;
     private static boolean isFinish;
-    private static Scanner scanner;
-    private static InputValidator validator;
+    private static GameInputScanner gameInputScanner;
+
     public static void main(String[] args) {
-        String input;
-
         setUp();
-
-        while(!isFinish){
-            input = getInput();
-
-        }
+        startGame();
     }
     private static void setUp(){
         Random random = new Random();
         isFinish = false;
-        answer = String.valueOf(random.nextInt()%1000);
-        scanner = new Scanner(System.in);
-        validator = new InputValidator();
-    }
-    private static String getInput(){
-        String input;
-        do{
-            System.out.print(Message.INPUT_MSG.getMsgStr());
-            input = scanner.nextLine().trim();
-        }while(!validator.validate(input));
+        answer = new int[3];
+        gameInputScanner = new GameInputScanner();
 
-        return input;
+        for(int i = 0; i < 3; i++){
+            answer[i] = random.nextInt(9) + 1;
+        }
     }
+    private static void startGame(){
+        while(!isFinish){
+            input = gameInputScanner.getInput();
+        }
+    }
+
 
 }
