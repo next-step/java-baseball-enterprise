@@ -12,34 +12,37 @@ class BaseBallGameTest {
     }
 
     @Test
-    void init() {
+    void initGame() {
+        baseBallGame.initGame();
+        assertEquals(baseBallGame.restart,false);
+        assertArrayEquals(baseBallGame.numbers, new int[BaseBallGame.DIGIT_SIZE]);
     }
 
-    @Test
-    void setNumbers() {
-    }
-
-    @Test
-    void getRandomNumber() {
-    }
-
-    @Test
-    void getInputs() {
-    }
-
-    @Test
-    void compareNumbers() {
-    }
-
-    @Test
-    void compareDigit() {
-    }
-
-    @Test
-    void endgame() {
-    }
-
-    @Test
-    void mainGame() {
-    }
+//    @Test
+//    void setNumbers() {
+//    }
+//
+//    @Test
+//    void getRandomNumber() {
+//    }
+//
+//    @Test
+//    void getInputs() {
+//    }
+//
+//    @Test
+//    void compareNumbers() {
+//    }
+//
+//    @Test
+//    void compareDigit() {
+//    }
+//
+//    @Test
+//    void endgame() {
+//    }
+//
+//    @Test
+//    void mainGame() {
+//    }
 }

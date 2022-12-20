@@ -1,12 +1,13 @@
 public class BaseBallGame {
     static final int RANGE_LOW = 1;
-    static final int RANGE_HIGH = 1;
+    static final int RANGE_HIGH = 9;
     static final int DIGIT_SIZE = 3;
 
     int[] numbers;
+    boolean restart;
 
     // 초기화 및 게임 시작
-    void init(){
+    void initGame(){
 
     }
 
@@ -42,6 +43,15 @@ public class BaseBallGame {
 
     // 메인 게임 시퀀스
     public void mainGame(){
+        do {
+            initGame();
+            endgame();
+        }
+        while(this.restart);
+    }
+
+    public static void main(String[] args) {
+        BaseBallGame baseBallGame = new BaseBallGame();
 
     }
 
