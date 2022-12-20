@@ -9,10 +9,11 @@ public class Computer {
         this.numbers = generateNumberList();
     }
 
-    private void calculate(List<Integer> input) {
-        Result result = new Result();
+    private Result calculate(List<Integer> input) {
+        Result result = new Result(0, 0);
         calculateStrike(input, result);
         calculateBall(input, result);
+        return result;
     }
 
     private void calculateBall(List<Integer> input, Result result) {
