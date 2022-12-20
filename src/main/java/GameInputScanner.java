@@ -4,10 +4,11 @@ public class GameInputScanner {
     public int[] getInput(){
         Scanner scanner = new Scanner(System.in);
         String input;
+
         do{
             System.out.print(Message.INPUT_MSG.getMsgStr());
             input = scanner.nextLine().trim();
-        }while(validate(input));
+        }while(!validate(input));
 
         return strToIntArr(input);
     }
@@ -28,7 +29,6 @@ public class GameInputScanner {
 
         return true;
     };
-
     private int[] strToIntArr(String input){
         int[] ret = new int[3];
         char[] inputCharArr = input.toCharArray();

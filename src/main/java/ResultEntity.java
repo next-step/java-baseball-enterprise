@@ -7,7 +7,7 @@ import lombok.Getter;
 public class ResultEntity {
     private Integer strike;
     private Integer ball;
-
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
         if(this.strike > 0) sb.append(this.strike).append(" 스트라이크 ");
