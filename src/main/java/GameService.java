@@ -4,18 +4,19 @@ public class GameService {
 
     public ResultEntity getResult(int[] answer, int[] input){
         ResultEntity result = new ResultEntity(0, 0);
-        int[] posArr = makePosArr(answer);
+        //answer 배열의 각 원소 위치를 저장하는 배열, 없는 원소면 -1
+        int[] answerIdxArr = makeAnswerIdxArr(answer);
 
-        for(int idx = 0; idx < 3; idx++){
-            int pos = posArr[input[idx]];
-            if(pos == idx) result.addStrike();
-            if(pos != idx && pos != -1) result.addBall();
+        for(int inputIdx = 0; inputIdx < 3; inputIdx++){
+            int answerIdx = answerIdxArr[input[inputIdx]];
+            if(answerIdx == inputIdx) result.addStrike();
+            if(answerIdx != inputIdx && answerIdx != -1) result.addBall();
         }
 
         System.out.println(result);
         return result;
     }
-    private int[] makePosArr(int[] answer){
+    private int[] makeAnswerIdxArr(int[] answer){
         int[] ret = new int[10];
         Arrays.fill(ret, -1);
 

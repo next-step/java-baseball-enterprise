@@ -1,18 +1,22 @@
 import java.util.Scanner;
 
 public class GameInputScanner {
-    public int[] getInput(){
-        Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
+
+    GameInputScanner(){
+        this.scanner = new Scanner(System.in);
+    }
+    public int[] getGameInput(){
         String input;
 
         do{
             System.out.print(Message.INPUT_MSG.getMsgStr());
             input = scanner.nextLine().trim();
-        }while(!validate(input));
+        }while(!validateGameInput(input));
 
         return strToIntArr(input);
     }
-    private boolean validate(String input){
+    private boolean validateGameInput(String input){
         //input 문자열의 길이 & 0이 포함되어 있는지 검사
         if(input.length() != 3 || input.contains("0")){
             System.out.println(Message.INVALID_INPUT_WARNING.getMsgStr());
@@ -38,5 +42,10 @@ public class GameInputScanner {
         }
 
         return ret;
+    }
+
+    public int getRestartInput(){
+        int cmd = scanner.nextInt();
+        return cmd;
     }
 }

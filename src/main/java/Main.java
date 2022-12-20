@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     private static AnswerEntity answer;
@@ -8,8 +8,10 @@ public class Main {
     private static GameService gameService;
 
     public static void main(String[] args) {
-        setUp();
-        startGame();
+        do{
+            setUp();
+            startGame();
+        }while(restartOrNot());
     }
     private static void setUp(){
         isFinish = false;
@@ -19,10 +21,18 @@ public class Main {
     }
     private static void startGame(){
         while(!isFinish){
-            input = gameInputScanner.getInput();
+            input = gameInputScanner.getGameInput();
             ResultEntity result = gameService.getResult(answer.getAnswer(), input);
             isFinish = gameService.isFinish(result);
         }
+    }
+    private static boolean restartOrNot(){
+        System.out.println(Message.RESTART_MSG.getMsgStr());
+        int cmd = gameInputScanner.getRestartInput();
+
+        if(cmd == 1) return true;
+
+        return false;
     }
 
 
