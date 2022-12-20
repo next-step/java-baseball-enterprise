@@ -13,8 +13,8 @@ public class Computer {
 
     private int generateRandomNumberBetween(int min, int max) {
         try {
-            Random rand = SecureRandom.getInstanceStrong();
-            return rand.nextInt(max + 1 - min) + min;
+            return SecureRandom.getInstanceStrong()
+                    .nextInt(max + 1 - min) + min;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
