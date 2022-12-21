@@ -28,7 +28,7 @@ public class Game {
     }
 
     private String getResult(Scanner scanner) {
-        return computer.calculate(getIntegerListFromInput(validator.validateInput(getInputFromUser(scanner))))
+        return computer.calculateResult(getIntegerListFromInput(validator.validateInput(getInputFromUser(scanner))))
                 .exportResultString();
     }
 
