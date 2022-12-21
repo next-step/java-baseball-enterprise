@@ -13,7 +13,9 @@ public class InputValidator {
         this.regex = regex;
     }
 
-    public boolean isValidFormat(String input) {
-        return regex.matcher(input).matches();
+    public void checkValidFormat(String input) {
+        if(!regex.matcher(input).matches()) {
+            throw new RuntimeException("입력의 형식이 잘못되었습니다.");
+        }
     }
 }

@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
 
 ## 구현할 기능 목록
-- [ ] 숫자 입력
+- [x] 숫자 입력
 - [x] 입력값 검증 (1 ~ 9 사이의 숫자 3개, 숫자 중복 검사)
 - [x] 값 Parsing ("234" => [2, 3, 4])
 - [x] 랜덤 숫자 생성
