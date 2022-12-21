@@ -19,20 +19,24 @@ public class Game {
     public GuessResult check(int input) {
         int[] guess = new int[] {input / 100, input / 10 % 10, input % 10};
         GuessResult result = new GuessResult(0, 0);
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<3; j++) {
-                if (guess[i] == answer[j]) {
-                    if (i == j) {
-                        result.increaseStrike();
-                    } else if (i != j) {
-                        result.increaseBall();
-                    }
-                }
-            }
+        for (int guessIndex = 0; guessIndex < 3; guessIndex++) {
+            checkSingleNumberOfGuess(guess, result, guessIndex);
         }
         if (result.getStrike() == 3) {
             this.cleared = true;
         }
         return result;
+    }
+
+    private void checkSingleNumberOfGuess(int[] guess, GuessResult result, int guessIndex) {
+        for (int answerIndex = 0; answerIndex <3; answerIndex++) {
+            compareAndIncreaseCount(guess, result, guessIndex, answerIndex);
+        }
+    }
+
+    private void compareAndIncreaseCount(int[] guess, GuessResult result, int guessIndex, int answerIndex) {
+        if (guess[guessIndex] == answer[answerIndex]) {
+            result.increaseCount(guessIndex, answerIndex);
+        }
     }
 }

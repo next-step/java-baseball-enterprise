@@ -18,11 +18,11 @@ public class GuessResult {
         this.ball = ball;
     }
 
-    public void increaseStrike() {
-        this.strike++;
-    }
-
-    public void increaseBall() {
+    public void increaseCount(int answerIndex, int guessIndex) {
+        if (answerIndex == guessIndex) {
+            this.strike++;
+            return;
+        }
         this.ball++;
     }
 
