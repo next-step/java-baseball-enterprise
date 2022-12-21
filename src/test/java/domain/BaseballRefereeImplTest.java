@@ -52,7 +52,8 @@ class BaseballRefereeImplTest {
     @DisplayName("strike_check_test")
     void StrikeCheckTest() throws Exception {
         JudgeResult judgeResult = new JudgeResult(0, 0);
-        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class, List.class, int.class, JudgeResult.class);
+        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class,
+                List.class, int.class, JudgeResult.class);
         checkBallAndStrike.setAccessible(true);
         checkBallAndStrike.invoke(baseballReferee, List.of(1, 2), List.of(1, 3), 0, judgeResult);
         assertThat(judgeResult.getStrikesNum()).isEqualTo(1);
@@ -63,25 +64,29 @@ class BaseballRefereeImplTest {
     @DisplayName("ball_check_test")
     void BallCheckTest() throws Exception {
         JudgeResult judgeResult = new JudgeResult(0, 0);
-        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class, List.class, int.class, JudgeResult.class);
+        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class,
+                List.class, int.class, JudgeResult.class);
         checkBallAndStrike.setAccessible(true);
         checkBallAndStrike.invoke(baseballReferee, List.of(1, 2), List.of(2, 3), 0, judgeResult);
         assertThat(judgeResult.getStrikesNum()).isEqualTo(0);
         assertThat(judgeResult.getBallNum()).isEqualTo(1);
     }
+
     @Test
     @DisplayName("nothing_check_test")
     void NothingCheckTest() throws Exception {
         JudgeResult judgeResult = new JudgeResult(0, 0);
-        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class, List.class, int.class, JudgeResult.class);
+        Method checkBallAndStrike = BaseballRefereeImpl.class.getDeclaredMethod("checkBallAndStrike", List.class,
+                List.class, int.class, JudgeResult.class);
         checkBallAndStrike.setAccessible(true);
         checkBallAndStrike.invoke(baseballReferee, List.of(1, 2), List.of(5, 3), 0, judgeResult);
         assertThat(judgeResult.getStrikesNum()).isEqualTo(0);
         assertThat(judgeResult.getBallNum()).isEqualTo(0);
     }
+
     @Test
     @DisplayName("judge_test_three_strikes")
-    void judgeTestThreeStrikes(){
+    void judgeTestThreeStrikes() {
         JudgeResult judgeResult = baseballReferee.judge(List.of(1, 2, 3), List.of(1, 2, 3));
         assertThat(judgeResult.getStrikesNum()).isEqualTo(3);
         assertThat(judgeResult.getBallNum()).isEqualTo(0);
@@ -89,12 +94,11 @@ class BaseballRefereeImplTest {
 
     @Test
     @DisplayName("judge_test_one_strike_two_ball")
-    void judgeTestOneStrikeAndTwoBall(){
+    void judgeTestOneStrikeAndTwoBall() {
         JudgeResult judgeResult = baseballReferee.judge(List.of(1, 4, 5), List.of(1, 5, 4));
         assertThat(judgeResult.getStrikesNum()).isEqualTo(1);
         assertThat(judgeResult.getBallNum()).isEqualTo(2);
     }
-
 
 
 }

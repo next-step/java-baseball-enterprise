@@ -16,8 +16,9 @@ public class BaseballGameImpl extends BaseballGame {
 
     @Override
     public void play(int option) {
-        if (option == 2)
+        if (option == 2) {
             return;
+        }
         answer = threeNumberGenerator.generate();
         JudgeResult judgeResult;
         do {

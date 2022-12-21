@@ -12,5 +12,4 @@ class BaseballGameTest {
     BaseballGame baseballGame = new BaseballGameImpl(new BaseballConfig());
 
 
-
 }

@@ -22,15 +22,17 @@ public class JudgeResult {
         this.ballNum = ballNum;
         this.strikesNum = strikesNum;
     }
-    public void change(JudgeResult judgeResult){
+
+    public void change(JudgeResult judgeResult) {
         this.strikesNum = judgeResult.getStrikesNum();
         this.ballNum = judgeResult.getBallNum();
     }
 
 
     public String toString() {
-        if (ballNum == 0 && strikesNum == 0)
+        if (ballNum == 0 && strikesNum == 0) {
             return "낫싱";
+        }
         if (strikesNum != 0 && ballNum != 0) {
             return strikeToString() + " " + ballToString();
         }

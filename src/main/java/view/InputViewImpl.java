@@ -44,17 +44,20 @@ public class InputViewImpl implements InputView {
         if (!checkLength(line, 1)) {
             return false;
         }
-        if (!isNumber(line))
+        if (!isNumber(line)) {
             return false;
-        if (!validateOptionBound(line))
+        }
+        if (!validateOptionBound(line)) {
             return false;
+        }
         return true;
     }
 
     private boolean validateOptionBound(String line) {
         boolean valid = line.charAt(0) - '0' < 3 && line.charAt(0) - '0' > 0;
-        if(valid)
+        if (valid) {
             return true;
+        }
         exceptionHandler.handleException(new IllegalArgumentException(INPUT_ONE_NUMBER_BOUND_EXCEPTION));
         return false;
     }
@@ -63,8 +66,9 @@ public class InputViewImpl implements InputView {
         if (!checkLength(line, 3)) {
             return false;
         }
-        if (!isNumber(line))
+        if (!isNumber(line)) {
             return false;
+        }
         return !isDuplicate(line);
     }
 

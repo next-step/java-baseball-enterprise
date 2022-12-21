@@ -17,13 +17,18 @@ public abstract class BaseballGame {
     protected final OutputView outputView;
 
 
-    public BaseballGame(BaseballConfig baseballConfig){
+    public BaseballGame(BaseballConfig baseballConfig) {
         this.baseballReferee = baseballConfig.baseballReferee;
         this.threeNumberGenerator = baseballConfig.threeNumberGenerator;
         this.inputView = baseballConfig.inputView;
         this.outputView = baseballConfig.outputView;
-    };
+    }
 
-    public void play(int option){};
+
+
+    public void play(int option) {
+    }
+
+    ;
 
 }
