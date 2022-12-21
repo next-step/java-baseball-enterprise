@@ -26,15 +26,15 @@ class BaseBallGameTest {
 //    void setNumbers() {
 //    }
 
-//    @Test
-//    void getRandomNumber() {
-//        int result = baseBallGame.getRandomNumber();
-//        assertTrue(result>= BaseBallGame.RANGE_LOW);
-//        assertTrue(result<= BaseBallGame.RANGE_HIGH);
-//        for (int number: baseBallGame.numbers) {
-//            assertNotEquals(result, number);
-//        }
-//    }
+    @Test
+    void getRandomNumber() {
+        for (int i = BaseBallGame.RANGE_LOW; i <= BaseBallGame.RANGE_HIGH; i++) {
+            int result = baseBallGame.getRandomNumber();
+            assertTrue(result>= BaseBallGame.RANGE_LOW);
+            assertTrue(result<= BaseBallGame.RANGE_HIGH);
+        }
+        assertEquals(baseBallGame.numbers.size(), 0);
+    }
 
 //    @Test
 //    void getInputs() {
