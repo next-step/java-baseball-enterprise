@@ -45,4 +45,15 @@ class NumberBaseballTest {
         assertThat(NumberBaseball.checkSingleDigit(answerExample, 1)).isEqualTo(1);
         assertThat(NumberBaseball.checkSingleDigit(answerExample, 2)).isEqualTo(0);
     }
+
+    @Test
+    void createMessage_ShouldGeneratedExpectedMessage() {
+        String actual1 = NumberBaseball.createMessage(30);
+        String actual2 = NumberBaseball.createMessage(11);
+        String actual3 = NumberBaseball.createMessage(0);
+
+        assertThat(actual1).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        assertThat(actual2).isEqualTo("1 스트라이크 1 볼");
+        assertThat(actual3).isEqualTo("낫싱");
+    }
 }
