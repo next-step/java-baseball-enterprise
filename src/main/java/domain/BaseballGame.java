@@ -2,8 +2,9 @@ package domain;
 
 public class BaseballGame {
 
-    private final String computerNumbers;
+    private static final int NUMBER_LENGTH = 3;
 
+    private final String computerNumbers;
     private GameResult currentGameResult;
 
     public BaseballGame(String computerNumbers) {
@@ -13,7 +14,7 @@ public class BaseballGame {
     public GameResult compareNumbers(String userNumbers) {
         currentGameResult = new GameResult();
 
-        for (int i = 0; i < userNumbers.length(); i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             compareNumber(userNumbers.charAt(i), computerNumbers.charAt(i));
         }
 
@@ -33,7 +34,7 @@ public class BaseballGame {
     }
 
     public boolean isEnd() {
-        return currentGameResult.getStrikeCount() == 3;
+        return currentGameResult.getStrikeCount() == NUMBER_LENGTH;
     }
 
 }
