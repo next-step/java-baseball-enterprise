@@ -4,7 +4,6 @@ import num3baseball.dataobject.TrialResult;
 import num3baseball.exception.WrongNumberException;
 import num3baseball.exception.WrongTypeException;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
