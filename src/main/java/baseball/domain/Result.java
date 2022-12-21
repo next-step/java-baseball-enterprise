@@ -7,15 +7,6 @@ public class Result {
         this.strike = strike;
         this.ball = ball;
     }
-
-    public void addStrike() {
-        this.strike++;
-    }
-
-    public void addBall(int retainedSize) {
-        this.ball += retainedSize - this.strike;
-    }
-
     public String exportResultString() {
         StringBuilder sb = new StringBuilder();
         if(this.strike + this.ball == 0) {
