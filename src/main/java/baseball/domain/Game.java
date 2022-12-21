@@ -14,14 +14,13 @@ public class Game {
         init();
     }
 
-    public void Start() {
-        while(true) {
+    public void start() {
+        boolean quit = false;
+        while(!quit) {
             Scanner scanner = new Scanner(System.in);
             String result = getResult(validator.validateInputAndReturn(getInputFromUser(scanner)));
             System.out.println(result);
-            if (isEnd(result, scanner)) {
-                return;
-            }
+            quit = isEnd(result, scanner);
         }
     }
 
