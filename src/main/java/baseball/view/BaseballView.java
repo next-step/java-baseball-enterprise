@@ -1,26 +1,41 @@
 package baseball.view;
 
+import baseball.controller.BaseballController;
+import baseball.dto.BaseballResult;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BaseballView {
 
     private static final int BASEBALL_NUMBER_LENGTH = 3;
-    private final BufferedReader bufferedReader;
+    private final Scanner scanner;
+    private final BaseballController baseballController;
 
-    public BaseballView() {
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public BaseballView(BaseballController baseballController) {
+        this.baseballController = baseballController;
+        this.scanner = new Scanner(System.in);
     }
 
-    public List<Integer> getPlayerBaseballNumber() throws IOException {
+    public void startGame(){
+        while (baseballController.isPlaying()) {
+            baseballController.startGame();
+            List<Integer> playerBaseballNumber = getPlayerBaseballNumber();
+            BaseballResult baseballResult = baseballController
+                    .getBaseballResult(playerBaseballNumber);
+
+        }
+    }
+
+    public List<Integer> getPlayerBaseballNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        String playerInput = bufferedReader.readLine();
+        String playerInput = scanner.nextLine();
         validatePlayerInput(playerInput);
         return Arrays.stream(playerInput.split(""))
                 .map(Integer::parseInt)
@@ -56,4 +71,5 @@ public class BaseballView {
             throw new IllegalArgumentException("숫자는 중복되지 않게 입력해주세요.");
         }
     }
+
 }

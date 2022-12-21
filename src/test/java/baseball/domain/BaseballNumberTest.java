@@ -19,7 +19,7 @@ public class BaseballNumberTest {
     @Test
     void GenerateBaseballNumbersTest() {
         // given
-        baseballNumber.GenerateBaseballNumbers();
+        baseballNumber.generateBaseballNumbers();
 
         // when
         List<Integer> numbers = baseballNumber.getNumbers();

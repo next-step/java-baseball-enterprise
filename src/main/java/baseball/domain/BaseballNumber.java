@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BaseballNumber {
-
+    private static final int BASEBALL_NUMBER_LENGTH = 3;
     private final List<Integer> candidateNumbers = new ArrayList<>();
     private final List<Integer> numbers = new ArrayList<>();
 
@@ -15,10 +15,10 @@ public class BaseballNumber {
         }
     }
 
-    public void GenerateBaseballNumbers() {
+    public void generateBaseballNumbers() {
         numbers.clear();
         Collections.shuffle(candidateNumbers);
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i < BASEBALL_NUMBER_LENGTH; i++) {
             numbers.add(candidateNumbers.get(i));
         }
     }
