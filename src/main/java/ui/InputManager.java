@@ -1,5 +1,6 @@
 package ui;
 
+import game.GameCommand;
 import input.InputParser;
 import input.InputValidator;
 
@@ -19,7 +20,7 @@ public class InputManager {
         inputParser = new InputParser();
     }
 
-    private InputManager(InputStream inputStream) {
+    public InputManager(InputStream inputStream) {
         sc = new Scanner(inputStream);
         inputValidator = new InputValidator();
         inputParser = new InputParser();
@@ -31,5 +32,10 @@ public class InputManager {
         inputValidator.validateInput(input);
 
         return input;
+    }
+
+    public GameCommand getInputGameCommand() {
+        int gameCommand = sc.nextInt();
+        return GameCommand.getCommand(gameCommand);
     }
 }
