@@ -35,7 +35,9 @@ public class NumberBaseball {
         int result = checkSingleDigit(answer, 0) + checkSingleDigit(answer, 1) + checkSingleDigit(answer, 2);
         System.out.println(createMessage(result));
 
-
+        if(result==30){
+            return isRestart();
+        }
         return true;
     }
 
