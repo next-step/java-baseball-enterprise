@@ -9,10 +9,11 @@ import static org.assertj.core.api.Assertions.not;
 class NumberBaseballTest {
 
     NumberBaseball numberBaseball = new NumberBaseball();
-    int input = 935;
+    static int input = 935;
     @BeforeAll
     static void setAnswer(){
         NumberBaseball.setAnswer();
+        NumberBaseball.setGuess(input);
     }
 
     @Test
@@ -28,7 +29,6 @@ class NumberBaseballTest {
     @Test
     @DisplayName("input을 정상적으로 slicing 하는지 확인")
     void getGuess_ShouldGenerateTheExpectedGuess() {
-        NumberBaseball.setGuess(input);
 
         int[] actual = NumberBaseball.guess;
         int[] expected = new int[]{9, 3, 5};
@@ -36,4 +36,13 @@ class NumberBaseballTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("guess의 특정 digit가 올바른 볼카운트를 생성하는지 확인")
+    void checkSingleDigit_ShouldGenerateTheExpectedCount() {
+        int[] answerExample = new int[] {9, 2, 3};
+
+        assertThat(NumberBaseball.checkSingleDigit(answerExample, 0)).isEqualTo(10);
+        assertThat(NumberBaseball.checkSingleDigit(answerExample, 1)).isEqualTo(1);
+        assertThat(NumberBaseball.checkSingleDigit(answerExample, 2)).isEqualTo(0);
+    }
 }
