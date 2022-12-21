@@ -1,12 +1,16 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class NumberBaseball {
     public static int SIZE = 3;
     public static int[] answer = new int[SIZE];
-
+    public static int[] guess = new int[SIZE];
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
         setAnswer();
+        int inputNumber = sc.nextInt();
+        setGuess(inputNumber);
     }
     public static void setAnswer() {
         while (true) {
@@ -18,4 +22,11 @@ public class NumberBaseball {
                 break;
         }
     }
+
+    public static void setGuess(int inputNumber) {
+        guess[0] = inputNumber / 100;
+        guess[1] = inputNumber % 100 / 10;
+        guess[2] = inputNumber % 10;
+    }
+
 }
