@@ -31,6 +31,6 @@ public class View {
         String playerChoice = reader.readLine();
         if (playerChoice.equals("1")) return true;
         if (playerChoice.equals("2")) return false;
-        return false;
+        return getPlayerRetryChoice();
     }
 }

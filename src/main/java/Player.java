@@ -6,8 +6,4 @@ public class Player {
     public void setNumbers(Integer[] inputNumbers) {
         numbers = inputNumbers;
     }
-
-
-
-
 }

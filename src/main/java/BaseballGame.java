@@ -6,8 +6,6 @@ public class BaseballGame {
     private boolean isRun = true;
     public void run() {
         while (isRun) {
-            Integer[] numbers = computer.getNumbers();
-            System.out.println(""+numbers[0]+numbers[1]+numbers[2]);
             try {
                 player.setNumbers(view.getPlayerInput());
             } catch (Exception e) {
@@ -34,7 +32,6 @@ public class BaseballGame {
             computer.resetRandomNumbers();
             return true;
         }
-
         return false;
     }
 

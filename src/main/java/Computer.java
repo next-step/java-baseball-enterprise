@@ -14,6 +14,10 @@ public class Computer {
         return numbers;
     }
 
+    public void setNumbers(Integer[] inputNumbers) {
+        numbers = inputNumbers;
+    }
+
     public void resetRandomNumbers() {
         numbers = getThreeUniqueRandomNumbers();
     }
