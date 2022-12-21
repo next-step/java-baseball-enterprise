@@ -9,6 +9,16 @@ public class ComputerSimulator {
     List<Integer> answer;
     Scanner scanner = new Scanner(System.in);
 
+    public void simulate() {
+        Boolean gameFinished = false;
+
+        while (!gameFinished) {
+            startNewGame();
+
+            gameFinished = getGameFinishedInput();
+        }
+    }
+
     public void startNewGame() {
         answer = NumberGenerater.generate();
         Ballcount ballcount = Ballcount.of(0, 0);
@@ -81,5 +91,17 @@ public class ComputerSimulator {
             return;
         }
         System.out.println(result);
+    }
+
+    private boolean getGameFinishedInput() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        Integer input = scanner.nextInt();
+
+        if (input == 1) {
+            return false;
+        }
+
+        return true;
     }
 }
