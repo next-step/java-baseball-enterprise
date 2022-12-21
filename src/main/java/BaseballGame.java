@@ -37,6 +37,11 @@ class BaseballGame {
         answerNumber = new String(results);
     }
 
+    // for test
+    void setSpecificNumber(String number) {
+        answerNumber = number;
+    }
+
     private void guessNumber() {
         Result result;
         do {
