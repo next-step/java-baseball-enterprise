@@ -19,4 +19,16 @@ class NumberBaseballTest {
         assertThat(answer[2]).isNotEqualTo(answer[0]);
     }
 
+    @Test
+    void getGuess_InputNumberIsSlicedWell() {
+        // inputNumber가 정상적으로 slicing 되어 guess를 초기화하는지 확인
+        int inputNumber = 935;
+
+        NumberBaseball.setGuess(inputNumber);
+
+        int[] actual = NumberBaseball.guess;
+        int[] expected = new int[]{9, 3, 5};
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
