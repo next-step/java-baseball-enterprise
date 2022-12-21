@@ -16,11 +16,7 @@ public class UserInput implements Iterable<Integer> {
         UserInputValidator.validate(input);
         this.inputList = getSingleIntegerListFromInt(Integer.parseInt(input));;
     }
-
-    public List<Integer> getInputList() {
-        return Collections.unmodifiableList(inputList);
-    }
-
+    
     public int intersect(RandomNumbers numbers) {
         inputList.retainAll(numbers.getNumbers());
         return inputList.size();
