@@ -1,12 +1,16 @@
 package score;
 
+import java.util.List;
 import java.util.Objects;
+
+import static score.BaseBallJudgement.BALL;
+import static score.BaseBallJudgement.STRIKE;
 
 public class Score {
 
-    private final Integer strikeCount;
+    private Integer strikeCount;
 
-    private final Integer ballCount;
+    private Integer ballCount;
 
     public Score(Integer strikeCount, Integer ballCount) {
         this.strikeCount = strikeCount;
@@ -19,6 +23,17 @@ public class Score {
 
     public Integer getBallCount() {
         return ballCount;
+    }
+
+    public void updateScore(List<Integer> answer, Integer userNumber, Integer pos) {
+        if (STRIKE.hit(answer, userNumber, pos)) {
+            strikeCount += 1;
+            return;
+        }
+        if (BALL.hit(answer, userNumber, pos)) {
+            ballCount += 1;
+            return;
+        }
     }
 
     @Override
