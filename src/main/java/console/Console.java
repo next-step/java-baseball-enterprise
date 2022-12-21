@@ -31,5 +31,11 @@ public class Console {
     }
 
     public void printScore(Score score){
+        if (score.getStrike() != 0)
+            System.out.println(String.format("%d 스트라이크", score.getStrike()));
+        if (score.getBall() != 0)
+            System.out.println(String.format("%d 볼", score.getBall()));
+        if (score.getStrike() == 0 && score.getBall() == 0)
+            System.out.println("낫싱");
     }
 }
