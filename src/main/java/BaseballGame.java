@@ -21,6 +21,8 @@ class BaseballGame {
             setRandomNumber();
             guessNumber();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            handleMenuSelect();
         }
     }
 
@@ -47,6 +49,26 @@ class BaseballGame {
 
     Result getResult(String submitNumber) {
         return new Result(answerNumber, submitNumber);
+    }
+
+    private void handleMenuSelect() {
+        MenuItem menu;
+        do {
+            menu = getMenuItem();
+        } while (menu == MenuItem.WRONG_INPUT);
+        if (menu == MenuItem.EXIT) {
+            gameStatus = GameStatus.TERMINATED;
+        }
+    }
+
+    private MenuItem getMenuItem() {
+        String menuNumber = sc.next();
+        if (menuNumber.equals("1")) {
+            return MenuItem.START;
+        } else if (menuNumber.equals("2")) {
+            return MenuItem.EXIT;
+        }
+        return MenuItem.WRONG_INPUT;
     }
 
     private void swap(char[] arr, int i, int j) {
