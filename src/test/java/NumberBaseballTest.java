@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,11 +9,15 @@ import static org.assertj.core.api.Assertions.not;
 class NumberBaseballTest {
 
     NumberBaseball numberBaseball = new NumberBaseball();
+    int input = 935;
+    @BeforeAll
+    static void setAnswer(){
+        NumberBaseball.setAnswer();
+    }
 
     @Test
-    void setAnswer_EachAnswerNumbersAreDifferent(){
-        // 각 자리의 숫자가 서로 다른지 확인
-        NumberBaseball.setAnswer();
+    @DisplayName("각 자리의 숫자가 서로 다른지 확인")
+    void setAnswer_ShouldEachAnswerDigitsAreDifferent(){
         int[] answer = NumberBaseball.answer;
 
         assertThat(answer[0]).isNotEqualTo(answer[1]);
@@ -20,15 +26,14 @@ class NumberBaseballTest {
     }
 
     @Test
-    void getGuess_InputNumberIsSlicedWell() {
-        // inputNumber가 정상적으로 slicing 되어 guess를 초기화하는지 확인
-        int inputNumber = 935;
-
-        NumberBaseball.setGuess(inputNumber);
+    @DisplayName("input을 정상적으로 slicing 하는지 확인")
+    void getGuess_ShouldGenerateTheExpectedGuess() {
+        NumberBaseball.setGuess(input);
 
         int[] actual = NumberBaseball.guess;
         int[] expected = new int[]{9, 3, 5};
 
         assertThat(actual).isEqualTo(expected);
     }
+
 }
