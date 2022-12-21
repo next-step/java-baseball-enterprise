@@ -40,7 +40,7 @@ public class NumberBaseball {
         System.out.println(createMessage(result));
 
         if (result == 30) {
-            return isRestart();
+            return isRestart(sc.nextInt());
         }
         return true;
     }
@@ -65,8 +65,7 @@ public class NumberBaseball {
         return 0;
     }
 
-    public static boolean isRestart() {
-        int restart = sc.nextInt();
+    public static boolean isRestart(int restart) {
         if (restart == 1) {
             setAnswer();
             return true;
