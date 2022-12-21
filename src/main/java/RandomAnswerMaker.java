@@ -12,7 +12,7 @@ public class RandomAnswerMaker implements AnswerMaker {
         }
         Collections.shuffle(numbers);
 
-        return numbers.subList(0, length).toString();
+        return String.join("", numbers.subList(0, length));
     }
 
 }
