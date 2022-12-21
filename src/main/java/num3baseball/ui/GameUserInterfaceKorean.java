@@ -26,7 +26,7 @@ public class GameUserInterfaceKorean implements GameUserInterface{
         int getNum=0;
         do {
             getNum = inputNum("숫자를 입력해주세요 : ");
-        }while(getNum>0);
+        }while(getNum<=0);
         while(getNum>0){
             res.add(0,getNum%10);
             getNum/=10;
