@@ -17,6 +17,26 @@ class BaseballGame {
     }
 
     void start() {
+        while (gameStatus == GameStatus.IN_GAME) {
+            setRandomNumber();
+        }
+    }
+
+    void setRandomNumber() {
+        char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        char[] results = new char[numberLength];
+        for (int i = 0; i < numberLength; i++) {
+            int j = random.nextInt(9 - i);
+            results[i] = numbers[j];
+            swap(numbers, j, 8 - i);
+        }
+        answerNumber = new String(results);
+    }
+
+    private void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
 

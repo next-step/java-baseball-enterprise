@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
 
 ## 기능 구현 list
-* [ ] 랜덤 숫자 생성
+* [x] 랜덤 숫자 생성
 * [ ] 숫자 입력받기
 * [ ] 스트라이크, 볼 등 결과 계산 후 출력
 * [ ] 숫자를 맞췄을 경우 종료 또는 재시작
