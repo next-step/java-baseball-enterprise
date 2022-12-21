@@ -34,6 +34,9 @@ public class NumberBaseball {
     public static boolean checkGuess() {
         int result = checkSingleDigit(answer, 0) + checkSingleDigit(answer, 1) + checkSingleDigit(answer, 2);
         System.out.println(createMessage(result));
+
+
+        return true;
     }
 
     public static String createMessage(int result) {
@@ -55,4 +58,14 @@ public class NumberBaseball {
         }
         return 0;
     }
+
+    public static boolean isRestart() {
+        int restart = sc.nextInt();
+        if (restart == 1) {
+            setAnswer();
+            return true;
+        }
+        return false;
+    }
+
 }
