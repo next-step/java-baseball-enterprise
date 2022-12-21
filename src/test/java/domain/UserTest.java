@@ -1,60 +1,29 @@
 package domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class UserTest {
-    @Test
-    @DisplayName("중복되지 않는 숫자 테스트")
-    void testUniqueness(){
+    @ParameterizedTest
+    @DisplayName("숫자 입력 테스트")
+    @CsvSource(value = {"123;[1, 2, 3]",
+            "112;잘못된 입력입니다.",
+            "1234;잘못된 입력입니다.",
+            "a12;잘못된 입력입니다."}, delimiter = ';')
+    void testInput(String input,String expected){
         User user = new User();
-        user.setNumbers("123");
-        String actual = user.getNumbers().toString();
-        assertThat(actual).isEqualTo("[1, 2, 3]");
-    }
-
-    @Test
-    @DisplayName("숫자 중복 입력")
-    void testNotUniqueness(){
-        User user = new User();
-        String actual = "";
-        user.reset();
+        String actual;
         try {
-            user.setNumbers("112");
-        } catch (IllegalArgumentException e) {
+            user.setNumbers(input);
+            actual = user.getNumbers().toString();
+        }catch (IllegalArgumentException e){
             actual = e.getMessage();
         }
-        assertThat(actual).isEqualTo("잘못된 입력입니다.");
-    }
-
-    @Test
-    @DisplayName("숫자 초과 입력")
-    void testOverNumber(){
-        User user = new User();
-        String actual = "";
-        user.reset();
-        try {
-            user.setNumbers("1234");
-        } catch (IllegalArgumentException e) {
-            actual = e.getMessage();
-        }
-        assertThat(actual).isEqualTo("잘못된 입력입니다.");
-    }
-    @Test
-    @DisplayName("문자 입력")
-    void testChar(){
-        User user = new User();
-        String actual = "";
-        user.reset();
-        try {
-            user.setNumbers("a12");
-        } catch (IllegalArgumentException e) {
-            actual = e.getMessage();
-        }
-        assertThat(actual).isEqualTo("잘못된 입력입니다.");
+        assertThat(actual).isEqualTo(expected);
     }
 
 }
