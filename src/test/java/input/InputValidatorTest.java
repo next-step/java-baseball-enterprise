@@ -2,7 +2,6 @@ package input;
 
 import exception.InputLengthValidationException;
 import exception.InputNumberDuplicationException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -17,12 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class InputValidatorTest {
 
-    static InputValidator inputValidator;
-
-    @BeforeAll
-    static void beforeAll() {
-        inputValidator = new InputValidator();
-    }
+    InputValidator inputValidator = new InputValidator();
 
     @ParameterizedTest
     @MethodSource("prepareInputOfInvalidSize")
