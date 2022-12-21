@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         do{
             setUp();
+            System.out.println(answer.getAnswer()[0] + ""+answer.getAnswer()[1] + ""+answer.getAnswer()[2]);
             startGame();
         }while(restartOrNot());
     }
@@ -27,9 +28,7 @@ public class Main {
         }
     }
     private static boolean restartOrNot(){
-        System.out.println(Message.RESTART_MSG.getMsgStr());
         int cmd = gameInputScanner.getRestartInput();
-
         if(cmd == 1) return true;
 
         return false;
