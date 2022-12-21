@@ -16,7 +16,7 @@ public class Numbers {
     public Integer getBall(List<Integer> input) {
         Set<Integer> sum = new HashSet<>(input);
         sum.addAll(numbers);
-        return input.size() + numbers.size() - sum.size();
+        return input.size() + numbers.size() - sum.size() - getStrike(input);
     }
 
     public Integer getStrike(List<Integer> input) {

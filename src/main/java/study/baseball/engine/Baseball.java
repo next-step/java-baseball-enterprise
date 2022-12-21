@@ -55,7 +55,7 @@ public class Baseball implements Runnable {
 
     private boolean askContinue() {
         while (true) {
-            String input = console.input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = console.input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             if (input.equals("1")) {
                 return true;
             }
@@ -74,6 +74,6 @@ public class Baseball implements Runnable {
         if (ballCount.getBall() > 0) {
             output.append(ballCount.getBall()).append(" 볼 ");
         }
-        console.printOutput(output.toString());
+        console.printOutput(output.toString().length() > 0 ? output.toString() : "낫싱");
     }
 }
