@@ -50,10 +50,14 @@ public class InputView {
     public GameResult inputGameResult() throws Exception{
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = br.readLine();
-        // 유효성 검사
+        validateGameResultInput(input);
         int selected = input.charAt(0)-'0';
         if(selected==1) return GameResult.RESTART;
         return GameResult.EXIT;
     }
 
+    public void validateGameResultInput(String input) {
+        if(input.length()!=1 || (input.charAt(0)<'1' || input.charAt(0)>'2'))
+            throw new IllegalArgumentException("1 과 2 중에서 선택해주세요.");
+    }
 }
