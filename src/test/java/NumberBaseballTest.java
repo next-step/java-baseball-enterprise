@@ -40,8 +40,10 @@ public class NumberBaseballTest {
     @ValueSource(ints = {0, 1, 2})
     void generate_random_numbers_test(int idx) {
         numberBaseball.generate_random_numbers();
-        assertThat(numberBaseball.random_numbers[idx]).isGreaterThanOrEqualTo(numberBaseball.MIN_NUM);
-        assertThat(numberBaseball.random_numbers[idx]).isLessThanOrEqualTo(numberBaseball.MAX_NUM);
+        assertThat(numberBaseball.random_numbers[idx]).
+                isGreaterThanOrEqualTo(numberBaseball.MIN_NUM);
+        assertThat(numberBaseball.random_numbers[idx]).
+                isLessThanOrEqualTo(numberBaseball.MAX_NUM);
     }
 
 
@@ -91,5 +93,11 @@ public class NumberBaseballTest {
         numberBaseball.get_game_result();
         assertThat(numberBaseball.strike).isEqualTo(3);
         assertThat(numberBaseball.ball).isEqualTo(0);
+    }
+
+    @Test
+    void continue_or_end_test() {
+        assertThat(numberBaseball.continue_or_end(1)).isEqualTo(true);
+        assertThat(numberBaseball.continue_or_end(2)).isEqualTo(false);
     }
 }
