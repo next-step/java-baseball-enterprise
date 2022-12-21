@@ -20,8 +20,9 @@ public class ThreeNumberGeneratorImpl implements ThreeNumberGenerator {
     }
 
     private void add(int num, List<Integer> threeNumber) {
-        if(validate(num, threeNumber))
+        if (validate(num, threeNumber)) {
             threeNumber.add(num);
+        }
     }
 
     private Integer getRandomNumber() {

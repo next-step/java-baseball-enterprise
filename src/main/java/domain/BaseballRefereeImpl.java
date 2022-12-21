@@ -12,7 +12,8 @@ public class BaseballRefereeImpl implements BaseballReferee {
         return judgeResult;
     }
 
-    private void checkBallAndStrike(List<Integer> answer, List<Integer> baseballGameInput, int idx, JudgeResult judgeResult) {
+    private void checkBallAndStrike(List<Integer> answer, List<Integer> baseballGameInput, int idx,
+                                    JudgeResult judgeResult) {
         if (isStrike(answer, baseballGameInput, idx)) {
             judgeResult.change(judgeResult.getStrikesNum() + 1, judgeResult.getBallNum());
             return;

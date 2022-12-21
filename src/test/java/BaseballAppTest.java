@@ -12,5 +12,4 @@ class BaseballAppTest {
     BaseballAppImpl baseballApp = new BaseballAppImpl(baseballConfig);
 
 
-
 }
