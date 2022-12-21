@@ -5,7 +5,8 @@
 문제의 조건에서는 1~9만을 허용하나, 확장에 자유롭기 위하여(0 허용, 중복 허용 등의 가능성) 인터페이스를 구현하였다.
 
 #### 메서드
-* public int getNum(int index) - index번째에 해당하는 공 출력(0~size-1)  
+* public int getNum(int index) - index번째에 해당하는 공 출력(0~size-1)
+* public int getSize(); - 공이 몇 개 있는지 알 수 있는 메서드(이번 요구사항에서는 3)
 * public TrialResult compare(NumBalls trial) - trial(예상 시도)를 했을 때 몇 스트라이크 몇 볼인지 출력
 
 
@@ -19,10 +20,12 @@
 * private final int size;
 
 #### 메서드
+* private int randomlyChoose(Set<Integer> numSet) - numSet에 들어있는 값 중 랜덤한 값을 return한다.
+* private void isValidNumber(ArrayList<Integer> nums) - nums가 숫자야구 조건에 맞는지 확인한다(1~9 사이의 값, 중복되지 않음), 조건에 맞지 않으면 WrongNumberException 발생.
 * public NumBalls(int size) - 숫자야구 조건에 맞는 랜덤한 숫자 n개를 nums에 저장한다.
-* public NumBalls(ArrayList<Integer> nums) - 지정한 nums대로 저장한다. 조건에 맞지 않으면 WrongNumberException을 발생시킨다.
-* private boolean isValidNumber(ArrayList<Integer> nums) - nums가 숫자야구 조건에 맞는지 확인한다(1~9 사이의 값, 중복되지 않음)
+* public NumBalls(ArrayList<Integer> nums) - 지정한 nums대로 저장한다. size는 nums의 크기로 저장된다. 조건에 맞지 않으면 WrongNumberException을 발생시킨다.
 * public int getNum(int index) - index번째에 해당하는 숫자 출력
+* public int getSize() - size를 return
 * private void compareOne(int thisIndex, int trialIndex, TrialResult result) - trial의 trialIndex번째 수가 thisIndex(없으면 -1)에 있을 때 스트라이크/볼/낫싱을 result에 갱신
 * public TrialResult compare(NumBalls trial) - trial이 NumBallsNBalls의 객체인지 확인 후(같지 않으면 예외 발생), 결과를 반환
 
@@ -38,7 +41,7 @@ Trial을 한 결과로 나오는 a스트라이크 b볼에 대한 정보를 저�
 * public TrialResult(int size) - size 초기화 후, (strike,ball) = (0,0)으로 초기화하는 생성자
 * public TrialResult(int strike, int ball, int size) - 매개변수대로 strike, ball, size을 초기화하는 생성자
 * private chkValidNumber(int strike, int ball) - strike, ball이 가능한 경우인지(각각 0 이상의 값, 0<=strike+ball<=size, (size-1) strike 1 ball 불가능)
-* getter
+* getter - strike, ball, size 변수에 대해서.
 * public setStrikeBall(int strike, int ball) - strike, ball을 따로 결정하는 경우 예외발생을 적절히 확인하지 못함.
 *** 
 
