@@ -1,11 +1,11 @@
 public class Main {
     public static void main(String[] args) {
         Game game = new Game();
-        while (true) {
+        boolean willContinue = true;
+        while (willContinue) {
             game.reset();
             game.start();
-            if (!game.willContinue())
-                break;
+            willContinue = game.willContinue();
         }
     }
 }

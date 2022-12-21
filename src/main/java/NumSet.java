@@ -4,22 +4,24 @@ public class NumSet {
     private int[] numArr = new int[3];
 
     public NumSet() {
+        for (int i = 0; i < 3; i++)
+            setRandomNum(i);
+    }
+
+    private void setRandomNum(int idx) {
         Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            while (true) {
-                numArr[i] = random.nextInt(1, 10);
-                if (isDiffFromForward(i))
-                    break;
-            }
+        boolean isDiff = false;
+        while (!isDiff) {
+            numArr[idx] = random.nextInt(1, 10);
+            isDiff = isDiffFromForward(idx);
         }
     }
 
     private boolean isDiffFromForward(int idx) {
-        for (int i = 0; i < idx; i++) {
-            if (numArr[idx] == numArr[i])
-                return false;
-        }
-        return true;
+        boolean isPrevDiff = true;
+        for (int i = 0; i < idx; i++)
+            isPrevDiff = isPrevDiff && (numArr[idx] != numArr[i]);
+        return isPrevDiff;
     }
 
     // 사용자가 '112'처럼 중복 숫자를 입력할 때
@@ -33,24 +35,23 @@ public class NumSet {
 
     private int countStrike(int[] userArr) {
         int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            if (numArr[i] == userArr[i])
-                strike++;
-        }
+        for (int i = 0; i < 3; i++)
+            strike += (numArr[i] == userArr[i]) ? 1 : 0;    // depth 1로 만들기 위해...
         return strike;
     }
 
     private int countContains(int[] userArr) {
-        int contains = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (numArr[i] == userArr[j]) {
-                    contains++;
-                    break;
-                }
-            }
-        }
-        return contains;
+        int cnt = 0;
+        for (int i = 0; i < 3; i++)
+            cnt += contains(i, userArr) ? 1 : 0;
+        return cnt;
+    }
+
+    private boolean contains(int idx, int[] userArr) {
+        boolean hasNum = false;
+        for (int i = 0; i < 3; i++)
+            hasNum = hasNum || (numArr[idx] == userArr[i]);
+        return false;
     }
 
     public static int[] convertToList(int num) {
