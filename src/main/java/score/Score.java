@@ -21,20 +21,6 @@ public class Score {
         return ballCount;
     }
 
-    public String strikeCountToString() {
-        if (strikeCount == 0) {
-            return "";
-        }
-        return String.format("%d 스트라이크", strikeCount);
-    }
-
-    public String ballCountToString() {
-        if (ballCount == 0) {
-            return "";
-        }
-        return String.format("%d 볼", ballCount);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
