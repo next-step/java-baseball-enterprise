@@ -67,6 +67,13 @@ public class Baseball implements Runnable {
     }
 
     private void showResult(BallCount ballCount) {
-
+        StringBuilder output = new StringBuilder();
+        if (ballCount.getStrike() > 0) {
+            output.append(ballCount.getStrike()).append(" 스트라이크 ");
+        }
+        if (ballCount.getBall() > 0) {
+            output.append(ballCount.getBall()).append(" 볼 ");
+        }
+        console.printOutput(output.toString());
     }
 }
