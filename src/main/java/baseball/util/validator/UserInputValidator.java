@@ -1,58 +1,50 @@
 package baseball.util.validator;
 
-import baseball.domain.NumberRange;
 import baseball.util.exception.DuplicateInputNumberException;
 import baseball.util.exception.InputOutOfRangeException;
 import baseball.util.exception.InvalidInputException;
 
-public class UserInputValidator {
-    private NumberRange range;
+public final class UserInputValidator {
 
-    public UserInputValidator(NumberRange range) {
-        this.range = range;
+    public static void validate(String input) {
+        validateInputIsNumeric(input);
+        validateDuplicateNumber(input);
+        validateNotExistZero(input);
+        validateOutOfRange(input);
     }
 
-    public int validateInputAndReturn(String input) {
-        try {
-            validateDuplicateNumber(input);
-            validateNotExistZero(input);
-            int inputNum = Integer.parseInt(input);
-            validateInputRange(inputNum, range.getMin(), range.getMax());
-            return inputNum;
-        } catch(NumberFormatException e) {
-            throw new NumberFormatException("숫자를 입력해주세요.");
+    public static boolean validate(int input) {
+        validateIsOneOrTwo(input);
+        return input == 2;
+    }
+
+    private static void validateIsOneOrTwo(int input) {
+        if(input != 1 && input != 2) {
+            throw new NumberFormatException("올바른 숫자를 입력해주세요.");
         }
     }
 
-    public int validateInputAndReturn(String input, NumberRange range) {
-        try {
-            int inputNum = Integer.parseInt(input);
-            validateInputRange(inputNum, range.getMin(), range.getMax());
-            return inputNum;
-        } catch(NumberFormatException e) {
-            throw new NumberFormatException("숫자를 입력해주세요.");
+    private static void validateInputIsNumeric(String input) {
+        if(!input.matches("^[0-9]\\d*(\\.\\d+)?$")) {
+            throw new NumberFormatException("올바른 숫자를 입력해주세요.");
         }
     }
 
-    private void validateNotExistZero(String input) {
+    private static void validateOutOfRange(String input) {
+        if(input.length() != 3) {
+            throw new InputOutOfRangeException("올바르지 않은 수 크기입니다.");
+        }
+    }
+
+    private static void validateNotExistZero(String input) {
         if(input.contains("0")) {
             throw new InvalidInputException("숫자에 0이 포함될 수 없습니다.");
         }
     }
 
-    private void validateDuplicateNumber(String input) {
+    private static void validateDuplicateNumber(String input) {
         if(input.length() != input.chars().distinct().count()) {
             throw new DuplicateInputNumberException("중복된 숫자가 존재합니다.");
         }
-    }
-
-    private void validateInputRange(int inputNum, int min, int max) {
-        if(!isBetween(inputNum, min, max)) {
-            throw new InputOutOfRangeException(String.format("입력값은 %d과 %d 사이여야 합니다.", min, max));
-        }
-    }
-
-    private boolean isBetween(int inputNum, int min, int max) {
-        return inputNum >= min && inputNum <= max;
     }
 }
