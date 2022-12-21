@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -10,14 +11,19 @@ public class ComputerSimulator {
 
     public void startNewGame() {
         answer = NumberGenerater.generate();
+        Ballcount ballcount = Ballcount.of(0, 0);
 
-        while(true) {
+        while(!isGameFinished(ballcount)) {
             System.out.print("숫자를 입력해주세요: ");
 
             Integer input = scanner.nextInt();
 
-            Ballcount ballcount = calculateBallcount(toIntegerList(input));
+            ballcount = calculateBallcount(toIntegerList(input));
+
+            printBallcount(ballcount);
         }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니! 게임 종료");
     }
 
     public void setAnswer(List<Integer> answer) {
@@ -25,7 +31,7 @@ public class ComputerSimulator {
     }
 
     private List<Integer> toIntegerList(Integer integer) {
-        List<Integer> list = Arrays.asList();
+        List<Integer> list = new ArrayList<>();
 
         list.add(integer / 100);
         list.add((integer % 100) / 10);
@@ -56,5 +62,24 @@ public class ComputerSimulator {
         }
 
         return Ballcount.of(0, 0);
+    }
+
+    public boolean isGameFinished(Ballcount ballcount) {
+        return ballcount.getStrikes() == 3;
+    }
+
+    private void printBallcount(Ballcount ballcount) {
+        String result = "";
+        if (ballcount.getStrikes() > 0) {
+            result += ballcount.getStrikes() + " 스트라이크 ";
+        }
+        if (ballcount.getBalls() > 0) {
+            result += ballcount.getBalls() + " 볼 ";
+        }
+        if (result.isEmpty()) {
+            System.out.println("낫싱");
+            return;
+        }
+        System.out.println(result);
     }
 }
