@@ -16,9 +16,4 @@ public class InputValidator {
     public boolean isValidFormat(String input) {
         return regex.matcher(input).matches();
     }
-
-    public boolean hasDuplicateNumber(List<Integer> input) {
-        Set<Integer> inputSet = new HashSet<Integer>(input);
-        return input.size() == inputSet.size();
-    }
 }

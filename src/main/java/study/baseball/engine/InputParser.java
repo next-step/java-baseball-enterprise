@@ -10,6 +10,9 @@ public class InputParser {
         for (String number:inputArray) {
             result.add(Integer.parseInt(number));
         }
+        if (input.length() != result.size()) {
+            throw new RuntimeException("중복된 숫자가 존재합니다.");
+        }
         return result;
     }
 }
