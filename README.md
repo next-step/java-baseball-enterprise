@@ -1,5 +1,18 @@
-# 숫자 야구 게임
-[Branch feature number list](https://ginger-deer-ecb.notion.site/56e1d14d4a174cb09346a2d68e9b8252)
+# 숫자 야구 게임 :baseball:
+| Branch :deciduous_tree: | Feature :feather: |
+|-------------------------|-------------------|
+| feature-000             | README 작성         |
+| feature-001             | JUnit 학습 테스트 진행   |
+| feature-002             | 컴퓨터 객체 생성         |
+| feature-003             | 숫자 검증 로직 구현       |
+| feature-004             | 테스트 코드 작성         |
+| feature-005             | 게임 콘솔 구현          |
+| feature-006             | 랜덤 넘버 오류 수정       |
+| feature-007             | 유저 인풋 테스트 코드 구현   |
+| feature-008             | 리팩토링              |
+| feature-009             | 성능 개선             |
+| feature-010             | README 수정         |
+
 ***
 ### 구현 기능 목록
 * 컴퓨터 랜덤 난수 생성
