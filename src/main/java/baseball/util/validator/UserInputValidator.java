@@ -12,7 +12,7 @@ public class UserInputValidator {
             validateDuplicateNumber(input);
             validateNotExistZero(input);
             int inputNum = Integer.parseInt(input);
-            validateInputRange(inputNum, MIN, MAX);
+            validateInputRange(inputNum, INPUT_MIN, INPUT_MAX);
             return inputNum;
         } catch(NumberFormatException e) {
             throw new NumberFormatException("숫자를 입력해주세요.");
