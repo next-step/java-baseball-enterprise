@@ -5,3 +5,8 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 구현 기능
+- 임의의 3자리 수 선정
+- 유저 input & 결과(힌트) return
+- (게임 오버 시) 재시작 여부 체크
