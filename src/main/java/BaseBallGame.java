@@ -27,7 +27,9 @@ public class BaseBallGame {
 
     // 임의의 수 하나 선택. 단, 이전에 선택한 숫자 제외
     int getRandomNumber(){
-        return -1;
+        int range = numbers.size();
+        int index = random.nextInt(range);
+        return numbers.remove(index);
     }
 
     // 사용자로부터 숫자 입력받기
