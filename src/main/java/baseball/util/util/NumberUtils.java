@@ -14,4 +14,14 @@ public class NumberUtils {
         Collections.shuffle(numberList, new Random(System.nanoTime()));
         return numberList.subList(0, size);
     }
+
+    public static List<Integer> getSingleIntegerListFromInt(int input) {
+        List<Integer> result = new ArrayList<>();
+        while(input > 0) {
+            result.add(input % 10);
+            input /= 10;
+        }
+        Collections.reverse(result);
+        return result;
+    }
 }

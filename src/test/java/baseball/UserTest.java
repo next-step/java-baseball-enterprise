@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.NumberRange;
+import baseball.util.constant.NumberConstant;
 import baseball.util.exception.DuplicateInputNumberException;
 import baseball.util.exception.InputOutOfRangeException;
 import baseball.util.exception.InvalidInputException;
@@ -9,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static baseball.util.constant.NumberConstant.INPUT_MAX;
+import static baseball.util.constant.NumberConstant.INPUT_MIN;
 import static org.assertj.core.api.Assertions.*;
 
 public class UserTest {
@@ -17,7 +21,7 @@ public class UserTest {
 
     @BeforeEach
     public void setUp() {
-        userInputValidator = new UserInputValidator();
+        userInputValidator = new UserInputValidator(new NumberRange(INPUT_MIN, INPUT_MAX));
     }
     @ParameterizedTest
     @DisplayName("숫자 외 다른 문자가 포함된 입력 예외처리")
@@ -48,7 +52,7 @@ public class UserTest {
     }
 
     private void validateInputWithExceptionAndMessage(String input, Class<? extends Exception> e, String message) {
-        assertThatThrownBy(() -> userInputValidator.validateInput(input))
+        assertThatThrownBy(() -> userInputValidator.validateInputAndReturn(input))
                 .isInstanceOf(e)
                 .hasMessageMatching(message);
     }
