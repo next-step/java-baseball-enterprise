@@ -7,6 +7,7 @@ public class Console {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ERROR_MESSAGE = "올바른 숫자를 입력해주세요.";
 
     private final Scanner scanner;
 
@@ -26,6 +27,10 @@ public class Console {
     public void printEndMessage() {
         printMessage(END_MESSAGE);
         printMessage(RESTART_OR_EXIT_MESSAGE);
+    }
+
+    public void printErrorMessage() {
+        printMessage(ERROR_MESSAGE);
     }
 
     public void printMessage(String str) {
