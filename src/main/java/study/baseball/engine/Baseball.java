@@ -21,18 +21,52 @@ public class Baseball implements Runnable {
 
     @Override
     public void run() {
-        try {
-            proceedGame();
-        } catch (RuntimeException exception) {
-            console.printError(exception.getMessage());
+        while (true) {
+            Numbers answer = numberGenerator.generateRandomNumber();
+            while (saveGame(answer));
+            if (askContinue()) {
+                continue;
+            }
+            break;
         }
     }
 
-    private void proceedGame() {
+    private boolean saveGame(Numbers answer) {
+        try {
+            return proceedGame(answer);
+        } catch (RuntimeException exception) {
+            console.printError(exception.getMessage());
+            return true;
+        }
+    }
+
+    private boolean proceedGame(Numbers answer) {
         String input = console.input("숫자를 입력해주세요 : ");
         validator.checkValidFormat(input);
         List<Integer> parsedInput = parser.parseStringToIntegerList(input);
-        Numbers answer = numberGenerator.generateRandomNumber();
         BallCount result = new BallCount(answer.getStrike(parsedInput), answer.getBall(parsedInput));
+        if (result.getStrike() == 3) {
+            console.printOutput("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        showResult(result);
+        return true;
+    }
+
+    private boolean askContinue() {
+        while (true) {
+            String input = console.input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            if (input.equals("1")) {
+                return true;
+            }
+            if (input.equals("2")) {
+                return false;
+            }
+            console.printError("잘못된 입력입니다.");
+        }
+    }
+
+    private void showResult(BallCount ballCount) {
+
     }
 }
