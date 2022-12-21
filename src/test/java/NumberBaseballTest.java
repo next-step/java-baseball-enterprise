@@ -39,14 +39,15 @@ class NumberBaseballTest {
     @Test
     @DisplayName("guess의 특정 digit가 올바른 볼카운트를 생성하는지 확인")
     void checkSingleDigit_ShouldGenerateTheExpectedCount() {
-        int[] answerExample = new int[] {9, 2, 3};
+        NumberBaseball.answer = new int[]{9, 2, 3};
 
-        assertThat(NumberBaseball.checkSingleDigit(answerExample, 0)).isEqualTo(10);
-        assertThat(NumberBaseball.checkSingleDigit(answerExample, 1)).isEqualTo(1);
-        assertThat(NumberBaseball.checkSingleDigit(answerExample, 2)).isEqualTo(0);
+        assertThat(NumberBaseball.checkSingleDigit(0)).isEqualTo(10);
+        assertThat(NumberBaseball.checkSingleDigit(1)).isEqualTo(1);
+        assertThat(NumberBaseball.checkSingleDigit(2)).isEqualTo(0);
     }
 
     @Test
+    @DisplayName("알맞은 메시지 생성 여부를 확인")
     void createMessage_ShouldGeneratedExpectedMessage() {
         String actual1 = NumberBaseball.createMessage(30);
         String actual2 = NumberBaseball.createMessage(11);
@@ -56,4 +57,5 @@ class NumberBaseballTest {
         assertThat(actual2).isEqualTo("1 스트라이크 1 볼");
         assertThat(actual3).isEqualTo("낫싱");
     }
+
 }

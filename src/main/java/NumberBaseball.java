@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class NumberBaseball {
     public static int SIZE = 3;
+    public static Boolean status = true;
     public static int[] answer = new int[SIZE];
     public static int[] guess = new int[SIZE];
     public static Scanner sc = new Scanner(System.in);
@@ -10,8 +11,12 @@ public class NumberBaseball {
     public static void main(String[] args) {
 
         setAnswer();
-        int inputNumber = sc.nextInt();
-        setGuess(inputNumber);
+        while (status) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int inputNumber = sc.nextInt();
+            setGuess(inputNumber);
+            status = checkGuess();
+        }
     }
 
     public static void setAnswer() {
@@ -20,8 +25,7 @@ public class NumberBaseball {
             answer[0] = random.nextInt(9) + 1;
             answer[1] = random.nextInt(9) + 1;
             answer[2] = random.nextInt(9) + 1;
-            if (answer[0] != answer[1] && answer[1] != answer[2] && answer[2] != answer[0])
-                break;
+            if (answer[0] != answer[1] && answer[1] != answer[2] && answer[2] != answer[0]) break;
         }
     }
 
@@ -32,10 +36,10 @@ public class NumberBaseball {
     }
 
     public static boolean checkGuess() {
-        int result = checkSingleDigit(answer, 0) + checkSingleDigit(answer, 1) + checkSingleDigit(answer, 2);
+        int result = checkSingleDigit(0) + checkSingleDigit(1) + checkSingleDigit(2);
         System.out.println(createMessage(result));
 
-        if(result==30){
+        if (result == 30) {
             return isRestart();
         }
         return true;
@@ -51,7 +55,7 @@ public class NumberBaseball {
         return "낫싱";
     }
 
-    public static int checkSingleDigit(int[] answer, int idx) {
+    public static int checkSingleDigit(int idx) {
         if (answer[idx] == guess[idx]) {
             return 10;
         }
