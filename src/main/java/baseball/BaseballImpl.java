@@ -45,7 +45,10 @@ public class BaseballImpl implements Baseball{
 		System.out.println("숫자를 입력하세요 : ");
 		int input = sc.nextInt();
 		int[] processed = {input/100, input/10%10, input%10};
-		return processed;
+		if(checkValidOfNumber(processed))
+			return processed;
+		else
+			return new int[] {0,0,0};
 	}
 
 	@Override
