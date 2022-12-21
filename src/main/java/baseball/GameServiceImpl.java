@@ -68,7 +68,7 @@ public class GameServiceImpl implements GameService {
         } while (x == y);
         do {
             z = random.nextInt(9) + 1;
-        } while (x == z);
+        } while (x == z || y == z);
         return new Game(new int[]{x, y, z});
     }
 }
