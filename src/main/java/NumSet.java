@@ -51,7 +51,7 @@ public class NumSet {
         boolean hasNum = false;
         for (int i = 0; i < 3; i++)
             hasNum = hasNum || (numArr[idx] == userArr[i]);
-        return false;
+        return hasNum;
     }
 
     public static int[] convertToList(int num) {
