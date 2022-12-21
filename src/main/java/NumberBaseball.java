@@ -29,4 +29,13 @@ public class NumberBaseball {
         guess[2] = inputNumber % 10;
     }
 
+    public static int checkSingleDigit(int idx) {
+        if (answer[idx] == guess[idx]) {
+            return 10;
+        }
+        if (answer[(idx + 1) % 3] == guess[idx] || answer[(idx + 2) % 3] == guess[idx]) {
+            return 1;
+        }
+        return 0;
+    }
 }
