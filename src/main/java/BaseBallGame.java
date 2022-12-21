@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 public class BaseBallGame {
     static final int RANGE_LOW = 1;
@@ -6,15 +6,18 @@ public class BaseBallGame {
     static final int DIGIT_SIZE = 3;
     static Random random = new Random();
 
-    int[] numbers;
-    int chosen;
+    ArrayList<Integer> numbers;
+    ArrayList<Integer> chosen;
     boolean restart;
 
     // 초기화 및 게임 시작
     void initGame(){
         this.restart = false;
-        this.numbers = new int[DIGIT_SIZE];
-        this.chosen = 0;
+        numbers = new ArrayList<>();
+        chosen = new ArrayList<>();
+        for (int i = RANGE_LOW; i <= RANGE_HIGH; i++) {
+            numbers.add(i);
+        }
     }
 
     // 임의의 수 3개 선택

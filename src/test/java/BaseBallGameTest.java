@@ -14,9 +14,12 @@ class BaseBallGameTest {
     @Test
     void initGame() {
         baseBallGame.initGame();
-        assertEquals(baseBallGame.chosen, 0);
-        assertEquals(baseBallGame.restart,false);
-        assertArrayEquals(baseBallGame.numbers, new int[BaseBallGame.DIGIT_SIZE]);
+        int range = BaseBallGame.RANGE_HIGH-BaseBallGame.RANGE_LOW+1;
+        assertEquals(baseBallGame.chosen.size(), 0);
+        assertEquals(baseBallGame.numbers.size(), range);
+        for (int i = BaseBallGame.RANGE_LOW; i <= BaseBallGame.RANGE_HIGH; i++) {
+            assertEquals(baseBallGame.numbers.get(i-BaseBallGame.RANGE_LOW), i);
+        }
     }
 
 //    @Test
