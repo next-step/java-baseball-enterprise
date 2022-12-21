@@ -1,15 +1,20 @@
+import java.util.Random;
+
 public class BaseBallGame {
     static final int RANGE_LOW = 1;
     static final int RANGE_HIGH = 9;
     static final int DIGIT_SIZE = 3;
+    static Random random = new Random();
 
     int[] numbers;
+    int chosen;
     boolean restart;
 
     // 초기화 및 게임 시작
     void initGame(){
         this.restart = false;
         this.numbers = new int[DIGIT_SIZE];
+        this.chosen = 0;
     }
 
     // 임의의 수 3개 선택

@@ -14,6 +14,7 @@ class BaseBallGameTest {
     @Test
     void initGame() {
         baseBallGame.initGame();
+        assertEquals(baseBallGame.chosen, 0);
         assertEquals(baseBallGame.restart,false);
         assertArrayEquals(baseBallGame.numbers, new int[BaseBallGame.DIGIT_SIZE]);
     }
@@ -22,15 +23,15 @@ class BaseBallGameTest {
 //    void setNumbers() {
 //    }
 
-    @Test
-    void getRandomNumber() {
-        int result = baseBallGame.getRandomNumber();
-        assertTrue(result>= BaseBallGame.RANGE_LOW);
-        assertTrue(result<= BaseBallGame.RANGE_HIGH);
-        for (int number: baseBallGame.numbers) {
-            assertNotEquals(result, number);
-        }
-    }
+//    @Test
+//    void getRandomNumber() {
+//        int result = baseBallGame.getRandomNumber();
+//        assertTrue(result>= BaseBallGame.RANGE_LOW);
+//        assertTrue(result<= BaseBallGame.RANGE_HIGH);
+//        for (int number: baseBallGame.numbers) {
+//            assertNotEquals(result, number);
+//        }
+//    }
 
 //    @Test
 //    void getInputs() {
