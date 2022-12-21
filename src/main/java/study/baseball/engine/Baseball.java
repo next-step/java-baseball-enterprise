@@ -23,7 +23,8 @@ public class Baseball implements Runnable {
     public void run() {
         while (true) {
             Numbers answer = numberGenerator.generateRandomNumber();
-            while (saveGame(answer));
+            while (saveGame(answer))
+                ;
             if (askContinue()) {
                 continue;
             }

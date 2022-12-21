@@ -20,6 +20,8 @@ class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"321312", "", "   ", "dsfjasdflk", "fdf  dfd !@#!@ d"})
     public void testInvalidFormatInput(String input) {
-        assertThatThrownBy(() -> {validator.checkValidFormat(input);}).isInstanceOf(RuntimeException.class).hasMessage("입력의 형식이 잘못되었습니다.");
+        assertThatThrownBy(() -> {
+            validator.checkValidFormat(input);
+        }).isInstanceOf(RuntimeException.class).hasMessage("입력의 형식이 잘못되었습니다.");
     }
 }
