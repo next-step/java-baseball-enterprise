@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 public class NumberUtils {
-
     public static List<Integer> generateRandomUniqueIntegerList(int size, int min, int max) {
         List<Integer> numberList = new ArrayList<>();
         for(int i = min ; i <= max ; i++) {

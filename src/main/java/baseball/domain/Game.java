@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-
     private Computer computer;
     private Result result;
     private UserInputValidator validator;
