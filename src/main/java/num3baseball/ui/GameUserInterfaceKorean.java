@@ -2,6 +2,7 @@ package num3baseball.ui;
 
 import num3baseball.dataobject.TrialResult;
 import num3baseball.exception.WrongNumberException;
+import num3baseball.exception.WrongTypeException;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class GameUserInterfaceKorean implements GameUserInterface{
 
     @Override
     public void printError(Exception e) {
-        if (e instanceof WrongNumberException){
+        if (e instanceof WrongNumberException || e instanceof WrongTypeException){
             System.out.println("올바른 숫자를 입력해주시기 바랍니다.");
             return;
         }
