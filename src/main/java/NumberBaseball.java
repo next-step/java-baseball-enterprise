@@ -34,11 +34,10 @@ public class NumberBaseball {
     public static boolean checkGuess() {
         int result = checkSingleDigit(answer, 0) + checkSingleDigit(answer, 1) + checkSingleDigit(answer, 2);
         System.out.println(createMessage(result));
-        return true;
     }
 
     public static String createMessage(int result) {
-        if (result / 10 == 3) {
+        if (result == 30) {
             return "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
         }
         if (result != 0) {
