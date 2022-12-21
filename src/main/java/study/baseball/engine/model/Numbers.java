@@ -13,6 +13,10 @@ public class Numbers {
         this.numbers = numbers;
     }
 
+    public Set<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Integer getBall(List<Integer> input) {
         Set<Integer> sum = new HashSet<>(input);
         sum.addAll(numbers);
