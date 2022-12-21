@@ -58,4 +58,10 @@ class NumberBaseballTest {
         assertThat(actual3).isEqualTo("낫싱");
     }
 
+    @Test
+    @DisplayName("알맞은 boolean 값을 리턴하는지 확인")
+    void isRestart_ShouldReturnExpectedValue() {
+        assertThat(NumberBaseball.isRestart(1)).isTrue();
+        assertThat(NumberBaseball.isRestart(2)).isFalse();
+    }
 }
