@@ -10,17 +10,24 @@ public class Game {
     private Computer computer;
     private UserInputValidator validator;
 
+    public Game() {
+        init();
+    }
+
     public void Start() {
-        Scanner scanner = new Scanner(System.in);
-        String result = getResult(validator.validateInputAndReturn(getInputFromUser(scanner)));
-        if(isEnd(result, scanner)) {
-            return;
+        while(true) {
+            Scanner scanner = new Scanner(System.in);
+            String result = getResult(validator.validateInputAndReturn(getInputFromUser(scanner)));
+            System.out.println(result);
+            if (isEnd(result, scanner)) {
+                return;
+            }
         }
     }
 
     private boolean isEnd(String result, Scanner scanner) {
         if(result.equals("3 스트라이크")) {
-            initializeProps();
+            init();
             printGameEndQuestion();
             return validator.validateInputAndReturn(scanner.nextLine(), new NumberRange(1, 2)) == 2;
         }
@@ -42,7 +49,7 @@ public class Game {
         return scanner.nextLine();
     }
 
-    private void initializeProps() {
+    private void init() {
         this.computer = new Computer();
         this.validator = new UserInputValidator(new NumberRange(INPUT_MIN, INPUT_MAX));
     }
