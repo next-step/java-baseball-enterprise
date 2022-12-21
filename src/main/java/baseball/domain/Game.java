@@ -1,51 +1,40 @@
 package baseball.domain;
 
 import baseball.util.validator.UserInputValidator;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
+
+import static baseball.util.constant.NumberConstant.*;
+import static baseball.util.util.NumberUtils.*;
 
 public class Game {
     private Computer computer;
-    private Result result;
     private UserInputValidator validator;
 
     public void Start() {
-        initializeProps();
-        boolean isEnd = false;
-        while(!isEnd) {
-            Scanner scanner = new Scanner(System.in);
-            String resultString = getResult(scanner);
-            System.out.println(resultString);
-            isEnd = determineEndGame(scanner, resultString);
+        Scanner scanner = new Scanner(System.in);
+        String result = getResult(validator.validateInputAndReturn(getInputFromUser(scanner)));
+        if(isEnd(result, scanner)) {
+            return;
         }
     }
 
-    private String getResult(Scanner scanner) {
-        return computer.calculateResult(getIntegerListFromInput(validator.validateInput(getInputFromUser(scanner))))
-                .exportResultString();
-    }
-
-    private Boolean determineEndGame(Scanner scanner, String resultString) {
-        if(resultString.equals("3 스트라이크")) {
+    private boolean isEnd(String result, Scanner scanner) {
+        if(result.equals("3 스트라이크")) {
             initializeProps();
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return validator.validateEndInputFromUser(scanner.nextLine());
+            printGameEndQuestion();
+            return validator.validateInputAndReturn(scanner.nextLine(), new NumberRange(1, 2)) == 2;
         }
         return false;
     }
 
-    private List<Integer> getIntegerListFromInput(int input) {
-        List<Integer> result = new ArrayList<>();
-        while(input > 0) {
-            result.add(input % 10);
-            input /= 10;
-        }
-        Collections.reverse(result);
-        return result;
+    private String getResult(int input) {
+        return computer.calculateResult(getSingleIntegerListFromInt(input))
+                .exportResultString();
+    }
+
+    private void printGameEndQuestion() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private String getInputFromUser(Scanner scanner) {
@@ -55,7 +44,6 @@ public class Game {
 
     private void initializeProps() {
         this.computer = new Computer();
-        this.result = new Result(0, 0);
-        this.validator = new UserInputValidator();
+        this.validator = new UserInputValidator(new NumberRange(INPUT_MIN, INPUT_MAX));
     }
 }
