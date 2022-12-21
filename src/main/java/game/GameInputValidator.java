@@ -1,3 +1,5 @@
+package game;
+
 public class GameInputValidator {
     public boolean validateGameInput(String input){
         //input 문자열의 길이 & 0이 포함되어 있는지 검사
@@ -10,7 +12,7 @@ public class GameInputValidator {
     };
 
     //input 문자열이 숫자로만 이루어져 있는지 검사
-    public boolean isNumber(String input){
+    private boolean isNumber(String input){
         try{
             Integer.parseInt(input);
         }catch (NumberFormatException numberFormatException){

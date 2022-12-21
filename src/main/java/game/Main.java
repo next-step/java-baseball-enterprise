@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package game;
 
 public class Main {
     private static AnswerEntity answer;
@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         do{
             setUp();
-            System.out.println(answer.getAnswer()[0] + ""+answer.getAnswer()[1] + ""+answer.getAnswer()[2]);
             startGame();
         }while(restartOrNot());
     }
@@ -19,11 +18,13 @@ public class Main {
         answer = new AnswerEntity();
         gameInputScanner = new GameInputScanner();
         gameService = new GameService();
+
+        answer.init();
     }
     private static void startGame(){
         while(!isFinish){
             input = gameInputScanner.getGameInput();
-            ResultEntity result = gameService.getResult(answer.getAnswer(), input);
+            ResultEntity result = gameService.calcResult(answer.getAnswer(), input);
             isFinish = gameService.isFinish(result);
         }
     }

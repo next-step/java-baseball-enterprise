@@ -1,3 +1,5 @@
+package game;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

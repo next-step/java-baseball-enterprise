@@ -7,5 +7,8 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
 
 ## 기능 목록
-1. setUp & input 받아서 validation 진행
-2. 
+1. 게임시작 환경 셋업
+2. Input 받아서 Validation 하기
+3. 숫자야구 규칙에 따른 핵심로직 (스트라이크, 볼 판단)
+4. 재시작 기능
+5. 단위테스트 구현

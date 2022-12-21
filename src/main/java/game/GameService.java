@@ -1,8 +1,10 @@
+package game;
+
 import java.util.Arrays;
 
 public class GameService {
 
-    public ResultEntity getResult(int[] answer, int[] input){
+    public ResultEntity calcResult(int[] answer, int[] input){
         ResultEntity result = new ResultEntity(0, 0);
         //answer 배열의 각 원소 위치를 저장하는 배열, 없는 원소면 -1
         int[] answerIdxArr = makeAnswerIdxArr(answer);
