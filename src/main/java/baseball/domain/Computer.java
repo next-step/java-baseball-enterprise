@@ -1,14 +1,7 @@
 package baseball.domain;
 
-import baseball.domain.Result;
-import baseball.util.constant.NumberConstant;
-import baseball.util.util.NumberUtils;
-
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import static baseball.util.constant.NumberConstant.*;
 import static baseball.util.util.NumberUtils.generateRandomUniqueIntegerList;

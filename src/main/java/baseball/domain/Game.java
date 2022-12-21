@@ -1,10 +1,7 @@
 package baseball.domain;
 
-import baseball.domain.Computer;
-import baseball.domain.Result;
 import baseball.util.validator.UserInputValidator;
 
-import javax.xml.validation.Validator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
