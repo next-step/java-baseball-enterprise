@@ -10,8 +10,9 @@
 ## 메소드 구현 설명
 ### 1. void setAnswer()
 - 컴퓨터가 정한 임의의 정답인 answer 배열을 초기화하는 메소드
-### 2. void setGuess()
+### 2. void setGuess(int inputNumber)
 - 플레이어가 맞추어야 할 정답인 guess 배열을 초기화하는 메소드
+- inputNumber를 슬라이싱하여 세 자리수를 만들어 guess를 초기화한다.
 ### 3. int checkNumber(int idx)
 - guess 의 idx 번째 숫자를 확인하여 볼, 스트라이크 여부를 확인하는 메소드
 - 스트라이크라면 10를 리턴한다.
