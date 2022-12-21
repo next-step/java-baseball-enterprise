@@ -6,7 +6,6 @@ import baseball.util.exception.InputOutOfRangeException;
 import baseball.util.exception.InvalidInputException;
 
 public class UserInputValidator {
-
     private NumberRange range;
 
     public UserInputValidator(NumberRange range) {
