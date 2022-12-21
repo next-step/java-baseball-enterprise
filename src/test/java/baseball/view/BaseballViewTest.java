@@ -2,6 +2,9 @@ package baseball.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.controller.BaseballController;
+import baseball.domain.BaseballNumber;
+import baseball.service.BaseballService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +15,10 @@ class BaseballViewTest {
 
     @BeforeEach
     public void beforeEach() {
-        baseballView = new BaseballView();
+        BaseballNumber baseballNumber = new BaseballNumber();
+        BaseballService baseballService = new BaseballService(baseballNumber);
+        BaseballController baseballController = new BaseballController(baseballService);
+        BaseballView baseballView = new BaseballView(baseballController);
     }
 
     @DisplayName("입력이 3글자가 아니면 Exception이 발생합니다.")
