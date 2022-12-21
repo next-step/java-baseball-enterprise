@@ -80,8 +80,12 @@ public class NumberBaseball {
     }
 
     public boolean continue_or_end(int input){
-        if (input == CONTINUE) return true;
-        if (input == END) return false;
+        if (input == CONTINUE){
+            return true;
+        }
+        if (input == END){
+            return false;
+        }
         return false;
     }
 
