@@ -38,5 +38,4 @@ public class Computer {
     private int isStrike(List<Integer> input, int i) {
         return numbers.get(i).equals(input.get(i)) ? 1 : 0;
     }
-
 }

@@ -23,6 +23,7 @@ public class UserTest {
     public void setUp() {
         userInputValidator = new UserInputValidator(new NumberRange(INPUT_MIN, INPUT_MAX));
     }
+
     @ParameterizedTest
     @DisplayName("숫자 외 다른 문자가 포함된 입력 예외처리")
     @ValueSource(strings = {"a31", "!?a", "인풋", "92a"})
