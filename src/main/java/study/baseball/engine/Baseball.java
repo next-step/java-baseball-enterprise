@@ -1,6 +1,8 @@
 package study.baseball.engine;
 
+import java.util.List;
 import study.baseball.Console;
+import study.baseball.engine.model.BallCount;
 import study.baseball.engine.model.Numbers;
 
 public class Baseball implements Runnable {
@@ -29,6 +31,8 @@ public class Baseball implements Runnable {
     private void proceedGame() {
         String input = console.input("숫자를 입력해주세요 : ");
         validator.checkValidFormat(input);
+        List<Integer> parsedInput = parser.parseStringToIntegerList(input);
         Numbers answer = numberGenerator.generateRandomNumber();
+        BallCount result = new BallCount(answer.getStrike(parsedInput), answer.getBall(parsedInput));
     }
 }
