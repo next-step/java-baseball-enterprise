@@ -6,12 +6,14 @@ public class NumberBaseball {
     public static int[] answer = new int[SIZE];
     public static int[] guess = new int[SIZE];
     public static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         setAnswer();
         int inputNumber = sc.nextInt();
         setGuess(inputNumber);
     }
+
     public static void setAnswer() {
         while (true) {
             Random random = new Random();
@@ -29,7 +31,17 @@ public class NumberBaseball {
         guess[2] = inputNumber % 10;
     }
 
-    public static int checkSingleDigit(int idx) {
+    public static String createMessage(int result) {
+        if (result / 10 == 3) {
+            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        }
+        if (result != 0) {
+            return String.format("%d 스트라이크 %d 볼", result / 10, result % 10);
+        }
+        return "낫싱";
+    }
+
+    public static int checkSingleDigit(int[] answer, int idx) {
         if (answer[idx] == guess[idx]) {
             return 10;
         }
