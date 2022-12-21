@@ -51,7 +51,7 @@ public class BaseballTest {
 
     private void validateResult(String answer, String input, String expected) {
         Computer computer = new Computer(stringToIntegerList(answer));
-        Assertions.assertThat(computer.calculate(stringToIntegerList(input))
+        Assertions.assertThat(computer.calculateResult(stringToIntegerList(input))
                 .exportResultString())
                 .isEqualTo(expected);
     }
