@@ -1,24 +1,26 @@
 package game;
 
 
-import console.InputConsole;
+import console.Console;
 import console.Menu;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Game {
 
-    private final InputConsole inputConsole;
-    private int[] answerNumber;
+    private final Console console;
+    private int[] answer;
 
     public Game() {
-        this.inputConsole = new InputConsole();
+        this.console = new Console();
+        answer = new int[3];
     }
 
     public void start(){
         makeRandomNumber();
+        int[] playerAnswer = console.getPlayerAnswer();
+
     }
 
     private void makeRandomNumber() {
@@ -28,11 +30,11 @@ public class Game {
         }
         Collections.shuffle(numbers);
         for (int idx = 0; idx < 3; idx++) {
-            answerNumber[idx] = numbers.get(idx);
+            answer[idx] = numbers.get(idx);
         }
     }
 
     public boolean checkGameAgain(){
-        return Menu.isDoGame(inputConsole.getGameMenu());
+        return Menu.isDoGame(console.getGameMenu());
     }
 }
