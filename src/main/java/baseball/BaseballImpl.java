@@ -44,7 +44,7 @@ public class BaseballImpl implements Baseball{
 	@Override
 	public int[] getPlayerInput() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("숫자를 입력하세요 : ");
+		System.out.print("숫자를 입력하세요 : ");
 		int input = sc.nextInt();
 		int[] processed = {input/100, input/10%10, input%10};
 		if(checkValidOfNumber(processed))
