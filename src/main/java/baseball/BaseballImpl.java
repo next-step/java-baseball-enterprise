@@ -15,6 +15,12 @@ public class BaseballImpl implements Baseball{
 	public void start() {
 		drawStartMessage();
 		int[] answer = generateNumber();
+		int[] playerInput;
+
+		do{
+			playerInput = getPlayerInput();
+			drawMatchResult(getMatchResult(answer, playerInput));
+		}while(!isGameOver(getMatchResult(answer, playerInput)));
 	}
 
 	@Override
