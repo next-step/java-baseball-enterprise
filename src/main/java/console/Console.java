@@ -1,5 +1,8 @@
 package console;
 
+import game.Score;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
@@ -17,13 +20,16 @@ public class Console {
         return scanner.nextInt();
     }
 
-    public int[] getPlayerAnswer(){
-        int[] playerAnswer = new int[3];
+    public ArrayList<Integer> getPlayerAnswer(){
+        ArrayList<Integer> playerAnswer = new ArrayList<>(3);
         String input = scanner.nextLine();
         String[] splitNumber = input.split("");
         for(int idx = 0; idx < 3; idx++){
-            playerAnswer[idx] = Integer.getInteger(splitNumber[idx]);
+            playerAnswer.add(Integer.getInteger(splitNumber[idx]));
         }
         return playerAnswer;
+    }
+
+    public void printScore(Score score){
     }
 }

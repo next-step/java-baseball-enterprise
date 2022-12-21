@@ -10,17 +10,36 @@ import java.util.Collections;
 public class Game {
 
     private final Console console;
-    private int[] answer;
+    private ArrayList<Integer> answer;
 
     public Game() {
         this.console = new Console();
-        answer = new int[3];
+        answer = new ArrayList<>(3);
     }
 
     public void start(){
         makeRandomNumber();
-        int[] playerAnswer = console.getPlayerAnswer();
+        ArrayList<Integer> playerAnswer = console.getPlayerAnswer();
+        Score score = new Score(0,0);
+        setStrikeCount(playerAnswer, score);
+        for (int idx = 0; idx < 3; idx++) {
+            setBallCount(playerAnswer, score, idx);
+        }
+        console.printScore(score);
+    }
 
+    private void setBallCount(ArrayList<Integer> playerAnswer, Score score, int idx){
+        for (int compIdx = 0; compIdx < 3; compIdx++){
+            if (compIdx != idx && answer.get(compIdx) == playerAnswer.get(idx))
+                score.plusBall();
+        }
+    }
+
+    private void setStrikeCount(ArrayList<Integer> playerAnswer, Score score){
+        for (int idx = 0; idx < 3; idx++){
+            if (answer.get(idx) == playerAnswer.get(idx))
+                score.plusStrike();
+        }
     }
 
     private void makeRandomNumber() {
@@ -30,7 +49,7 @@ public class Game {
         }
         Collections.shuffle(numbers);
         for (int idx = 0; idx < 3; idx++) {
-            answer[idx] = numbers.get(idx);
+            answer.set(idx, numbers.get(idx));
         }
     }
 
