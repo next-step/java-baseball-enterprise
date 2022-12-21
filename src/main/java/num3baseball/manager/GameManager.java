@@ -23,8 +23,7 @@ public class GameManager {
 
     public boolean executeOneCycle(){
         try{
-            ArrayList<Integer> trial = gameUserInterface.inputNumbers();
-            TrialResult result = answer.compare(new NumBallsNBalls(trial));
+            TrialResult result = answer.compare(new NumBallsNBalls(gameUserInterface.inputNumbers()));
             gameUserInterface.printResult(result);
             return result.getStrike() == result.getSize();
         }
