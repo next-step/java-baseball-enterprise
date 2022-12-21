@@ -25,7 +25,6 @@ public class BaseballGame {
         for (int i =0; i<DIGITS; i++) {
             numbers += generateNumber(hashSet);
         }
-
         return numbers;
     }
 
@@ -102,7 +101,6 @@ public class BaseballGame {
         return UserInput.length() == DIGITS;
     }
     private boolean validate_consistOfNumbers(String userInput) {
-
         int flag = 1;
         for(int i = 0; i < userInput.length(); i++) {
             flag *= validate_number(userInput.charAt(i));
@@ -117,25 +115,33 @@ public class BaseballGame {
 
 
     public GameResultSet proceedRound() {
-        Set<Character> hashSet = new HashSet<Character>();
+        Set<Character> hashSet = generateAnswerSet();
         GameResultSet resultSet = new GameResultSet();
         try{
             String userInput = getUserInput();
-            for (int i = 0; i < answer.length(); i++) {
-                hashSet.add(answer.charAt(i));
-            }
-            for (int i = 0; i < userInput.length(); i++) {
-                judgeNumber(userInput.charAt(i), answer.charAt(i), hashSet, resultSet);
-            }
+            judgeNumbers(userInput, hashSet, resultSet);
             printScore(resultSet);
-
         }catch(IllegalArgumentException e) {
             System.out.println(e);
         }
         return resultSet;
     }
 
-    private void judgeNumber(char ui, char aw, Set<Character> hashSet, GameResultSet resultSet) {
+    private void judgeNumbers(String userInput, Set<Character> hashSet, GameResultSet resultSet) {
+        for (int i = 0; i < userInput.length(); i++) {
+            judgeOneNumber(userInput.charAt(i), answer.charAt(i), hashSet, resultSet);
+        }
+    }
+
+    private Set<Character> generateAnswerSet() {
+        Set<Character> hashSet = new HashSet<Character>();
+        for (int i = 0; i < answer.length(); i++) {
+            hashSet.add(answer.charAt(i));
+        }
+        return hashSet;
+    }
+
+    private void judgeOneNumber(char ui, char aw, Set<Character> hashSet, GameResultSet resultSet) {
         if (ui == aw) {
             resultSet.strike += 1;
         }
@@ -145,18 +151,16 @@ public class BaseballGame {
     }
 
     private void printScore(GameResultSet resultSet) {
-        if (resultSet.strike == 0 && resultSet.ball == 0) {
-            System.out.println("낫싱");
+        if (resultSet.strike != 0) {
+            System.out.print(resultSet.strike + "스트라이크 ");
         }
-        else if (resultSet.strike == 0) {
-            System.out.println(resultSet.ball + "볼");
+        if (resultSet.ball != 0) {
+            System.out.print(resultSet.ball + "볼");
         }
-        else if (resultSet.ball == 0) {
-            System.out.println(resultSet.strike + "스트라이크");
+        else if (resultSet.strike == 0 && resultSet.ball == 0) {
+            System.out.print("낫싱");
         }
-        else if (resultSet.strike != 0 && resultSet.ball != 0) {
-            System.out.println(resultSet.strike + "스트라이크 " + resultSet.ball + "볼");
-        }
+        System.out.println();
     }
 
     private boolean isCorrectAnswer(GameResultSet resultSet) {
