@@ -2,6 +2,7 @@ package view;
 
 import config.GlobalData;
 import domain.ballnumber.BallNumber;
+import domain.game.GameResult;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -44,6 +45,15 @@ public class InputView {
             result.add(c-'0');
         }
         return result;
+    }
+
+    public GameResult inputGameResult() throws Exception{
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = br.readLine();
+        // 유효성 검사
+        int selected = input.charAt(0)-'0';
+        if(selected==1) return GameResult.RESTART;
+        return GameResult.EXIT;
     }
 
 }

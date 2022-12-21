@@ -1,5 +1,5 @@
 package domain.game;
 
 public enum GameStatus {
-    PLAYING, FINISH
+    READY, PLAYING, FINISH
 }

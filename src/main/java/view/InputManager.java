@@ -1,4 +1,7 @@
+package view;
+
 import domain.ballnumber.BallNumber;
+import domain.game.GameResult;
 import view.InputView;
 
 public class InputManager {
@@ -23,6 +26,23 @@ public class InputManager {
             System.out.println(e.getMessage());
         } finally {
             return guessedBallNumber;
+        }
+    }
+
+    public GameResult inputGameResult() {
+        GameResult gameResult = null;
+        while((gameResult=tryInputGameResult())==null){}
+        return gameResult;
+    }
+
+    public GameResult tryInputGameResult() {
+        GameResult gameResult = null;
+        try {
+            gameResult = inputView.inputGameResult();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return gameResult;
         }
     }
 
