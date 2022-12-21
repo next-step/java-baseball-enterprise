@@ -13,6 +13,15 @@ public class OutputManager {
         printWriter = new PrintWriter(os);
     }
 
+    public void printInputMessage() {
+        printWriter.print("숫자를 입력해주세요 : ");
+    }
+
+    public void printGameOverMessage() {
+        printWriter.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        printWriter.println("게임을 새로 시작하려면 1, 종료하려 2를 입력하세요.");
+    }
+
     public void printResult(Score score) {
         if (score.getStrikeCount() == 0 && score.getBallCount() == 0) {
             printWriter.println("낫싱");
