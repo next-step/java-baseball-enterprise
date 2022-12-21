@@ -29,7 +29,7 @@ public class GameService {
         if(resultString.equals("3 스트라이크")) {
             init();
             printGameEndQuestion();
-            return validateAndIsTwo(scanner.nextInt());
+            return validate(Integer.parseInt(scanner.nextLine()));
         }
         return false;
     }

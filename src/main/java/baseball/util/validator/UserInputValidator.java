@@ -13,7 +13,7 @@ public final class UserInputValidator {
         validateOutOfRange(input);
     }
 
-    public static boolean validateAndIsTwo(int input) {
+    public static boolean validate(int input) {
         validateIsOneOrTwo(input);
         return input == 2;
     }
