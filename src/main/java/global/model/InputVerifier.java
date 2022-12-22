@@ -12,7 +12,7 @@ public final class InputVerifier {
     }
 
     public boolean isIntegerWithLength(String input, int length) {
-        if (input == null || input.length() != length || input.charAt(0) < '0' || input.charAt(0) > '9') {
+        if (isIllegalInputStringWithLength(input, length) || input.charAt(0) < '0' || input.charAt(0) > '9') {
             return false;
         }
 
@@ -21,6 +21,10 @@ public final class InputVerifier {
         }
 
         return isIntegerWithLength(input.substring(1), length - 1);
+    }
+
+    private boolean isIllegalInputStringWithLength(String input, int length) {
+        return input == null || length <= 0 || input.length() != length;
     }
 
     public boolean hasZero(String input) {
