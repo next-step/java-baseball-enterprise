@@ -51,8 +51,12 @@ public class BaseBallGame {
     }
 
     // 각 자리수별로 스트라이크, 볼 확인
-    String compareDigit(int index, int number) {
-        return null;
+    int[] compareDigit(int index, int number) {
+        if (chosen.get(index) == number)
+            return new int[]{1, 0};
+        if (chosen.contains(number))
+            return new int[]{0, 1};
+        return new int[]{0, 0};
     }
 
     // 숫자가 맞았을 경우 게임 종료 혹은 새로 시작
