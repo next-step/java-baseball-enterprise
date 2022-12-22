@@ -89,21 +89,29 @@ public class BaseBallGame {
 
     // 숫자가 맞았을 경우 게임 종료 혹은 새로 시작
     void endgame() {
-
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = new Scanner(System.in).nextLine();
+        int inputNum = Integer.parseInt(input);
+        if(inputNum == 1){
+            restart = true;
+        }
     }
 
     // 메인 게임 시퀀스
     public void mainGame(){
         do {
             initGame();
+            setNumbers();
+            mainSequence();
             endgame();
         }
         while(this.restart);
+        System.out.println("게임을 종료합니다.");
     }
 
     public static void main(String[] args) {
         BaseBallGame baseBallGame = new BaseBallGame();
-
+        baseBallGame.mainGame();
     }
 
 }
