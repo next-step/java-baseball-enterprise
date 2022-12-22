@@ -1,5 +1,3 @@
-package org.example;
-
 public class Checker {
     private int strike_arr[];
     private int strike;

@@ -1,5 +1,3 @@
-package org.example;
-
 import com.sun.source.tree.ContinueTree;
 
 public class game {

@@ -5,3 +5,10 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+<기능 목록>
+
+1. 유저 인풋 기능
+2. 컴퓨터 난수 생성 기능
+3. 스트라이크/볼 체크 기능
+4. 게임 재시작 기능
