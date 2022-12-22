@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaseBallGameTest {
@@ -22,9 +25,19 @@ class BaseBallGameTest {
         }
     }
 
-//    @Test
-//    void setNumbers() {
-//    }
+    @Test
+    void setNumbers() {
+        baseBallGame.setNumbers();
+        assertEquals(baseBallGame.chosen.size(), BaseBallGame.DIGIT_SIZE);
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < BaseBallGame.DIGIT_SIZE; i++) {
+            int number = baseBallGame.chosen.get(i);
+            assertTrue(number>= BaseBallGame.RANGE_LOW);
+            assertTrue(number<= BaseBallGame.RANGE_HIGH);
+            set.add(number);
+        }
+        assertEquals(set.size(), BaseBallGame.DIGIT_SIZE);
+    }
 
     @Test
     void getRandomNumber() {
