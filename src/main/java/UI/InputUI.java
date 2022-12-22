@@ -17,6 +17,17 @@ public class InputUI {
         return userInput;
     }
 
+    public static String getRestartFlag() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = sc.next();
+        while (!userInput.equals("1") && !userInput.equals("2")) {
+            System.out.println("올바르지 않은 입력입니다.\n" +
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            userInput = sc.next();
+        }
+        return userInput;
+    }
+
     private static boolean isValidInput(String input) {
         StringBuilder sb = new StringBuilder();
         for (char c : input.toCharArray()) {
