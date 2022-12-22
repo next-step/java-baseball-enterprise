@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaseBallGameTest {
     static BaseBallGame baseBallGame;
 
-    @BeforeAll
-    public static void beforeAll(){
+    @BeforeEach
+    public void BeforeEach(){
         baseBallGame = new BaseBallGame();
     }
 
@@ -27,6 +27,7 @@ class BaseBallGameTest {
 
     @Test
     void setNumbers() {
+        baseBallGame.initGame();
         baseBallGame.setNumbers();
         assertEquals(baseBallGame.chosen.size(), BaseBallGame.DIGIT_SIZE);
         Set<Integer> set = new HashSet<>();
@@ -41,6 +42,7 @@ class BaseBallGameTest {
 
     @Test
     void getRandomNumber() {
+        baseBallGame.initGame();
         for (int i = BaseBallGame.RANGE_LOW; i <= BaseBallGame.RANGE_HIGH; i++) {
             int result = baseBallGame.getRandomNumber();
             assertTrue(result>= BaseBallGame.RANGE_LOW);
