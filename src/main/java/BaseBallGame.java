@@ -47,6 +47,15 @@ public class BaseBallGame {
 
     // 입력받은 숫자와 임의의 수 비교
     boolean compareNumbers(int[] inputs){
+        int[] results = {0, 0};
+        for (int i = 0; i < DIGIT_SIZE; i++) {
+            int[] compareResult = compareDigit(i, inputs[i]);
+            results[0] += compareResult[0];
+            results[1] += compareResult[1];
+        }
+        printResults(results);
+        if (results[0] == DIGIT_SIZE)
+            return true;
         return false;
     }
 
