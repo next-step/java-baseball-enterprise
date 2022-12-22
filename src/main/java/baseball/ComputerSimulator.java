@@ -27,7 +27,7 @@ public class ComputerSimulator {
             isGameFinished = processSingleGameStep();
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     // returns true if game should be finished after the step
