@@ -85,12 +85,5 @@ class BaseBallGameTest {
                 baseBallGame.compareDigit(1, baseBallGame.chosen.get(0)),
                 new int[]{0,1});
     }
-
-//    @Test
-//    void endgame() {
-//    }
-//
-//    @Test
-//    void mainGame() {
-//    }
+    
 }

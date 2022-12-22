@@ -68,6 +68,17 @@ public class BaseBallGame {
         return new int[]{0, 0};
     }
 
+    void printResults(int[] results){
+        String output = "";
+        if (results[0]>0)
+            output += (results[0] + "스트라이크 ");
+        if (results[1]>0)
+            output += (results[1] + "볼 ");
+        if (output.length() == 0)
+            output += "낫싱";
+        System.out.println(output);
+    }
+
     // 숫자가 맞았을 경우 게임 종료 혹은 새로 시작
     void endgame() {
 
