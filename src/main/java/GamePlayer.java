@@ -11,15 +11,17 @@ public class GamePlayer {
     }
 
     public void start() {
-        // 정답 생성
-        AnswerMaker answerMaker = new RandomAnswerMaker();
-        String answer = answerMaker.makeAnswer(length);
-
-        // 정답 입력
-        String userInput = InputUI.getAnswerByUser(length);
+        boolean isRestart = false;
+        while (!isRestart) {
+            playGame();
+            String userInput = InputUI.getRestartFlag();
+            isRestart = userInput.equals("2");
+            System.out.println();
+        }
+        System.out.println("게임을 완전히 종료합니다.");
     }
 
-    public void start() {
+    private void playGame() {
         System.out.println("게임을 시작합니다.");
         // 정답 생성
         AnswerMaker answerMaker = new RandomAnswerMaker();
