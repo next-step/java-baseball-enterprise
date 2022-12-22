@@ -5,15 +5,12 @@ public class GameResult {
     public int strike;
 
     GameResult(int ball, int strike) {
-        if (ball + strike > 3) {
-            throw new RuntimeException(String.format("unexpected ball(=%d) and strike(=%d)", ball, strike));
-        }
         this.ball = ball;
         this.strike = strike;
     }
 
     public boolean isNothing() {
-        return this.strike == 0 && this.ball != 0;
+        return this.strike == 0 && this.ball == 0;
     }
 
     public boolean isAllStrike() {
