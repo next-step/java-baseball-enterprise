@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,10 +55,14 @@ class BaseBallGameTest {
         assertEquals(baseBallGame.numbers.size(), 0);
     }
 
-//    @Test
-//    void getInputs() {
-//    }
-//
+    @Test
+    void getInputs() {
+        String input = "123";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        int[] inputs = baseBallGame.getInputs();
+        assertArrayEquals(inputs, new int[]{1,2,3});
+    }
+
 //    @Test
 //    void compareNumbers() {
 //    }
