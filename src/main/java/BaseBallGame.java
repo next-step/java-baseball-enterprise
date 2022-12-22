@@ -37,7 +37,12 @@ public class BaseBallGame {
 
     // 사용자로부터 숫자 입력받기
     int[] getInputs(){
-        return null;
+        int[] inputs = new int[DIGIT_SIZE];
+        String line = new Scanner(System.in).nextLine();
+        for (int i = 0; i < DIGIT_SIZE; i++) {
+            inputs[i] = line.charAt(i)-'0';
+        }
+        return inputs;
     }
 
     // 입력받은 숫자와 임의의 수 비교
