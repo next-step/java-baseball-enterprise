@@ -3,7 +3,6 @@ package game;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameInterface {
@@ -67,16 +66,12 @@ public class GameInterface {
     public int scanRetryMenu() {
         inputloop: while (true){
             this.printer.print("게임을 다시 진행하려면 1, 종료하려면 2를 입력하세요 : ");
-            try {
-                var menu = this.scanner.nextInt();
-                if(!(1 <= menu && menu <= 2)){
-                    this.printer.println("잘못된 값이 입력되었습니다. 1, 2중에 선택하세요.");
-                    continue inputloop;
-                }
-                return menu;
-            }catch (InputMismatchException ime){
-                this.printer.println("잘못된 값이 입력되었습니다. 1, 2중에 선택하세요.");
+            var inputLine = this.scanner.next();
+            if (!inputLine.matches("^[1-2]$")) {
+                this.printer.printf("잘못된 값 '%s'가 입력되었습니다. /^[1-2]$/ 규칙을 만족해야 합니다.\n", inputLine);
+                continue inputloop;
             }
+            return Integer.parseInt(inputLine);
         }
     }
 }
