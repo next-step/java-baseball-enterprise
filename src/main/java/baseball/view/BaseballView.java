@@ -30,7 +30,7 @@ public class BaseballView {
         }
     }
 
-    public void playGame() {
+    private void playGame() {
         List<Integer> playerBaseballNumber = getPlayerBaseballNumber();
 
         BaseballResultDto baseballResultDto = baseballController
@@ -40,15 +40,15 @@ public class BaseballView {
         checkGameStatus(baseballResultDto);
     }
 
-    public void checkGameStatus(BaseballResultDto baseballResultDto) {
+    private void checkGameStatus(BaseballResultDto baseballResultDto) {
         if (baseballResultDto.strikeCount() == BASEBALL_NUMBER_LENGTH) {
             baseballController.finishGame();
             System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료 \n", BASEBALL_NUMBER_LENGTH);
-            checkContinueGame();
+            checkToContinueGame();
         }
     }
 
-    private void checkContinueGame() {
+    private void checkToContinueGame() {
         System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n",
                 CONTINUE_THE_GAME, FINISH_THE_GAME);
         int playerStatusInput = scanner.nextInt();
@@ -57,7 +57,7 @@ public class BaseballView {
             restartGameIfContinue(playerStatusInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            checkContinueGame();
+            checkToContinueGame();
         }
     }
 
@@ -74,7 +74,7 @@ public class BaseballView {
             baseballController.startGame();
         }
     }
-    public List<Integer> getPlayerBaseballNumber() {
+    private List<Integer> getPlayerBaseballNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerInput = scanner.nextLine();
         try {
