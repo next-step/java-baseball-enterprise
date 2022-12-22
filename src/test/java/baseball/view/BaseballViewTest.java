@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 
 class BaseballViewTest {
 
-    BaseballView baseballView;
+    private BaseballView baseballView;
 
     @BeforeEach
     public void beforeEach() {
         BaseballNumber baseballNumber = new BaseballNumber();
         BaseballService baseballService = new BaseballService(baseballNumber);
         BaseballController baseballController = new BaseballController(baseballService);
-        BaseballView baseballView = new BaseballView(baseballController);
+        baseballView = new BaseballView(baseballController);
     }
 
     @DisplayName("입력이 3글자가 아니면 Exception이 발생합니다.")

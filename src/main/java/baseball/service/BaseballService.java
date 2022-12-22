@@ -15,7 +15,7 @@ public class BaseballService {
     }
 
     public int getBallCount(List<Integer> userBaseballNumber) {
-        List<Integer> computerBaseballNumber = baseballNumber.getNumbers();
+        List<Integer> computerBaseballNumber = baseballNumber.getNumber();
         int ballCount = 0;
 
         for (int i = 0; i < userBaseballNumber.size(); i++) {
@@ -30,7 +30,7 @@ public class BaseballService {
     }
 
     public int getStrikeCount(List<Integer> userBaseballNumber) {
-        List<Integer> computerBaseballNumber = baseballNumber.getNumbers();
+        List<Integer> computerBaseballNumber = baseballNumber.getNumber();
         int strikeCount = 0;
 
         for (int i = 0; i < userBaseballNumber.size(); i++) {
@@ -48,11 +48,14 @@ public class BaseballService {
 
     public void startGame(){
         status = RUNNING;
-        baseballNumber.generateBaseballNumbers();
+        baseballNumber.generateBaseballNumber();
     }
 
     public void finishGame(){
         status = READY;
     }
 
+    public void setBaseballNumber(List<Integer> baseballNumber) {
+        this.baseballNumber.setNumber(baseballNumber);
+    }
 }

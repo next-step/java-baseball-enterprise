@@ -19,10 +19,10 @@ public class BaseballNumberTest {
     @Test
     void GenerateBaseballNumbersTest() {
         // given
-        baseballNumber.generateBaseballNumbers();
+        baseballNumber.generateBaseballNumber();
 
         // when
-        List<Integer> numbers = baseballNumber.getNumbers();
+        List<Integer> numbers = baseballNumber.getNumber();
 
         // then
         assertThat(numbers.stream().allMatch(v -> 1 <= v && v <= 9)).isTrue();
