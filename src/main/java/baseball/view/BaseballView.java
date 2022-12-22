@@ -118,7 +118,7 @@ public class BaseballView {
         }
     }
 
-    private String getBaseballResultString(BaseballResultDto baseballResultDto) {
+    public String getBaseballResultString(BaseballResultDto baseballResultDto) {
         String baseballResultString = getStrikeString(baseballResultDto)
                 + getBallString(baseballResultDto);
         return baseballResultString.isBlank() ? "낫싱" : baseballResultString;
