@@ -53,6 +53,7 @@ public class GameInterface {
             this.printer.print("숫자를 입력해 주세요(예시 : 123) : ");
             var inputLine = this.scanner.next();
             if (!inputLine.matches("^[0-9]{3}$")) {
+                this.printer.printf("잘못된 값 '%s'가 입력되었습니다. /^[0-9]{3}$/ 규칙을 만족해야 합니다.\n", inputLine);
                 continue inputloop;
             }
             return new int[]{
@@ -69,11 +70,12 @@ public class GameInterface {
             try {
                 var menu = this.scanner.nextInt();
                 if(!(1 <= menu && menu <= 2)){
+                    this.printer.println("잘못된 값이 입력되었습니다. 1, 2중에 선택하세요.");
                     continue inputloop;
                 }
                 return menu;
             }catch (InputMismatchException ime){
-                this.printer.println("잘못된 값이 입력되었습니다. 1, 2중에 선택하세요. : ");
+                this.printer.println("잘못된 값이 입력되었습니다. 1, 2중에 선택하세요.");
             }
         }
     }
