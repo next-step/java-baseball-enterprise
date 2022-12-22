@@ -13,7 +13,7 @@ public class UserInput implements Iterable<Integer> {
 
     public UserInput(String input) {
         UserInputValidator.validate(input);
-        this.inputList = getSingleIntegerListFromInt(Integer.parseInt(input));;
+        this.inputList = getSingleIntegerListFromInt(Integer.parseInt(input));
     }
 
     public int intersect(RandomNumbers numbers) {

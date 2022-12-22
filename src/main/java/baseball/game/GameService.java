@@ -1,10 +1,12 @@
-package baseball;
+package baseball.game;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.user.UserInput;
+import baseball.util.constant.BaseballMessageConstant;
 
 import java.util.Scanner;
 
+import static baseball.util.constant.BaseballMessageConstant.*;
 import static baseball.util.validator.UserInputValidator.*;
 
 public class GameService {
@@ -20,7 +22,7 @@ public class GameService {
         while(!quit) {
             String resultString = computer.calculateResult(new UserInput(getUserInputFromUser(scanner)))
                     .exportResultString();
-            System.out.println(resultString);
+            printMessage(resultString + "\n");
             quit = isQuit(scanner, resultString);
         }
     }
@@ -28,20 +30,19 @@ public class GameService {
     private boolean isQuit(Scanner scanner, String resultString) {
         if(resultString.equals("3 스트라이크")) {
             init();
-            printGameEndQuestion();
+            printMessage(QUESTION_GAME_END);
             return validate(Integer.parseInt(scanner.nextLine()));
         }
         return false;
     }
 
-    private void printGameEndQuestion() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private String getUserInputFromUser(Scanner scanner) {
+        printMessage(REQUEST_USER_INPUT);
+        return scanner.nextLine();
     }
 
-    private String getUserInputFromUser(Scanner scanner) {
-        System.out.print("숫자를 입력해주세요 : ");
-        return scanner.nextLine();
+    private void printMessage(String message) {
+        System.out.print(message);
     }
 
     private void init() {

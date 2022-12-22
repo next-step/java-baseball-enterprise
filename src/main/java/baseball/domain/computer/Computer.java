@@ -20,7 +20,6 @@ public class Computer {
         int strike = calculateStrike(input);
         return new Result(strike, calculateBall(input) - strike);
     }
-
     private int calculateBall(UserInput userInput) {
         return userInput.intersect(answers);
     }
