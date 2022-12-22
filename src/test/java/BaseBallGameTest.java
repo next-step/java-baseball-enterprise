@@ -66,11 +66,19 @@ class BaseBallGameTest {
 //    @Test
 //    void compareNumbers() {
 //    }
-//
-//    @Test
-//    void compareDigit() {
-//    }
-//
+
+    @Test
+    void compareDigit() {
+        baseBallGame.initGame();
+        baseBallGame.setNumbers();
+        assertArrayEquals(
+                baseBallGame.compareDigit(0, baseBallGame.chosen.get(0)),
+                new int[]{1,0});
+        assertArrayEquals(
+                baseBallGame.compareDigit(1, baseBallGame.chosen.get(0)),
+                new int[]{0,1});
+    }
+
 //    @Test
 //    void endgame() {
 //    }
