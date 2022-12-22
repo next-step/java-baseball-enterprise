@@ -5,3 +5,10 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/ent-precourse)
+
+## 구현할 기능 목록
+- 랜덤한 정답 숫자 생성하기
+- 사용자로부터 입력받기
+- 입력의 스트라이크, 볼 계산하기
+- 게임 종료 판별하기
+- 게임 종료 시 게임 재시작 여부 묻기
