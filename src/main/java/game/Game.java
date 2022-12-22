@@ -24,6 +24,10 @@ public class Game {
         return new Game(Game.randomPick());
     }
 
+    public static Game expectedGame(int a, int b, int c) {
+        return new Game(new int[]{a, b, c});
+    }
+
     // 검사 없는 ball 개수 확인 함수
     private int countBallUnsafe(int[] expectValues) {
         assert expectValues != null;
