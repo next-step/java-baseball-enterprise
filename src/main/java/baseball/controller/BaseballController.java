@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.dto.BaseballResult;
+import baseball.dto.BaseballResultDto;
 import baseball.service.BaseballService;
 import java.util.List;
 
@@ -12,10 +12,10 @@ public class BaseballController {
         this.baseballService = baseballService;
     }
 
-    public BaseballResult getBaseballResult(List<Integer> userBaseballNumber) {
+    public BaseballResultDto getBaseballResult(List<Integer> userBaseballNumber) {
         Integer strikeCount = baseballService.getStrikeCount(userBaseballNumber);
         Integer ballCount = baseballService.getBallCount(userBaseballNumber);
-        return new BaseballResult(strikeCount, ballCount);
+        return new BaseballResultDto(strikeCount, ballCount);
     }
 
     public boolean isPlaying() {

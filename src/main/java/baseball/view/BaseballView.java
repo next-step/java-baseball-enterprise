@@ -1,10 +1,7 @@
 package baseball.view;
 
 import baseball.controller.BaseballController;
-import baseball.dto.BaseballResult;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import baseball.dto.BaseballResultDto;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -27,7 +24,7 @@ public class BaseballView {
         while (baseballController.isPlaying()) {
             baseballController.startGame();
             List<Integer> playerBaseballNumber = getPlayerBaseballNumber();
-            BaseballResult baseballResult = baseballController
+            BaseballResultDto baseballResultDto = baseballController
                     .getBaseballResult(playerBaseballNumber);
 
         }
