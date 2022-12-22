@@ -21,19 +21,26 @@ public class ComputerSimulator {
 
     public void startNewGame() {
         answer = NumberGenerater.generate();
-        Ballcount ballcount = Ballcount.of(0, 0);
+        boolean isGameFinished = false;
 
-        while(!isGameFinished(ballcount)) {
-            System.out.print("숫자를 입력해주세요: ");
-
-            Integer input = scanner.nextInt();
-
-            ballcount = calculateBallcount(toIntegerList(input));
-
-            printBallcount(ballcount);
+        while(!isGameFinished) {
+            isGameFinished = processSingleGameStep();
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니! 게임 종료");
+    }
+
+    // returns true if game should be finished after the step
+    public boolean processSingleGameStep() {
+        System.out.print("숫자를 입력해주세요: ");
+
+        Integer input = scanner.nextInt();
+
+        Ballcount ballcount = calculateBallcount(toIntegerList(input));
+
+        printBallcount(ballcount);
+
+        return isGameFinished(ballcount);
     }
 
     public void setAnswer(List<Integer> answer) {
