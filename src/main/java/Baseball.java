@@ -2,9 +2,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Baseball {
-    public static int generateNumbers() {
-        Random random = new Random();
+    private final Random random;
+    private final Scanner sc;
+
+    public Baseball() {
+        random = new Random();
         random.setSeed(System.currentTimeMillis());
+        sc = new Scanner(System.in);
+    }
+
+    private int generateNumbers() {
         int[] values = new int[3];
         values[0] = random.nextInt(8) + 1;
         do {
@@ -16,35 +23,27 @@ public class Baseball {
         return values[0] * 100 + values[1] * 10 + values[2];
     }
 
-    public static void baseballGame() {
+    private int userInput() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        return sc.nextInt();
+    }
 
+    private void clearGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public void baseballGame() {
         int inputValue;
         BaseballValue answer, guess;
-        Scanner sc = new Scanner(System.in);
         answer = new BaseballValue(generateNumbers());
-        System.out.print(answer.getValues()[0] + " ");
-        System.out.print(answer.getValues()[1] + " ");
-        System.out.print(answer.getValues()[2] + " \n");
-        // guess and check
         do {
-            System.out.print("숫자를 입력해 주세요 : ");
-            inputValue = sc.nextInt();
+            inputValue = userInput();
             guess = new BaseballValue(inputValue);
             guess.compare(answer);
             guess.printResult();
         } while (guess.getStrike() < 3);
-
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        clearGame();
     }
 
-    public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        int moreGame;
-        do {
-            baseballGame();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            moreGame = sc.nextInt();
-        } while (moreGame == 1);
-    }
 }
