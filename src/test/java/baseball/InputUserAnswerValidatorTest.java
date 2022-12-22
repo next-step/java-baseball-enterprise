@@ -16,7 +16,7 @@ public class InputUserAnswerValidatorTest {
 
     @DisplayName("inputUserAnswer가 1~9로 이루어진 세 자리의 수인 경우 BaseballNumbers를 정상적으로 반환한다.")
     @Test
-    void InputRestart_성공테스트() {
+    void InputUserAnswer_성공테스트() {
         assertThat(InputUserAnswerValidator.validate("123"))
                 .isEqualTo(new BaseballNumbers(new String[]{"1", "2", "3"}));
         assertThat(InputUserAnswerValidator.validate("1 2       3   "))
