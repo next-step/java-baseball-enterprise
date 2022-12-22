@@ -27,7 +27,6 @@ public class BaseBallGame {
         }
     }
 
-
     // 임의의 수 하나 선택. 단, 이전에 선택한 숫자 제외
     int getRandomNumber(){
         int range = numbers.size();
@@ -35,9 +34,18 @@ public class BaseBallGame {
         return numbers.remove(index);
     }
 
+    void mainSequence(){
+        boolean onSeq = true;
+        while(onSeq){
+            int[] inputs = getInputs();
+            onSeq = !compareNumbers(inputs);
+        }
+    }
+
     // 사용자로부터 숫자 입력받기
     int[] getInputs(){
         int[] inputs = new int[DIGIT_SIZE];
+        System.out.print("숫자를 입력해주세요 : ");
         String line = new Scanner(System.in).nextLine();
         for (int i = 0; i < DIGIT_SIZE; i++) {
             inputs[i] = line.charAt(i)-'0';
