@@ -13,7 +13,6 @@ public class Pitcher {
             number.append(digits.get(randomIndex));
             digits.remove(randomIndex);
         }
-
         return number.toString();
     }
 }
