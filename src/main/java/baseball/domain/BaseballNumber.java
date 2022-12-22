@@ -1,11 +1,12 @@
 package baseball.domain;
 
+import static baseball.common.BaseballEnum.BASEBALL_NUMBER_LENGTH;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class BaseballNumber {
-    private static final int BASEBALL_NUMBER_LENGTH = 3;
     private final List<Integer> candidateNumbers = new ArrayList<>();
     private List<Integer> number = new ArrayList<>();
 
