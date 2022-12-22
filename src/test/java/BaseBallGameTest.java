@@ -63,9 +63,16 @@ class BaseBallGameTest {
         assertArrayEquals(inputs, new int[]{1,2,3});
     }
 
-//    @Test
-//    void compareNumbers() {
-//    }
+    @Test
+    void compareNumbers() {
+        baseBallGame.initGame();
+        baseBallGame.setNumbers();
+        int[] answer = new int[BaseBallGame.DIGIT_SIZE];
+        for (int i = 0; i < BaseBallGame.DIGIT_SIZE; i++) {
+            answer[i] = baseBallGame.chosen.get(i);
+        }
+        assertTrue(baseBallGame.compareNumbers(answer));
+    }
 
     @Test
     void compareDigit() {
