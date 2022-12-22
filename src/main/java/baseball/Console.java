@@ -10,14 +10,15 @@ public class Console {
 
     public void printResult(int strike, int ball) {
         if (strike + ball == 0) {
-            System.out.println("낫씽");
-        } else if (strike == 0) {
-            System.out.println(ball + " 볼");
-        } else if (ball == 0) {
-            System.out.println(strike + " 스트라이크");
-        } else {
-            System.out.println(strike + " 스트라이크 " + ball + " 볼");
+            System.out.print("낫씽");
         }
+        if (strike != 0) {
+            System.out.print(strike + " 스트라이크 ");
+        }
+        if (ball != 0) {
+            System.out.print(ball + " 볼");
+        }
+        System.out.println();
     }
 
     public int endGame() {
