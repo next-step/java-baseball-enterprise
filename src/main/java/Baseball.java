@@ -146,7 +146,6 @@ public class Baseball {
 
         while (end_type == 1) {
             Computer comp = new Computer(length);
-            comp.print_answer();
 
             main_game(comp);
 
@@ -195,12 +194,18 @@ class Computer {
                 }
             }
         }
-//        answer = new int[] {4, 5, 4};
     }
 
     // print answer
     void print_answer() {
         System.out.println(Arrays.toString(answer));
+    }
+
+    // set answer
+    void set_answer(int[] new_ans) {
+        for (int i = 0; i < length; i++) {
+            answer[i] = new_ans[i];
+        }
     }
 
     // compare input with answer
