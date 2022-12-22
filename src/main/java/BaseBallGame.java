@@ -22,6 +22,9 @@ public class BaseBallGame {
 
     // 임의의 수 3개 선택
     void setNumbers(){
+        for (int i = 0; i < DIGIT_SIZE; i++) {
+            chosen.add(getRandomNumber());
+        }
     }
 
 
