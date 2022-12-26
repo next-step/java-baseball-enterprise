@@ -1,5 +1,6 @@
 package study.baseball.engine.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -8,13 +9,13 @@ import java.util.Set;
 
 public class Numbers {
 
-    private final Set<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Numbers(Set<Integer> numbers) {
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
-    public Set<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
